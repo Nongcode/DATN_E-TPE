@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .models import CartItem, Category, Product
+from .recommendations import get_similar_products
 
 
 class ShoppingFlowTests(TestCase):
@@ -106,6 +107,74 @@ class ShoppingFlowTests(TestCase):
         self.assertContains(response, self.product.name)
         self.assertContains(response, self.product.sku)
         self.assertContains(response, "Camera hành trình rõ nét.")
+
+    def test_content_based_recommendations_prioritize_similar_products(self):
+        same_category_product = Product.objects.create(
+            category=self.visible_category,
+            name="Camera hành trình GPS ETEK A2",
+            slug="camera-hanh-trinh-gps-etek-a2",
+            sku="ETEK-A2",
+            description="Camera hành trình GPS ghi hình rõ nét và cảnh báo va chạm.",
+            price=1600000,
+            is_active=True,
+        )
+        accessory_category = Category.objects.create(
+            name="Dụng cụ sửa chữa Garage",
+            slug="dung-cu-sua-chua-garage-test",
+            status="visible",
+        )
+        Product.objects.create(
+            category=accessory_category,
+            name="Bộ kiểm tra ắc quy ETEK",
+            slug="bo-kiem-tra-ac-quy-etek",
+            sku="ETEK-BT",
+            description="Dụng cụ kiểm tra điện áp ắc quy và máy phát.",
+            price=900000,
+            is_active=True,
+        )
+
+        similar_products = get_similar_products(
+            self.product,
+            Product.objects.filter(is_active=True).select_related("category"),
+            limit=2,
+        )
+
+        self.assertIn(same_category_product, similar_products)
+        self.assertEqual(similar_products[0], same_category_product)
+
+    def test_product_detail_provides_similar_and_bundle_recommendations(self):
+        Product.objects.create(
+            category=self.visible_category,
+            name="Camera hành trình mini ETEK",
+            slug="camera-hanh-trinh-mini-etek",
+            sku="ETEK-MINI",
+            description="Camera hành trình nhỏ gọn, góc rộng.",
+            price=1200000,
+            is_active=True,
+        )
+        garage_category = Category.objects.create(
+            name="Dụng cụ sửa chữa Garage",
+            slug="dung-cu-sua-chua-garage-detail",
+            status="visible",
+        )
+        bundle_product = Product.objects.create(
+            category=garage_category,
+            name="Máy chẩn đoán lỗi OBD2 ETEK",
+            slug="may-chan-doan-loi-obd2-etek",
+            sku="ETEK-OBD",
+            description="Máy đọc lỗi OBD2 hỗ trợ kiểm tra hệ thống điện xe.",
+            price=1300000,
+            is_active=True,
+        )
+
+        response = self.client.get(reverse("store:product_detail", args=[self.product.pk]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("similar_products", response.context)
+        self.assertIn("bundle_products", response.context)
+        self.assertContains(response, "Sản phẩm tương tự")
+        self.assertContains(response, "Sản phẩm thường dùng cùng")
+        self.assertIn(bundle_product, list(response.context["bundle_products"]))
 
     def test_add_to_cart_creates_session_cart_and_increments_quantity(self):
         add_url = reverse("store:add_to_cart", args=[self.product.pk])

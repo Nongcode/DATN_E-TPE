@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from .models import Blog, Cart, CartItem, Category, Product, RecommendationLog
+from .recommendations import get_bundle_products, get_similar_products
 from .search import search_products
 
 
@@ -384,16 +385,20 @@ def product_detail(request, pk):
         _active_products(),
         pk=pk,
     )
-    related_products = (
-        _active_products()
-        .filter(category=product.category)
-        .exclude(pk=product.pk)
-        .order_by("-created_at")[:4]
+    recommendation_pool = _active_products().exclude(pk=product.pk)
+    similar_products = get_similar_products(product, recommendation_pool, limit=4)
+    bundle_products = get_bundle_products(
+        product,
+        recommendation_pool,
+        limit=4,
+        exclude_ids={item.pk for item in similar_products[:2]},
     )
     context.update(
         {
             "product": product,
-            "related_products": related_products,
+            "similar_products": similar_products,
+            "bundle_products": bundle_products,
+            "related_products": similar_products,
         }
     )
     return render(request, "store/product_detail.html", context)

@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}ETEK STORE - Phụ kiện xe hơi cao cấp{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" sizes="any">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/favicon.png' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/storefront.css' %}?v=20260518-hero-cta-size-fix">
+    <link rel="stylesheet" href="{% static 'css/storefront.css' %}?v=20260518-content-recommendations">
 </head>
 <body>
     <div class="utility-bar">
@@ -28,11 +31,7 @@
         <div class="header-top">
             <div class="container header-top-inner">
                 <a class="brand" href="{% url 'store:home' %}">
-                    <div class="brand-mark">E</div>
-                    <div>
-                        <strong>ETEK STORE</strong>
-                        <span>Technology for your car</span>
-                    </div>
+                    <img class="brand-logo" src="{% static 'img/tan-phat-etek-logo.png' %}" alt="Tân Phát ETEK">
                 </a>
 
                 <form class="header-search" method="get" action="{% url 'store:product_list' %}">

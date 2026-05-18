@@ -83,15 +83,31 @@
 
         <div class="section-head related-head">
             <div>
-                <span class="eyebrow">Gợi ý cho bạn</span>
-                <h2>Sản phẩm cùng danh mục</h2>
+                <span class="eyebrow">Gợi ý theo nội dung</span>
+                <h2>Sản phẩm tương tự</h2>
+                <p class="recommendation-copy">Dựa trên tên sản phẩm, mô tả, danh mục, SKU và các thuộc tính liên quan.</p>
             </div>
         </div>
         <div class="product-grid">
-            {% for product in related_products %}
+            {% for product in similar_products %}
                 {% include "store/partials/product_card.html" with product=product %}
             {% empty %}
-                <div class="empty-inline wide">Chưa có sản phẩm liên quan để hiển thị.</div>
+                <div class="empty-inline wide">Chưa có sản phẩm tương tự để hiển thị.</div>
+            {% endfor %}
+        </div>
+
+        <div class="section-head related-head bundle-head">
+            <div>
+                <span class="eyebrow">Gợi ý mua kèm</span>
+                <h2>Sản phẩm thường dùng cùng</h2>
+                <p class="recommendation-copy">Ưu tiên nhóm bổ trợ theo nhu cầu sử dụng như dụng cụ, dung dịch, thiết bị lốp và chăm sóc xe.</p>
+            </div>
+        </div>
+        <div class="product-grid">
+            {% for product in bundle_products %}
+                {% include "store/partials/product_card.html" with product=product %}
+            {% empty %}
+                <div class="empty-inline wide">Chưa có sản phẩm mua kèm phù hợp để hiển thị.</div>
             {% endfor %}
         </div>
     </div>

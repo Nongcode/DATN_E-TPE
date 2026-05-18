@@ -233,32 +233,14 @@ ul {
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     flex-shrink: 0;
+    min-width: 260px;
 }
 
-.brand-mark {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, var(--secondary), var(--secondary-soft));
-    color: white;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 1.35rem;
-    border-radius: var(--radius-md);
-}
-
-.brand strong {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--secondary);
-}
-
-.brand span {
-    font-size: 0.8125rem;
-    color: var(--ink-muted);
+.brand-logo {
+    width: clamp(220px, 18vw, 290px);
+    height: 92px;
+    object-fit: contain;
     display: block;
 }
 
@@ -2159,6 +2141,22 @@ ul {
     flex: 0 0 auto;
 }
 
+.related-head {
+    margin-top: 1.25rem;
+}
+
+.bundle-head {
+    margin-top: 3rem;
+}
+
+.recommendation-copy {
+    max-width: 680px;
+    margin-top: 0.55rem;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
 /* Contact */
 .contact-page {
     padding-top: 4rem;
@@ -2670,7 +2668,8 @@ ul {
     .utility-inner,
     .utility-meta,
     .header-top-actions { display: none; }
-    .brand strong { font-size: 1.2rem; }
+    .brand { min-width: 190px; }
+    .brand-logo { width: 190px; height: 64px; }
     .nav-band-inner { width: 100%; }
     .nav-catalog-btn { padding: 0.9rem 1rem; white-space: nowrap; }
     .catalog-dropdown { min-width: min(92vw, 320px); }

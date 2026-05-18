@@ -111,3 +111,44 @@ Tong hop thay doi chuan hoa ten san pham theo tham khao Uptek - 2026-05-18
 - Da clear Product.image cho 31 san pham tung tro toi products/generated/.
 - Da xoa cac file SVG trong media/products/generated/.
 - Trang san pham se tam thoi quay lai fallback hien co cho toi khi chon duoc bo anh san pham phu hop hon.
+
+13. Module goi y san pham content-based filtering - 2026-05-18
+- Tao file moi store/recommendations.py.
+- Chuc nang chinh:
+  - get_similar_products(product, products, limit=4)
+  - get_bundle_products(product, products, limit=4, exclude_ids=None)
+- Co che cham diem san pham tuong tu:
+  - Tach token tu ten san pham, SKU, mo ta, slug, danh muc, mo ta danh muc.
+  - Bo cac token qua chung nhu uptek, etek, may, bo, dung, cu, thiet, bi.
+  - Uu tien trung noi dung, trung danh muc, gan gia va cung ho SKU neu SKU thuc su co tien to rieng.
+  - Da sua logic SKU de khong coi moi ma ETEK-* la cung ho san pham.
+- Co che goi y mua kem:
+  - Dung ma tran danh muc bo tro, vi du:
+    - Thiet bi lop & nang ha -> Dung cu sua chua Garage.
+    - Rua xe, Detailing & Dong son -> Dung dich & suc rua.
+    - Dung dich & suc rua -> Rua xe, Detailing & Dong son.
+    - Dung cu sua chua Garage -> Thiet bi lop & nang ha, Rua xe, Detailing & Dong son.
+  - Dung them keyword bo tro nhu lop, nang, rua, son, kim, obd2, camera de goi y dung nhu cau.
+- Cap nhat store/views.py:
+  - product_detail khong chi lay san pham cung danh muc nua.
+  - Them similar_products cho san pham tuong tu.
+  - Them bundle_products cho san pham mua kem.
+  - Giu related_products tro ve similar_products de tuong thich nguoc neu template/logic cu con dung.
+- Cap nhat templates/store/product_detail.html:
+  - Doi khoi "San pham cung danh muc" thanh "San pham tuong tu".
+  - Them khoi moi "San pham thuong dung cung" cho goi y mua kem.
+- Cap nhat static/css/storefront.css:
+  - Them .recommendation-copy va .bundle-head de spacing noi dung goi y gon hon.
+  - Cap nhat query version CSS trong templates/store/base.html.
+- Cap nhat store/tests.py:
+  - Them test content-based uu tien san pham tuong tu.
+  - Them test trang chi tiet co similar_products va bundle_products.
+- Lenh da kiem tra:
+  - venv\Scripts\python.exe manage.py check
+    - Ket qua: OK.
+  - venv\Scripts\python.exe manage.py test store
+    - Ket qua: OK, 12 tests passed.
+- Kiem tra nhanh voi san pham that:
+  - Nguon: May can bang lop UPTEK-XTB820A.
+  - Tuong tu: Cau nang 2 tru, may ra vao lop, cau nang cat keo.
+  - Mua kem: Bo cao rotuyn, bo khau tay van, bo kiem tra ac quy, bo loc tach nuoc khi nen.
