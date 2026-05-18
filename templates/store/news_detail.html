@@ -1,0 +1,54 @@
+{% extends "store/base.html" %}
+
+{% block title %}{{ article.title }} | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label=article.tag banner_title=article.title banner_text=article.excerpt|truncatechars:150 banner_image=article.image %}
+
+<section class="page-shell news-detail-shell">
+    <div class="container">
+        <div class="news-detail-layout">
+            <article class="news-detail-article">
+                <a class="news-back-link" href="{% url 'store:news_list' %}">
+                    <span aria-hidden="true">←</span>
+                    Quay lại xem tin tức
+                </a>
+
+                <div class="news-detail-meta">
+                    <span>{{ article.tag }}</span>
+                    <span>{% if article.date %}{{ article.date|date:"d/m/Y" }}{% else %}ETEK Blog{% endif %}</span>
+                    <span>{{ article.author }}</span>
+                </div>
+
+                <div class="news-detail-cover">
+                    <img src="{{ article.image }}" alt="{{ article.title }}">
+                </div>
+
+                <div class="news-detail-content">
+                    <p>{{ article.content|linebreaksbr }}</p>
+                </div>
+            </article>
+
+            <aside class="news-related">
+                <div class="news-related-head">
+                    <span class="eyebrow">Đọc thêm</span>
+                    <h2>Bài viết tương tự</h2>
+                </div>
+                <div class="news-related-list">
+                    {% for post in related_articles %}
+                        <a class="news-related-card" href="{% url 'store:news_detail' post.url_id %}">
+                            <img src="{{ post.image }}" alt="{{ post.title }}">
+                            <div>
+                                <span>{{ post.tag }}</span>
+                                <strong>{{ post.title }}</strong>
+                            </div>
+                        </a>
+                    {% empty %}
+                        <div class="empty-inline">Chưa có bài viết liên quan.</div>
+                    {% endfor %}
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}

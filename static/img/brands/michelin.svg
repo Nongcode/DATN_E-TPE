@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Michelin">
+  <rect width="320" height="96" rx="18" fill="#fff"/>
+  <g fill="#1f4e9d">
+    <circle cx="42" cy="44" r="13"/>
+    <circle cx="64" cy="42" r="16"/>
+    <circle cx="89" cy="44" r="13"/>
+    <rect x="31" y="52" width="69" height="18" rx="9"/>
+  </g>
+  <text x="122" y="59" fill="#174ea6" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="800">MICHELIN</text>
+</svg>

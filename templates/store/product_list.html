@@ -1,0 +1,87 @@
+{% extends "store/base.html" %}
+{% load store_extras %}
+
+{% block title %}Sản phẩm | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label="Danh mục sản phẩm" banner_title="Tìm thiết bị phù hợp cho xe của bạn." banner_text="Khám phá phụ kiện ô tô chính hãng, rõ thông tin, dễ so sánh và đặt mua nhanh." banner_image="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80" %}
+<section class="page-shell">
+    <div class="container">
+        <div class="catalog-layout">
+            <aside class="catalog-sidebar">
+                <div class="filter-card">
+                    <h3>Bộ lọc danh mục</h3>
+                    <a class="{% if not selected_category %}is-active{% endif %}" href="{% url 'store:product_list' %}?q={{ query }}&sort={{ sort }}">
+                        <span>Tất cả sản phẩm</span>
+                    </a>
+                    {% for category in categories %}
+                        <a class="{% if selected_category == category.slug %}is-active{% endif %}" href="{% url 'store:product_list' %}?category={{ category.slug }}&q={{ query }}&sort={{ sort }}">
+                            <span>{{ category.name }}</span>
+                            <small>{{ category.product_total }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+            </aside>
+
+            <div class="catalog-content">
+                <form class="catalog-toolbar" method="get">
+                    <input type="hidden" name="category" value="{{ selected_category }}">
+                    <input type="text" name="q" value="{{ query }}" placeholder="Tìm theo tên, SKU, danh mục...">
+                    <select name="sort">
+                        <option value="latest" {% if sort == "latest" %}selected{% endif %}>Mới nhất</option>
+                        <option value="price_asc" {% if sort == "price_asc" %}selected{% endif %}>Giá tăng dần</option>
+                        <option value="price_desc" {% if sort == "price_desc" %}selected{% endif %}>Giá giảm dần</option>
+                        <option value="name" {% if sort == "name" %}selected{% endif %}>Theo tên</option>
+                    </select>
+                    <button type="submit">Lọc ngay</button>
+                </form>
+
+                <div class="catalog-summary">
+                    Đang hiển thị <strong>{{ products|length }}</strong> / <strong>{{ total_products }}</strong> sản phẩm
+                </div>
+                {% if search_context %}
+                    <div class="search-insight">
+                        <strong>Tìm kiếm thông minh:</strong>
+                        <span>khớp {{ search_context.matched_count }} sản phẩm cho "{{ search_context.query }}".</span>
+                        {% if search_context.tokens %}
+                            <small>Từ khóa đã chuẩn hóa: {{ search_context.tokens|join:", " }}</small>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <div class="product-grid">
+                    {% for product in products %}
+                        {% include "store/partials/product_card.html" with product=product %}
+                    {% empty %}
+                        <div class="empty-inline wide">Không tìm thấy sản phẩm phù hợp với bộ lọc hiện tại.</div>
+                    {% endfor %}
+                </div>
+
+                {% if page_obj.paginator.num_pages > 1 %}
+                    <nav class="catalog-pagination" aria-label="Phân trang sản phẩm">
+                        {% if page_obj.has_previous %}
+                            <a href="?{% if page_query %}{{ page_query }}&{% endif %}page={{ page_obj.previous_page_number }}">Trước</a>
+                        {% else %}
+                            <span class="is-disabled">Trước</span>
+                        {% endif %}
+
+                        {% for page_number in page_obj.paginator.page_range %}
+                            {% if page_number == page_obj.number %}
+                                <span class="is-active">{{ page_number }}</span>
+                            {% elif page_number >= page_obj.number|add:"-2" and page_number <= page_obj.number|add:"2" %}
+                                <a href="?{% if page_query %}{{ page_query }}&{% endif %}page={{ page_number }}">{{ page_number }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?{% if page_query %}{{ page_query }}&{% endif %}page={{ page_obj.next_page_number }}">Sau</a>
+                        {% else %}
+                            <span class="is-disabled">Sau</span>
+                        {% endif %}
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load store_extras %}
+<article class="product-card">
+    <a class="product-card-media" href="{% url 'store:product_detail' product.pk %}">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80" alt="{{ product.name }}">
+        {% endif %}
+        <span class="card-badge">Mới</span>
+    </a>
+    <div class="product-card-body">
+        <span class="product-card-category">{{ product.category.name }}</span>
+        <h3><a href="{% url 'store:product_detail' product.pk %}">{{ product.name }}</a></h3>
+        <div class="product-card-pricing">
+            <strong>{{ product.price|vnd }}</strong>
+            <small>{{ product.price|markup_price:15 }}</small>
+        </div>
+        <div class="product-card-footer">
+            <a class="product-link" href="{% url 'store:product_detail' product.pk %}">Chi tiết</a>
+            <form class="js-add-to-cart-form" method="post" action="{% url 'store:add_to_cart' product.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <button class="product-note product-cart-button" type="submit" aria-label="Thêm {{ product.name }} vào giỏ hàng" title="Thêm vào giỏ hàng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="cart-icon-basket" d="M3 4h2.4l2.1 10.2a2 2 0 0 0 2 1.6h6.9a2 2 0 0 0 1.95-1.55L20 8H7"></path>
+                        <circle cx="10" cy="20" r="1.35"></circle>
+                        <circle cx="17" cy="20" r="1.35"></circle>
+                    </svg>
+                    <span>Thêm vào giỏ</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</article>

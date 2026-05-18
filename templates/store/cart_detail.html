@@ -1,0 +1,78 @@
+{% extends "store/base.html" %}
+{% load store_extras %}
+
+{% block title %}Giỏ hàng | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label="Giỏ hàng" banner_title="Kiểm tra sản phẩm đã chọn" banner_text="Xem lại số lượng, tạm tính và liên hệ đội ngũ ETEK để được xác nhận đơn hàng nhanh chóng." banner_image="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1800&q=80" %}
+<section class="page-shell">
+    <div class="container">
+        <div class="cart-page">
+            <div class="cart-head">
+                <div>
+                    <span class="eyebrow">Giỏ hàng</span>
+                    <h1>Sản phẩm đã chọn</h1>
+                </div>
+                <a class="ghost-btn" href="{% url 'store:product_list' %}">Tiếp tục mua sắm</a>
+            </div>
+
+            {% if cart_items %}
+                <div class="cart-layout">
+                    <div class="cart-items">
+                        {% for row in cart_items %}
+                            <article class="cart-row">
+                                <a class="cart-row-media" href="{% url 'store:product_detail' row.item.product.pk %}">
+                                    {% if row.item.product.image %}
+                                        <img src="{{ row.item.product.image.url }}" alt="{{ row.item.product.name }}">
+                                    {% else %}
+                                        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80" alt="{{ row.item.product.name }}">
+                                    {% endif %}
+                                </a>
+                                <div class="cart-row-copy">
+                                    <span>{{ row.item.product.category.name }}</span>
+                                    <h2><a href="{% url 'store:product_detail' row.item.product.pk %}">{{ row.item.product.name }}</a></h2>
+                                    <p>SKU: {{ row.item.product.sku|default:"Đang cập nhật" }}</p>
+                                    <div class="cart-row-actions">
+                                        <form class="cart-quantity-form" method="post" action="{% url 'store:update_cart_item' row.item.pk %}">
+                                            {% csrf_token %}
+                                            <button class="cart-step-button" type="submit" name="action" value="decrease" aria-label="Giảm số lượng">-</button>
+                                            <input type="number" name="quantity" value="{{ row.item.quantity }}" min="1" max="99" aria-label="Số lượng {{ row.item.product.name }}">
+                                            <button class="cart-step-button" type="submit" name="action" value="increase" aria-label="Tăng số lượng">+</button>
+                                            <button class="cart-update-button" type="submit" name="action" value="set">Cập nhật</button>
+                                        </form>
+                                        <form method="post" action="{% url 'store:remove_cart_item' row.item.pk %}">
+                                            {% csrf_token %}
+                                            <button class="cart-remove-button" type="submit">Gỡ sản phẩm</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="cart-row-price">
+                                    <small>{{ row.item.quantity }} x {{ row.item.product.price|vnd }}</small>
+                                    <strong>{{ row.line_total|vnd }}</strong>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+
+                    <aside class="cart-summary">
+                        <h2>Tổng giỏ hàng</h2>
+                        <div class="cart-summary-line">
+                            <span>Số lượng</span>
+                            <strong>{{ cart_item_count }} sản phẩm</strong>
+                        </div>
+                        <div class="cart-summary-line">
+                            <span>Tạm tính</span>
+                            <strong>{{ cart_total|vnd }}</strong>
+                        </div>
+                        <a class="primary-btn" href="{% url 'store:contact' %}">Liên hệ đặt hàng</a>
+                    </aside>
+                </div>
+            {% else %}
+                <div class="empty-inline wide cart-empty">
+                    Giỏ hàng đang trống. Hãy chọn sản phẩm phù hợp rồi quay lại kiểm tra tại đây.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

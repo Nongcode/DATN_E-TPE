@@ -1,0 +1,253 @@
+{% extends "admin/index.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    /* CSS Các thẻ thống kê */
+    .modern-stat-card {
+        background: #ffffff; border-radius: 16px; padding: 24px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex;
+        align-items: center; justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 24px; border: 1px solid #f4f5f7;
+    }
+    .modern-stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .stat-content h3 { font-size: 28px; font-weight: 700; color: #2b3643; margin: 0 0 5px 0; }
+    .stat-content p { color: #828d9f; margin: 0; font-size: 14px; font-weight: 500; }
+    .stat-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    
+    .icon-blue { background: #eef2fa; color: #3b82f6; }
+    .icon-green { background: #ecfdf5; color: #10b981; }
+    .icon-orange { background: #fff7ed; color: #f97316; }
+    .icon-red { background: #fef2f2; color: #ef4444; }
+    .icon-purple { background: #f3e8ff; color: #a855f7; }
+    .icon-teal { background: #fef2f2; color: #e02323; } 
+
+    /* CSS Khối chứa Biểu đồ & Bảng */
+    .modern-box-container {
+        background: #ffffff; border-radius: 16px; padding: 24px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f4f5f7;
+        margin-bottom: 24px;
+    }
+    .modern-box-title {
+        font-size: 16px; font-weight: 600; color: #2b3643;
+        margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f4f5f7;
+        /* Thêm Flexbox để đẩy nút lọc sang phải */
+        display: flex; justify-content: space-between; align-items: center; 
+    }
+
+    /* CSS cho Nút Lọc Tháng (Bộ lọc thời gian) */
+    .modern-filter {
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        padding: 5px 30px 5px 15px !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        background-color: #f8fafc !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        font-weight: 500 !important;
+        outline: none !important;
+        height: 35px !important;
+        width: 10% !important;
+    }
+    .modern-filter:hover, .modern-filter:focus {
+        border-color: #3b82f6;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="col-12 pt-2">
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/product/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3>120</h3>
+                        <p>Sản Phẩm</p>
+                    </div>
+                    <div class="stat-icon icon-blue">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/customer/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3>45</h3>
+                        <p>Khách Hàng</p>
+                    </div>
+                    <div class="stat-icon icon-green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/order/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>Đơn Hàng Mới</p>
+                    </div>
+                    <div class="stat-icon icon-orange">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/product/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3 class="text-danger">3</h3>
+                        <p>Sắp Hết Hàng</p>
+                    </div>
+                    <div class="stat-icon icon-red">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/category/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3>6</h3>
+                        <p>Danh Mục Sản Phẩm</p>
+                    </div>
+                    <div class="stat-icon icon-purple">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <a href="/admin/store/voucher/" style="text-decoration: none;">
+                <div class="modern-stat-card">
+                    <div class="stat-content">
+                        <h3>8</h3>
+                        <p>Mã Voucher</p>
+                    </div>
+                    <div class="stat-icon icon-teal">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="modern-box-container">
+                <div class="modern-box-title">
+                    <div><i class="fas fa-chart-bar text-info mr-2"></i> Top Thiết Bị Ô Tô Bán Chạy</div>
+                    <select class="modern-filter">
+                        <option value="0">Tất cả các tháng</option>
+                        <option value="1">Tháng 1/2026</option>
+                        <option value="2">Tháng 2/2026</option>
+                        <option value="3" selected>Tháng 3/2026</option>
+                    </select>
+                </div>
+                <div style="position: relative; height: 320px; width: 100%;">
+                    <canvas id="topProductsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="modern-box-container">
+                <div class="modern-box-title">
+                    <div><i class="fas fa-crown text-warning mr-2"></i> Top Khách Hàng Chi Tiêu Nhiều Nhất</div>
+                    <select class="modern-filter">
+                        <option value="0">Tất cả thời gian</option>
+                        <option value="1">Tháng 1/2026</option>
+                        <option value="2">Tháng 2/2026</option>
+                        <option value="3" selected>Tháng 3/2026</option>
+                    </select>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Thứ hạng</th><th>Khách hàng</th><th class="text-center">Số đơn đã mua</th><th class="text-right">Tổng chi tiêu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-warning text-dark px-3 py-2">#1</span>
+                                </td>
+                                <td>
+                                    <strong>Nguyễn Văn A</strong>
+                                </td>
+                                <td class="text-center">15</td>
+                                <td class="text-right text-success font-weight-bold">45,500,000 ₫</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary px-3 py-2">#2</span>
+                                </td>
+                                <td>
+                                    <strong>Trần Thị B</strong>
+                                </td>
+                                <td class="text-center">8</td>
+                                <td class="text-right text-success font-weight-bold">22,100,000 ₫</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-danger px-3 py-2">#3</span>
+                                </td>
+                                <td>
+                                    <strong>Lê Hoàng C</strong>
+                                </td>
+                                <td class="text-center">5</td>
+                                <td class="text-right text-success font-weight-bold">18,000,000 ₫</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge bg-light text-dark px-3 py-2">#4</span>
+                                </td>
+                                <td>
+                                    <strong>Phạm Đức Long</strong>
+                                </td>
+                                <td class="text-center">4</td>
+                                <td class="text-right text-success font-weight-bold">12,500,000 ₫</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var ctx = document.getElementById('topProductsChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: ['Cảm biến lốp', 'Camera HT', 'Bơm lốp', 'Dầu nhớt', 'Thảm sàn', 'Bọc vô lăng', 'Gạt mưa', 'Đèn LED'], 
+                datasets: [{
+                    label: 'Đã bán', data: [150, 120, 95, 80, 65, 40, 35, 20], 
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1, borderRadius: 4
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true } } }
+        });
+    });
+</script>
+{% endblock content %}

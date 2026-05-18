@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="VietMap">
+  <rect width="320" height="96" rx="18" fill="#fff"/>
+  <path d="M58 18c19 0 34 15 34 34 0 25-34 42-34 42S24 77 24 52c0-19 15-34 34-34z" fill="#00a651"/>
+  <circle cx="58" cy="52" r="13" fill="#fff"/>
+  <text x="112" y="59" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="900">VietMap</text>
+</svg>

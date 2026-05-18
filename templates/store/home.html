@@ -1,0 +1,326 @@
+{% extends "store/base.html" %}
+{% load store_extras %}
+
+{% block title %}Trang chủ | ETEK STORE{% endblock %}
+
+{% block content %}
+<section class="hero-shell">
+    <div class="hero-banner">
+        <div class="hero-backdrop">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80" alt="Công nghệ ô tô">
+        </div>
+        <div class="hero-overlay">
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <span class="hero-kicker">Công nghệ cho xe hơi</span>
+                    <h1>Phụ kiện ô tô chính hãng, lắp đặt chuẩn xe.</h1>
+                    <p>Nâng tầm trải nghiệm lái xe với camera, cảm biến, phụ kiện tiện ích và chính sách bảo hành rõ ràng.</p>
+                    <div class="hero-actions">
+                        <a class="primary-btn" href="{% url 'store:product_list' %}">Mua ngay</a>
+                        <a class="ghost-btn" href="#sale-zone">Khuyến mãi</a>
+                    </div>
+                    <div class="hero-trust-badges">
+                        <span>Giao hàng toàn quốc</span>
+                        <span>Bảo hành 12-24 tháng</span>
+                        <span>Tư vấn đúng dòng xe</span>
+                    </div>
+                </div>
+                <div class="hero-metrics">
+                    <div class="hero-floating-card">
+                        <span>Bộ sưu tập mới</span>
+                        <strong>{{ hero_products|length|default:12 }}+ sản phẩm vừa cập nhật</strong>
+                    </div>
+                    <div class="hero-sidecard">
+                        <strong>Tư vấn chuẩn dòng xe</strong>
+                        <span>Gợi ý cấu hình và phụ kiện theo từng nhu cầu sử dụng.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-strip">
+    <div class="container service-grid">
+        <div class="service-item">
+            <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+                    <path d="M16 8h3l4 4v4h-7"></path>
+                    <circle cx="5.5" cy="18.5" r="1.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="1.5"></circle>
+                </svg>
+            </div>
+            <strong>Giao hàng nhanh</strong>
+            <span>Toàn quốc trong 2-3 ngày</span>
+        </div>
+        <div class="service-item">
+            <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"></path>
+                    <path d="M9.5 12l1.8 1.8L14.8 10"></path>
+                </svg>
+            </div>
+            <strong>Bảo hành chính hãng</strong>
+            <span>Lên đến 24 tháng</span>
+        </div>
+        <div class="service-item">
+            <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.9V19a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h2.1a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.8L6.5 8.6a16 16 0 0 0 8.9 8.9l1.5-1.5a2 2 0 0 1 1.8-.6l2.6.4a2 2 0 0 1 1.7 2z"></path>
+                </svg>
+            </div>
+            <strong>Hỗ trợ kỹ thuật</strong>
+            <span>24/7 qua Hotline</span>
+        </div>
+        <div class="service-item">
+            <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 7h13a4 4 0 0 1 0 8H7"></path>
+                    <path d="M7 3L3 7l4 4"></path>
+                    <path d="M21 17H8a4 4 0 0 1 0-8h9"></path>
+                    <path d="M17 13l4 4-4 4"></path>
+                </svg>
+            </div>
+            <strong>Đổi trả dễ dàng</strong>
+            <span>Trong vòng 7 ngày</span>
+        </div>
+    </div>
+</section>
+
+<section class="collections" id="collections">
+    <div class="container collections-shell">
+        <div class="section-head collections-head">
+            <div>
+                <span class="eyebrow">Danh mục chủ lực</span>
+                <h2>Các danh mục sản phẩm chính</h2>
+                <p class="collections-copy">Lựa chọn nhanh những nhóm sản phẩm được khách hàng quan tâm nhiều nhất cho xe của bạn.</p>
+            </div>
+            <a href="{% url 'store:product_list' %}" class="ghost-btn">Xem tất cả</a>
+        </div>
+        <div class="collection-grid">
+            {% for category in category_spotlights %}
+                <a class="collection-card" href="{% url 'store:product_list' %}?category={{ category.slug }}">
+                    <div class="collection-media">
+                        {% if category.image %}
+                            <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                        {% elif "dung-cu-sua-chua-garage" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "rua-xe-detailing" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "thiet-bi-lop-nang-ha" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "dung-dich-suc-rua" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "cam-bien" in category.slug or "cảm-biến" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "dau-nhot" in category.slug or "phu-gia" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "phu-tung" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% elif "phu-kien" in category.slug %}
+                            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% else %}
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="{{ category.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="collection-scrim"></div>
+                    <div class="collection-card-top">
+                        <span class="collection-count">{{ forloop.counter|stringformat:"02d" }}</span>
+                    </div>
+                    <div class="collection-card-body">
+                        <h3>{{ category.name }}</h3>
+                        <div class="collection-hover-copy">
+                            {% with category.name|lower as category_name %}
+                            {% with category.slug|default:''|lower as category_slug %}
+                                <p>
+                                    {% if "dung-cu-sua-chua-garage" in category_slug %}
+                                        Dụng cụ cơ khí, dụng cụ hơi, tủ đồ nghề và máy chẩn đoán phục vụ garage chuyên nghiệp.
+                                    {% elif "rua-xe-detailing" in category_slug %}
+                                        Thiết bị rửa xe, detailing, đánh bóng và đồng sơn giúp hoàn thiện dịch vụ chăm sóc xe.
+                                    {% elif "thiet-bi-lop-nang-ha" in category_slug %}
+                                        Máy ra vào lốp, cân bằng lốp, cầu nâng và kích nâng dành cho khu vực sửa chữa chính.
+                                    {% elif "dung-dich-suc-rua" in category_slug %}
+                                        Dung dịch và thiết bị súc rửa kim phun, buồng đốt, bình xăng con cho bảo dưỡng định kỳ.
+                                    {% elif "cảm biến" in category_name or "cam-bien" in category_slug %}
+                                        Cảm biến hỗ trợ lùi, áp suất lốp và cảnh báo va chạm giúp quan sát an toàn, lái xe tự tin hơn.
+                                    {% elif "dầu nhớt" in category_name or "phụ gia" in category_name or "dau-nhot" in category_slug or "phu-gia" in category_slug %}
+                                        Dầu nhớt và phụ gia giúp động cơ vận hành êm hơn, sạch hơn và bền hơn trong quá trình sử dụng.
+                                    {% elif "phụ tùng" in category_name or "phu-tung" in category_slug %}
+                                        Phụ tùng và linh kiện thay thế phục vụ bảo dưỡng định kỳ, sửa chữa đúng kỹ thuật và đúng nhu cầu.
+                                    {% elif "phụ kiện" in category_name or "phu-kien" in category_slug %}
+                                        Phụ kiện nội thất, ngoại thất và đồ tiện ích giúp nâng trải nghiệm sử dụng xe mỗi ngày.
+                                    {% elif category.description %}
+                                        {{ category.description|truncatechars:96 }}
+                                    {% else %}
+                                        Chọn nhanh những sản phẩm phù hợp với dòng xe, nhu cầu sử dụng và ngân sách của bạn.
+                                    {% endif %}
+                                </p>
+                            {% endwith %}
+                            {% endwith %}
+                            <div class="collection-link">Xem danh mục</div>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="empty-inline">Chưa có danh mục hiển thị.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="sale-zone" id="sale-zone">
+    <div class="container sale-layout">
+        <div class="sale-intro">
+            <span class="eyebrow">Ưu đãi độc quyền</span>
+            <h2>Deal hời nhất hôm nay dành cho bạn.</h2>
+            <p>Đừng bỏ lỡ cơ hội sở hữu những phụ kiện cao cấp với mức giá không thể tốt hơn.</p>
+        </div>
+        <div class="sale-products">
+            {% for product in deal_products %}
+                <a href="{% url 'store:product_detail' product.pk %}" class="sale-row">
+                    <div class="sale-thumb">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=500&q=80" alt="{{ product.name }}">
+                        {% endif %}
+                        <span class="sale-tag">-15%</span>
+                    </div>
+                    <div class="sale-copy">
+                        <strong>{{ product.name }}</strong>
+                        <span>{{ product.category.name }}</span>
+                    </div>
+                    <div class="sale-prices">
+                        <b>{{ product.price|vnd }}</b>
+                        <small>{{ product.price|markup_price:15 }}</small>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="empty-inline wide">Chưa có sản phẩm khuyến mãi hôm nay.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="product-showcase">
+    <div class="container product-showcase-shell">
+        <div class="section-head product-showcase-head">
+            <div>
+                <span class="eyebrow">Sản phẩm nổi bật</span>
+                <h2>Khám phá theo từng nhóm sản phẩm</h2>
+                <p class="product-showcase-copy">Cập nhật nhanh những mẫu mới, mặt hàng bán tốt và các sản phẩm đang có mức giá hấp dẫn tại Store.</p>
+            </div>
+            <a href="{% url 'store:product_list' %}" class="ghost-btn">Xem tất cả sản phẩm</a>
+        </div>
+
+        <div class="product-cluster-grid">
+            <section class="product-cluster">
+                <div class="product-cluster-head">
+                    <h3>Sản phẩm mới cập nhật</h3>
+                    <span class="cluster-kicker">Mới nhất</span>
+                </div>
+                <div class="product-grid product-grid-compact">
+                    {% for product in new_arrivals %}
+                        {% include "store/partials/product_card.html" with product=product %}
+                    {% empty %}
+                        <div class="empty-inline">Chưa có sản phẩm để hiển thị.</div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="product-cluster">
+                <div class="product-cluster-head">
+                    <h3>Sản phẩm bán chạy nhất</h3>
+                    <span class="cluster-kicker">Bán chạy</span>
+                </div>
+                <div class="product-grid product-grid-compact">
+                    {% for product in best_sellers %}
+                        {% include "store/partials/product_card.html" with product=product %}
+                    {% empty %}
+                        <div class="empty-inline">Chưa có dữ liệu sản phẩm bán chạy.</div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="product-cluster">
+                <div class="product-cluster-head">
+                    <h3>Sản phẩm giá tốt hôm nay</h3>
+                    <span class="cluster-kicker">Giá tốt</span>
+                </div>
+                <div class="product-grid product-grid-compact">
+                    {% for product in deal_products %}
+                        {% include "store/partials/product_card.html" with product=product %}
+                    {% empty %}
+                        <div class="empty-inline">Chưa có sản phẩm giá tốt để hiển thị.</div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<section class="news-showcase">
+    <div class="container news-shell">
+        <div class="section-head news-head">
+            <div>
+                <span class="eyebrow">Tin tức mới</span>
+                <h2>Bài viết chăm sóc xe và thông tin cửa hàng</h2>
+                <p class="news-copy">Tổng hợp nhanh các bài viết hữu ích để chăm sóc xe đúng cách và cập nhật thông tin mới từ ETEK Store.</p>
+            </div>
+            <a href="{% url 'store:news_list' %}" class="ghost-btn">Xem trang tin tức</a>
+        </div>
+        <div class="news-grid">
+            {% if news_cards %}
+                {% for post in news_cards %}
+                    <a class="news-card news-card-link" href="{% url 'store:news_detail' post.url_id %}">
+                        <div class="news-card-image">
+                            <img src="{{ post.image }}" alt="{{ post.title }}">
+                        </div>
+                        <div class="news-card-body">
+                            <span class="news-tag">{{ post.tag }}</span>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.excerpt|truncatechars:140 }}</p>
+                            <div class="news-meta">
+                                <span>{% if post.date %}{{ post.date|date:"d/m/Y" }}{% else %}ETEK Blog{% endif %}</span>
+                                <span>{{ post.author }}</span>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="trust-showcase">
+    <div class="container trust-shell">
+        <div class="section-head trust-head">
+            <div>
+                <span class="eyebrow">Đối tác và khách hàng</span>
+                <h2>Đồng hành cùng thương hiệu uy tín và người dùng thực tế</h2>
+            </div>
+        </div>
+
+        <div class="partner-band">
+            {% for brand in partner_brands %}
+                <div class="partner-chip" title="{{ brand.name }}">
+                    <img src="{{ brand.logo }}" alt="{{ brand.name }}" loading="lazy" onerror="this.onerror=null; this.src='{{ brand.fallback_logo }}';">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="customer-grid">
+            {% for customer in customer_highlights %}
+                <article class="customer-card">
+                    <p>"{{ customer.quote }}"</p>
+                    <div class="customer-meta">
+                        <strong>{{ customer.name }}</strong>
+                        <span>{{ customer.role }}</span>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

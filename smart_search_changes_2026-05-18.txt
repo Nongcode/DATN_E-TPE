@@ -1,0 +1,98 @@
+Tong hop thay doi module tim kiem thong minh - 2026-05-18
+
+1. Muc tieu task
+- Xay dung module tim kiem thong minh cho trang san pham.
+- Tim kiem tren ten san pham, mo ta, SKU, danh muc, danh muc cha, mo ta danh muc va slug.
+- Ho tro truy van khong dau tieng Viet, vi du "camera hanh trinh" van khop voi "Camera hanh trinh" co dau trong du lieu.
+- Chuan hoa va bo sung du lieu mau de danh gia chat luong truy van.
+
+2. File code moi
+- store/search.py
+  - Them normalize_text de chuan hoa chu thuong, bo dau tieng Viet, thay "d/đ", tach token chu/so.
+  - Them tokenize_query de lay danh sach token co nghia tu query.
+  - Them product_search_document de gom cac truong noi dung cua san pham vao mot document tim kiem.
+  - Them score_product de cham diem theo do uu tien:
+    - Khop cum tu trong ten, SKU, danh muc co diem cao.
+    - Khop token trong ten, SKU, danh muc, danh muc cha, mo ta, mo ta danh muc, slug co diem khac nhau.
+    - Cong diem khi tat ca token deu co mat trong document.
+  - Them search_products de tra ve danh sach san pham da sap xep theo diem tim kiem.
+
+3. File da cap nhat
+- store/views.py
+  - product_list su dung search_products khi co query q.
+  - Neu co q va sort la latest thi giu thu tu theo diem lien quan.
+  - Neu co q va nguoi dung sort theo gia/ten thi sap xep list ket qua da tim.
+  - Them search_context vao context gom query, tokens, matched_count.
+
+- templates/store/product_list.html
+  - Them khoi search-insight hien:
+    - Tong so san pham khop.
+    - Query nguoi dung da nhap.
+    - Cac tu khoa da chuan hoa.
+
+- static/css/storefront.css
+  - Them CSS .search-insight, .search-insight strong, .search-insight small.
+
+- templates/store/base.html
+  - Cap nhat query version CSS thanh 20260518-smart-search de tranh cache cu.
+
+- store/tests.py
+  - Them test_smart_search_matches_unaccented_query.
+  - Them test_smart_search_matches_description_and_category.
+
+4. Du lieu mau
+- Tao management command:
+  - store/management/__init__.py
+  - store/management/commands/__init__.py
+  - store/management/commands/seed_search_products.py
+
+- Command moi:
+  - venv\Scripts\python.exe manage.py seed_search_products
+
+- Da seed 16 san pham mau phuc vu test tim kiem:
+  - Camera hanh trinh: 4K WiFi, dual GPS, mini 2K.
+  - Cam bien o to: TPMS, cam bien lui 4 mat, canh bao diem mu.
+  - Man hinh Android: CarPlay, Android Auto, VietMap, camera 360.
+  - Am thanh o to: loa 2 way, sub gam ghe.
+  - Den o to: LED H4, bi LED gam pha suong.
+  - Phu kien o to: bom lop dien tu, may hut bui cam tay.
+  - Dau nhot & phu gia: dau nhot 5W30, phu gia ve sinh kim phun.
+
+- Command dung update_or_create theo SKU nen co the chay lai an toan, khong tao trung SKU.
+- Command cung tao/cap nhat Inventory mac dinh quantity=12, low_stock_threshold=4 cho cac san pham mau.
+- Ket qua chay command tren database hien tai:
+  - Created: 16
+  - Updated: 0
+  - Tong Product sau seed: 31
+
+5. Cach danh gia nhanh
+- Tim khong dau:
+  - /san-pham/?q=camera%20hanh%20trinh
+- Tim theo noi dung mo ta:
+  - /san-pham/?q=diem%20mu
+- Tim theo danh muc/nhu cau:
+  - /san-pham/?q=man%20hinh%20android
+  - /san-pham/?q=cam%20bien%20lui
+  - /san-pham/?q=dau%20nhot%205w30
+
+6. Lenh da kiem tra
+- venv\Scripts\python.exe manage.py check
+  - Ket qua: OK
+- venv\Scripts\python.exe manage.py test store
+  - Ket qua: OK, 10 tests passed
+- venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+  - Ket qua: No changes detected
+- venv\Scripts\python.exe manage.py seed_search_products
+  - Ket qua: Seeded smart-search products. Created: 16, updated: 0.
+- GET /san-pham/?q=camera%20hanh%20trinh
+  - Ket qua: HTTP 200
+- GET /san-pham/?q=diem%20mu
+  - Ket qua: HTTP 200
+
+7. Ghi chu ky thuat
+- Chua dung PostgreSQL full-text search hay vector search de tranh tang do phuc tap va phu thuoc cau hinh DB.
+- Giai phap hien tai phu hop dataset nho/vua, de sinh vien doc va mo rong.
+- Neu dataset lon hon, buoc tiep theo nen la:
+  - Them search_vector/search_index rieng.
+  - Dung PostgreSQL SearchVector/SearchRank hoac trigram similarity.
+  - Ghi log query khong co ket qua de cai thien tu khoa/danh muc.

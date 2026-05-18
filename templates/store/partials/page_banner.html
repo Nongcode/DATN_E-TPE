@@ -1,0 +1,14 @@
+<section class="page-banner">
+    <div class="page-banner-media">
+        <img src="{{ banner_image|default:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80' }}" alt="{{ banner_title }}">
+    </div>
+    <div class="page-banner-overlay">
+        <div class="container page-banner-inner">
+            <span class="eyebrow">{{ banner_label }}</span>
+            <h1>{{ banner_title }}</h1>
+            {% if banner_text %}
+                <p>{{ banner_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</section>

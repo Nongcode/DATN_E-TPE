@@ -1,0 +1,99 @@
+{% extends "store/base.html" %}
+{% load store_extras %}
+
+{% block title %}{{ product.name }} | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label=product.category.name banner_title=product.name banner_text="Thông tin sản phẩm, giá bán và thao tác thêm vào giỏ hàng được trình bày rõ để bạn kiểm tra trước khi đặt mua." banner_image="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=80" %}
+<section class="page-shell">
+    <div class="container">
+        <div class="product-detail">
+            <div class="detail-media">
+                <div class="detail-image-wrap">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80" alt="{{ product.name }}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="detail-copy">
+                <span class="eyebrow">{{ product.category.name }}</span>
+                <h1>{{ product.name }}</h1>
+                <div class="detail-price">{{ product.price|vnd }}</div>
+                <div class="detail-meta">
+                    <span>SKU: {{ product.sku|default:"Đang cập nhật" }}</span>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> {% if product.is_active %}Sản phẩm sẵn sàng{% else %}Tạm ngưng nhận đơn{% endif %}</span>
+                </div>
+                <p class="detail-description">{{ product.description }}</p>
+                <div class="detail-actions">
+                    <form class="add-to-cart-form" method="post" action="{% url 'store:add_to_cart' product.pk %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{% url 'store:cart_detail' %}">
+                        <label for="quantity-{{ product.pk }}">Số lượng</label>
+                        <input id="quantity-{{ product.pk }}" type="number" name="quantity" value="1" min="1" max="99">
+                        <button class="primary-btn" type="submit">Thêm vào giỏ hàng</button>
+                    </form>
+                    <a class="ghost-btn" href="{% url 'store:product_list' %}?category={{ product.category.slug }}">Xem sản phẩm tương tự</a>
+                </div>
+                <div class="detail-buy-panel">
+                    <a href="tel:0900000000">
+                        <span class="buy-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9V19a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h2.1a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.8L6.5 8.6a16 16 0 0 0 8.9 8.9l1.5-1.5a2 2 0 0 1 1.8-.6l2.6.4a2 2 0 0 1 1.7 2z"></path></svg>
+                        </span>
+                        <strong>0900 000 000</strong>
+                        <small>Hotline tư vấn & đặt hàng</small>
+                    </a>
+                    <a href="{% url 'store:contact' %}">
+                        <span class="buy-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8"></path><path d="M8 13h5"></path></svg>
+                        </span>
+                        <strong>Gửi yêu cầu tư vấn</strong>
+                        <small>Phản hồi theo dòng xe của bạn</small>
+                    </a>
+                </div>
+                <div class="detail-compact-trust">
+                    <div>
+                        <span class="trust-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"></rect><path d="M16 8h3l4 4v4h-7"></path><circle cx="5.5" cy="18.5" r="1.5"></circle><circle cx="18.5" cy="18.5" r="1.5"></circle></svg>
+                        </span>
+                        Vận chuyển toàn quốc
+                    </div>
+                    <div>
+                        <span class="trust-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"></path><path d="M9.5 12l1.8 1.8L14.8 10"></path></svg>
+                        </span>
+                        Bảo hành chính hãng
+                    </div>
+                    <div>
+                        <span class="trust-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        </span>
+                        Sản phẩm chính hãng
+                    </div>
+                    <div>
+                        <span class="trust-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </span>
+                        Cam kết giá tốt
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-head related-head">
+            <div>
+                <span class="eyebrow">Gợi ý cho bạn</span>
+                <h2>Sản phẩm cùng danh mục</h2>
+            </div>
+        </div>
+        <div class="product-grid">
+            {% for product in related_products %}
+                {% include "store/partials/product_card.html" with product=product %}
+            {% empty %}
+                <div class="empty-inline wide">Chưa có sản phẩm liên quan để hiển thị.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

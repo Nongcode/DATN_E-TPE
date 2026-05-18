@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Pioneer">
+  <rect width="320" height="96" rx="18" fill="#fff"/>
+  <circle cx="61" cy="48" r="28" fill="#d71920"/>
+  <path d="M49 62V34h17c10 0 16 5 16 14s-6 14-16 14H49zm12-10h5c3 0 5-1 5-4s-2-4-5-4h-5v8z" fill="#fff"/>
+  <text x="110" y="60" fill="#111827" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800">Pioneer</text>
+</svg>

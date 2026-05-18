@@ -1,0 +1,31 @@
+{% extends "store/base.html" %}
+
+{% block title %}Tin tức | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label="Tin tức & kiến thức" banner_title="Bài viết chăm sóc xe và thông tin cửa hàng" banner_text="Cập nhật kinh nghiệm bảo dưỡng, sử dụng xe và các thông báo mới từ ETEK Store." banner_image="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1800&q=80" %}
+<section class="page-shell news-list-shell">
+    <div class="container">
+        <div class="news-grid news-grid-page">
+            {% for post in news_cards %}
+                    <a class="news-card news-card-link" id="{{ post.id }}" href="{% url 'store:news_detail' post.url_id %}">
+                        <div class="news-card-image">
+                            <img src="{{ post.image }}" alt="{{ post.title }}">
+                        </div>
+                        <div class="news-card-body">
+                            <span class="news-tag">{{ post.tag }}</span>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.excerpt|truncatechars:220 }}</p>
+                            <div class="news-meta">
+                                <span>{% if post.date %}{{ post.date|date:"d/m/Y" }}{% else %}ETEK Blog{% endif %}</span>
+                                <span>{{ post.author }}</span>
+                            </div>
+                        </div>
+                    </a>
+            {% empty %}
+                <div class="empty-inline wide">Chưa có bài viết để hiển thị.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,1010 @@
+
+/* Ép toàn bộ hệ thống sử dụng chung 1 họ Font chữ hiện đại, dễ đọc */
+body, h1, h2, h3, h4, h5, h6, p, a, div, span, table, th, td, input, button, select, label {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Hiệu ứng mượt mà khi chuyển trang trong Admin */
+.app-wrapper, .content-wrapper {
+    animation: smoothLoad 0.25s ease-out forwards;
+}
+
+@keyframes smoothLoad {
+    0% {
+        opacity: 0.2;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 1. Làm mềm Khung chứa bảng (Card) */
+.card {
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important;
+}
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid #f4f5f7 !important;
+    padding: 15px 20px !important;
+}
+
+/* 2. Tinh chỉnh Bảng (Table) */
+table.table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+}
+/* Xóa sọc xám mặc định của table-striped */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ffffff !important; 
+}
+/* Tiêu đề bảng */
+table.table thead th {
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-top: none !important;
+    color: #64748b !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    padding: 16px !important;
+    background: #f8fafc !important;
+}
+/* Dòng dữ liệu & Hiệu ứng hover */
+table.table tbody tr {
+    transition: all 0.2s ease !important;
+}
+table.table tbody tr:hover {
+    background-color: #f8fafc !important;
+    box-shadow: inset 3px 0 0 #3b82f6 !important; /* Vạch xanh nhỏ bên trái khi hover */
+}
+table.table tbody td {
+    padding: 16px !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    color: #334155 !important;
+    font-weight: 500 !important;
+}
+
+/* 3. Bo góc Nút bấm (Buttons) & Làm dịu màu sắc */
+.btn {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    padding: 6px 16px !important;
+    transition: all 0.2s !important;
+    border: none !important;
+}
+.btn-info { background-color: #3b82f6 !important; color: white !important; }
+.btn-info:hover { background-color: #2563eb !important; transform: translateY(-1px); }
+.btn-danger { background-color: #ef4444 !important; color: white !important; }
+.btn-danger:hover { background-color: #dc2828 !important; transform: translateY(-1px); }
+.btn-success { background-color: #10b981 !important; color: white !important; }
+.btn-success:hover { background-color: #059669 !important; transform: translateY(-1px); }
+
+/* 4. Bo góc Ô tìm kiếm (Search bar) */
+#changelist-search input[type="text"], .form-control {
+    border-radius: 8px !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 8px 15px !important;
+    box-shadow: none !important;
+}
+#changelist-search input[type="text"]:focus, .form-control:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* 5. Tinh chỉnh Badge số lượng */
+.badge.bg-secondary {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+}
+#toolbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Form Tìm kiếm: Bo góc mềm, ô nhập dài, Ẩn nút Submit thừa thãi */
+#changelist-search {
+    display: flex !important;
+    margin: 0 !important;
+}
+#changelist-search input[type="text"] {
+    width: 350px !important;
+    border-radius: 8px !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 10px 15px !important; 
+    background-color: #ffffff !important;
+    color: #374151 !important;
+    font-size: 14px !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+#changelist-search input[type="submit"] {
+    display: none !important; /* Ẩn nút đi, gõ xong ấn Enter là tìm */
+}
+
+/* Nút Thêm mới: Xanh lá cây chuẩn như ảnh mẫu */
+.object-tools a {
+    background-color: #10b981 !important; 
+    border-color: #10b981 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+}
+.object-tools a:hover {
+    background-color: #059669 !important;
+}
+
+/* --- 2. MA THUẬT: ẨN MẶC ĐỊNH & CHỈ HIỆN ACTIONS KHI TICK CHECKBOX --- */
+.actions {
+    display: none !important; /* MẶC ĐỊNH ẨN */
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 15px !important;
+    animation: slideDown 0.3s ease;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    min-height: 58px !important;
+}
+
+/* Nếu Form có chứa checkbox được chọn -> Hiện thanh Actions lên */
+#changelist-form:has(input.action-select:checked) .actions,
+#changelist-form:has(input#action-toggle:checked) .actions {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.actions .action-counter,
+.actions .question,
+.actions .all,
+.actions .clear {
+    align-items: center !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    min-height: 32px !important;
+    padding: 8px 12px !important;
+    white-space: nowrap !important;
+}
+
+.actions .action-counter {
+    background: #f1f5f9 !important;
+    color: #334155 !important;
+    display: inline-flex !important;
+}
+
+.actions .question {
+    background: #ecfeff !important;
+    border: 1px solid #bae6fd !important;
+    display: none !important;
+}
+
+.actions .all {
+    background: #ecfdf5 !important;
+    border: 1px solid #bbf7d0 !important;
+    color: #047857 !important;
+    display: none !important;
+}
+
+.actions .clear {
+    background: #fff7ed !important;
+    border: 1px solid #fed7aa !important;
+    display: none !important;
+}
+
+.actions .question a,
+.actions .clear a {
+    color: #0284c7 !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+}
+
+.actions .clear a {
+    color: #ea580c !important;
+}
+
+/* Hiệu ứng trượt xuống mượt mà cho thanh Actions */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 3. Bảng dữ liệu: Làm mỏng viền và chữ thanh thoát giống ảnh --- */
+table.table thead th {
+    background: #ffffff !important;
+    color: #4b5563 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    text-transform: none !important; 
+    font-weight: 600 !important;
+    font-family: inherit !important; /* Bỏ font Times New Roman ở tiêu đề */
+}
+table.table tbody td {
+    border-bottom: 1px solid #f3f4f6 !important;
+}
+
+table.table tbody th, table.table tbody td {
+    vertical-align: middle !important;
+}
+
+/* Đổi màu chữ Tên danh mục thành Xám đậm sang trọng, bỏ gạch chân */
+table.table tbody th a {
+    color: #374151 !important; 
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+/* Chỉ hiện màu Xanh da trời khi rê chuột vào */
+table.table tbody th a:hover {
+    color: var(--primary-sky) !important; 
+}
+
+/* Nắn lại ô chứa Checkbox cho thẳng hàng tuyệt đối với chữ */
+td.action-checkbox {
+    text-align: center !important;
+    width: 40px !important; /* Cố định độ rộng ô checkbox */
+}
+td.action-checkbox input[type="checkbox"] {
+    margin: 0 !important;
+    cursor: pointer;
+    /* Dùng transform để đẩy nhẹ checkbox xuống cho khớp với tâm chữ */
+    transform: translateY(2px); 
+}
+table.table thead th,
+table.table thead th a {
+    color: var(--primary-sky) !important;
+    font-size: 15px !important; /* Tăng cỡ chữ to hơn (mặc định là 13px) */
+    font-weight: 700 !important; /* In đậm chữ để làm nổi bật tiêu đề */
+    text-transform: uppercase !important; /* Giữ nếp viết hoa cho trang trọng */
+}
+
+/* Hiệu ứng khi rê chuột vào tiêu đề cột (để sắp xếp A-Z) */
+table.table thead th a:hover {
+    color: var(--primary-sky-hover) !important;
+}
+
+/* Đảm bảo icon sắp xếp (mũi tên lên/xuống) cũng đổi màu theo */
+table.table thead th i.fas {
+    color: var(--primary-sky) !important;
+    font-size: 13px !important;
+}
+
+.dataTables_info {
+    display: none !important;
+}
+
+.object-tools {
+    display: flex !important;
+    gap: 12px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: center !important;
+}
+.object-tools li { margin: 0 !important; }
+
+/* Làm đẹp nút Import / Export (Màu xám nhạt hiện đại) */
+.object-tools li a.import_link,
+.object-tools li a.export_link {
+    background-color: #f8fafc !important; 
+    color: #475569 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 9px 16px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+.object-tools li a.import_link:hover,
+.object-tools li a.export_link:hover {
+    background-color: #f1f5f9 !important;
+    color: var(--primary-sky) !important;
+    border-color: var(--primary-sky) !important;
+}
+
+/* Nắn lại nút Thêm mới (Giữ màu xanh lá) */
+.object-tools li a.addlink,
+.object-tools li a.btn-success {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 9px 16px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+.object-tools li a.addlink:hover,
+.object-tools li a.btn-success:hover { background-color: #059669 !important; }
+
+/* --- 2. Căn chỉnh Ô Tìm Kiếm và Bộ Lọc (Filters) thẳng hàng --- */
+#changelist-search {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important; 
+}
+
+/* Đồng bộ chiều cao của các thẻ Select lọc và Input Tìm kiếm */
+#changelist-search select, 
+#change-list-filters select,
+#changelist-search input[type="text"] {
+    height: 42px !important; /* Ép tất cả cao đúng 42px */
+    border-radius: 8px !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 8px 15px !important;
+    background-color: #ffffff !important;
+    color: #374151 !important;
+    font-size: 14px !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05) !important;
+}
+
+/* Fix nút trong Modal Import */
+#importModalBody .btn {
+    padding: 10px !important;
+    font-weight: 600 !important;
+}
+#importModalBody select.form-control {
+    height: 45px !important;
+}
+
+#exportModalBody ul li label {
+    font-weight: 500 !important;
+    color: #475569 !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#exportModalBody input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-sky);
+}
+
+/* =========================================================
+   11. LÀM ĐẸP FORM THÊM MỚI / SỬA DỮ LIỆU (CHANGE FORM)
+========================================================= */
+
+/* 1. Bo tròn và đổ bóng nhẹ cho khung chứa form */
+.change-form .card {
+    border-radius: 16px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
+}
+
+/* 2. Căn chỉnh Tiêu đề các trường (Labels) */
+.change-form label {
+    font-weight: 600 !important;
+    color: #475569 !important;
+    margin-bottom: 8px !important;
+    display: inline-block;
+    font-size: 14px;
+}
+
+/* 3. Làm đẹp các ô nhập liệu (Text, Select, Textarea) */
+.change-form input[type="text"],
+.change-form input[type="number"],
+.change-form input[type="email"],
+.change-form input[type="url"],
+.change-form select,
+.change-form textarea {
+    width: 100% !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 10px 15px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hiệu ứng khi click vào ô nhập liệu */
+.change-form input[type="text"]:focus,
+.change-form select:focus,
+.change-form textarea:focus {
+    background-color: #ffffff !important;
+    border-color: #0ea5e9 !important;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15) !important;
+    outline: none !important;
+}
+
+/* 4. Kéo dài ô Nhập Mô tả */
+.change-form textarea {
+    min-height: 120px !important;
+}
+
+/* 5. Căn chỉnh ô tải File/Ảnh */
+.change-form input[type="file"] {
+    padding: 8px !important;
+    background: #f8fafc !important;
+    border-radius: 8px !important;
+    border: 1px dashed #94a3b8 !important;
+    width: 100% !important;
+}
+
+/* 6. Xử lý ô Dropdown có các icon (+, sửa, xem) cho thẳng hàng */
+.related-widget-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+.related-widget-wrapper select {
+    flex-grow: 1 !important; /* Ép thanh select dài ra hết cỡ */
+}
+.related-widget-wrapper-link {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.related-widget-wrapper-link:hover { opacity: 1; }
+
+/* 7. Phóng to Checkbox Trạng thái */
+.change-form input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    accent-color: #10b981 !important; /* Chuyển thành màu xanh lá */
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* 8. XỬ LÝ DÀN NÚT LƯU BÊN TAY PHẢI */
+.submit-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.submit-row input[type="submit"] {
+    width: 100% !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-transform: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* Nút LƯU chính (Nổi bật) */
+.submit-row input[name="_save"] {
+    background-color: #10b981 !important; 
+    border: none !important;
+    color: white !important;
+}
+.submit-row input[name="_save"]:hover { background-color: #059669 !important; }
+
+/* Các nút Phụ (Màu xám nhạt tinh tế) */
+.submit-row input[name="_addanother"],
+.submit-row input[name="_continue"] {
+    background-color: #ffffff !important;
+    color: #475569 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.submit-row input[name="_addanother"]:hover,
+.submit-row input[name="_continue"]:hover {
+    background-color: #f1f5f9 !important;
+    color: #0ea5e9 !important;
+    border-color: #0ea5e9 !important;
+}
+
+/* =========================================================
+   13. UI BỘ LỌC NÂNG CAO (DẠNG POPUP MENU THẢ XUỐNG)
+========================================================= */
+
+/* Nút Bộ lọc nâng cao */
+#custom-advanced-filter-btn {
+    height: 42px !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
+    padding: 0 15px !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+}
+
+#custom-advanced-filter-btn:hover,
+#custom-advanced-filter-btn.active {
+    background-color: #f8fafc !important;
+    color: #0ea5e9 !important;
+    border-color: #0ea5e9 !important;
+}
+
+/* 1. Ép thanh tìm kiếm làm gốc tọa độ, không bị che khuất */
+#changelist-search {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* 2. Biến Panel thành dạng Menu Nổi đè lên bảng */
+#custom-advanced-panel {
+    position: absolute !important;
+    top: calc(100% + 10px) !important; /* Xổ ra ngay dưới thanh search 10px */
+    left: 0 !important;
+    z-index: 9999 !important; /* Quyền lực cao nhất, đè lên mọi thứ */
+    width: 100% !important; 
+    padding: 20px !important;
+    background-color: #ffffff !important; /* Nền trắng tinh để che phần bảng bên dưới */
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important; /* Đổ bóng xịn xò 3D */
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    animation: fadeInDown 0.2s ease;
+}
+
+/* Đồng bộ kích thước của các ô Combo box trong Panel */
+#custom-advanced-panel select {
+    min-width: 180px !important;
+    height: 42px !important;
+}
+
+/* Hiệu ứng trượt xuống mượt mà */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   14. DỌN DẸP NÚT BẤM THỪA TRONG FORM CHỈNH SỬA
+========================================================= */
+
+/* 1. Ẩn nút "Lưu và thêm mới" & "Lưu và tiếp tục chỉnh sửa" */
+.submit-row input[name="_addanother"],
+.submit-row input[name="_continue"] {
+    display: none !important;
+}
+
+/* 2. Ẩn nút "Bản ghi nhớ" (Lịch sử chỉnh sửa) của Jazzmin */
+.object-tools a.historylink,
+a[href$="/history/"] {
+    display: none !important;
+}
+
+/* 3. Chỉnh lại khoảng cách cho 2 nút Lưu và Xóa còn lại nhìn cho cân đối */
+.submit-row {
+    gap: 15px !important;
+}
+
+.submit-row input[name="_save"] {
+    padding: 14px !important;
+    font-size: 16px !important;
+}
+
+#content-main p{
+    background-color: #fee2e2 !important;
+    color: #b91c1c !important;
+    padding: 16px 20px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    border-left: 5px solid #ef4444 !important;
+    margin-bottom: 25px !important;
+    font-size: 15px !important;
+}
+
+body.delete-confirmation .card-body input[type="submit"] {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    font-weight: bold !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+body.delete-confirmation .card-body input[type="submit"]:hover {
+    background-color: #dc2626 !important;
+    transform: translateY(-1px);
+}
+
+/* Nút Hủy - "Không, đưa tôi trở lại" (Đổi thành màu xám an toàn) */
+
+body.delete-confirmation .card-body a.btn {
+    background-color: #94a3b8 !important;
+    border-color: #94a3b8 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin-top: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+body.delete-confirmation .card-body a.btn:hover {
+    background-color: #64748b !important;
+}
+
+/* =========================================================
+   15. PRODUCT ADMIN - MODERN MANAGEMENT VIEW
+========================================================= */
+
+:root {
+    --admin-ink: #172033;
+    --admin-muted: #64748b;
+    --admin-line: #e5e7eb;
+    --admin-soft: #f6f8fb;
+    --admin-panel: #ffffff;
+    --primary-sky: #0ea5e9;
+    --primary-sky-hover: #0284c7;
+    --primary-green: #10b981;
+}
+
+body {
+    background: #f3f6fa !important;
+    color: var(--admin-ink) !important;
+}
+
+.content-wrapper {
+    background:
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.10), transparent 28rem),
+        linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%) !important;
+}
+
+.content-header {
+    padding: 24px 20px 14px !important;
+}
+
+.content-header h1,
+.content-header .m-0 {
+    color: var(--admin-ink) !important;
+    font-size: 30px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+}
+
+.breadcrumb {
+    background: transparent !important;
+    border-radius: 0 !important;
+    font-weight: 600 !important;
+}
+
+.breadcrumb a {
+    color: #059669 !important;
+}
+
+.main-sidebar {
+    background: #111827 !important;
+}
+
+.brand-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.nav-sidebar .nav-link {
+    border-radius: 8px !important;
+    margin: 3px 8px !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: linear-gradient(135deg, #0ea5e9, #10b981) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 22px rgba(14, 165, 233, 0.22) !important;
+}
+
+.navbar-white {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.90) !important;
+    backdrop-filter: blur(12px);
+}
+
+#content-main {
+    padding-bottom: 32px !important;
+}
+
+#changelist.card,
+.change-list .card {
+    overflow: hidden !important;
+    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08) !important;
+}
+
+#changelist .card-body {
+    padding: 16px !important;
+}
+
+#toolbar,
+#changelist-search {
+    flex-wrap: wrap !important;
+}
+
+#changelist-search input[type="text"] {
+    min-width: 320px !important;
+    height: 44px !important;
+    border-color: #dbe3ee !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+}
+
+#changelist-search button[type="submit"],
+#changelist-search input[type="submit"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    background: var(--primary-sky) !important;
+    color: #ffffff !important;
+    padding: 0 18px !important;
+    box-shadow: 0 10px 18px rgba(14, 165, 233, 0.18) !important;
+}
+
+.object-tools li a.addlink,
+.object-tools li a.btn-success {
+    min-height: 44px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    box-shadow: 0 12px 22px rgba(16, 185, 129, 0.22) !important;
+}
+
+.object-tools li a.addlink:hover,
+.object-tools li a.btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(16, 185, 129, 0.28) !important;
+}
+
+#result_list {
+    border-collapse: separate !important;
+    border-spacing: 0 10px !important;
+}
+
+#result_list thead th {
+    background: transparent !important;
+    border: 0 !important;
+    color: #6b7280 !important;
+    font-size: 16px !important;
+    letter-spacing: 0 !important;
+    padding: 10px 14px !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+}
+
+#result_list thead th a,
+#result_list thead th span,
+#result_list thead th div {
+    color: #6b7280 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+}
+
+#result_list thead th i,
+#result_list thead th i.fas {
+    color: #9ca3af !important;
+    font-size: 14px !important;
+}
+
+#result_list tbody tr {
+    background: #ffffff !important;
+    border-radius: 14px !important;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05), 0 8px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+#result_list tbody tr:hover {
+    background: #ffffff !important;
+    box-shadow: inset 4px 0 0 #dbe3ee, 0 14px 30px rgba(15, 23, 42, 0.09) !important;
+    transform: translateY(-1px);
+}
+
+#result_list tbody th,
+#result_list tbody td {
+    border-top: 1px solid #edf2f7 !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    padding: 10px 14px !important;
+    color: #334155 !important;
+    background: transparent !important;
+}
+
+#result_list tbody th:first-child,
+#result_list tbody td:first-child {
+    border-left: 1px solid #edf2f7 !important;
+    border-radius: 14px 0 0 14px !important;
+}
+
+#result_list tbody th:last-child,
+#result_list tbody td:last-child {
+    border-right: 1px solid #edf2f7 !important;
+    border-radius: 0 14px 14px 0 !important;
+}
+
+#result_list .field-name a,
+#result_list tbody th a {
+    color: #334155 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+}
+
+#result_list .field-name a:hover,
+#result_list tbody th a:hover {
+    color: #334155 !important;
+}
+
+#result_list input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    accent-color: var(--primary-green) !important;
+}
+
+.admin-product-thumb {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 10px !important;
+    object-fit: cover !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #94a3b8 !important;
+    font-size: 16px !important;
+}
+
+.product-sku,
+.product-status {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 24px !important;
+    border-radius: 999px !important;
+    padding: 3px 10px !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
+}
+
+.product-sku {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #dbe3ee !important;
+}
+
+.product-price {
+    color: #334155 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
+}
+
+.product-status--active {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border: 1px solid #10b981 !important;
+}
+
+.product-status--hidden {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.product-status--danger {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border: 1px solid #ef4444 !important;
+}
+
+.product-actions {
+    display: flex !important;
+    gap: 6px !important;
+    align-items: center !important;
+}
+
+#result_list .product-actions .btn {
+    padding: 5px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+}
+
+.product-action {
+    text-decoration: none !important;
+}
+
+.product-action--edit {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+}
+
+.product-action--delete {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+.product-action:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.96);
+}
+
+.admin-empty-state {
+    color: #64748b !important;
+    padding: 20px 0 !important;
+}
+
+.admin-empty-state i {
+    display: block !important;
+    margin-bottom: 12px !important;
+    font-size: 42px !important;
+    color: #cbd5e1 !important;
+}
+
+.admin-empty-state h5 {
+    margin: 0 0 10px !important;
+    color: #334155 !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
+}
+
+.admin-empty-state p {
+    margin: 0 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.paginator,
+.pagination {
+    margin-top: 14px !important;
+}
+
+.pagination .page-link {
+    border-radius: 10px !important;
+    margin: 0 3px !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #334155 !important;
+}
+
+.pagination .active .page-link,
+.page-item.active .page-link {
+    background: var(--primary-sky) !important;
+    border-color: var(--primary-sky) !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+    .content-header h1,
+    .content-header .m-0 {
+        font-size: 24px !important;
+    }
+
+    #changelist-search input[type="text"] {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .object-tools {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        margin-top: 10px !important;
+    }
+
+    #result_list {
+        min-width: 760px !important;
+    }
+}

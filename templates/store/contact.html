@@ -1,0 +1,93 @@
+{% extends "store/base.html" %}
+
+{% block title %}Liên hệ | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label="Liên hệ ETEK" banner_title="Tư vấn phụ kiện và giải pháp cho xe của bạn" banner_text="Đội ngũ ETEK hỗ trợ chọn sản phẩm, kiểm tra tương thích và đặt lịch lắp đặt tại showroom." banner_image="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1800&q=80" %}
+
+<section class="page-shell contact-page">
+    <div class="container contact-layout">
+        <div class="contact-main">
+            <div class="contact-intro">
+                <span class="eyebrow">Kết nối nhanh</span>
+                <h2>Gửi yêu cầu tư vấn</h2>
+                <p>Điền thông tin xe, nhu cầu sử dụng hoặc mã sản phẩm bạn quan tâm. ETEK sẽ phản hồi theo kênh liên hệ phù hợp nhất.</p>
+            </div>
+
+            <form class="contact-form" method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <label>
+                        <span>Họ và tên</span>
+                        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+                    </label>
+                    <label>
+                        <span>Số điện thoại</span>
+                        <input type="tel" name="phone" placeholder="0900 000 000" required>
+                    </label>
+                </div>
+                <div class="form-grid">
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" placeholder="email@example.com">
+                    </label>
+                    <label>
+                        <span>Dòng xe</span>
+                        <input type="text" name="vehicle" placeholder="Toyota Vios 2022">
+                    </label>
+                </div>
+                <label>
+                    <span>Nhu cầu tư vấn</span>
+                    <select name="topic">
+                        <option>Tư vấn sản phẩm</option>
+                        <option>Kiểm tra tương thích</option>
+                        <option>Đặt lịch lắp đặt</option>
+                        <option>Bảo hành và hậu mãi</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Nội dung</span>
+                    <textarea name="message" rows="5" placeholder="Anh/chị cần tư vấn sản phẩm nào hoặc đang gặp vấn đề gì?"></textarea>
+                </label>
+                <button class="primary-btn" type="submit">Gửi yêu cầu</button>
+            </form>
+        </div>
+
+        <aside class="contact-side">
+            <div class="contact-card contact-card-strong">
+                <span>Hotline tư vấn</span>
+                <strong>0900 000 000</strong>
+                <p>Hỗ trợ chọn sản phẩm, kiểm tra tồn kho và báo lịch lắp đặt.</p>
+            </div>
+            <div class="contact-card">
+                <span>Email</span>
+                <strong>contact@etekstore.vn</strong>
+                <p>Tiếp nhận yêu cầu báo giá, hợp tác garage và bảo hành.</p>
+            </div>
+            <div class="contact-card">
+                <span>Showroom</span>
+                <strong>123 Đường Công Nghệ, Cầu Giấy, Hà Nội</strong>
+                <p>Mở cửa 08:00 - 18:00 từ Thứ 2 đến Thứ 7.</p>
+            </div>
+        </aside>
+    </div>
+
+    <div class="container contact-service-grid">
+        <div class="contact-service">
+            <span>01</span>
+            <h3>Tư vấn đúng nhu cầu</h3>
+            <p>Đội ngũ kỹ thuật kiểm tra dòng xe, ngân sách và mục tiêu sử dụng trước khi gợi ý.</p>
+        </div>
+        <div class="contact-service">
+            <span>02</span>
+            <h3>Lắp đặt gọn gàng</h3>
+            <p>Quy trình lắp đặt rõ ràng, bảo vệ nội thất và kiểm tra hoạt động trước khi bàn giao.</p>
+        </div>
+        <div class="contact-service">
+            <span>03</span>
+            <h3>Hậu mãi minh bạch</h3>
+            <p>Thông tin bảo hành, đổi trả và hỗ trợ kỹ thuật được xác nhận ngay từ lúc mua.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

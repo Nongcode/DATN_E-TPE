@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ETEK STORE - Phụ kiện xe hơi cao cấp{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/storefront.css' %}?v=20260518-hero-cta-size-fix">
+</head>
+<body>
+    <div class="utility-bar">
+        <div class="container utility-inner">
+            <div class="utility-copy">
+                <span>Chào mừng bạn đến với ETEK STORE - Hệ thống phụ kiện ô tô chính hãng</span>
+            </div>
+            <div class="utility-meta">
+                <span>Vận chuyển toàn quốc</span>
+                <span>Hỗ trợ lắp đặt</span>
+                <span>Bảo hành 12-24 tháng</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <a class="brand" href="{% url 'store:home' %}">
+                    <div class="brand-mark">E</div>
+                    <div>
+                        <strong>ETEK STORE</strong>
+                        <span>Technology for your car</span>
+                    </div>
+                </a>
+
+                <form class="header-search" method="get" action="{% url 'store:product_list' %}">
+                    <input type="text" name="q" placeholder="Tìm kiếm sản phẩm, thương hiệu xe..." value="{{ query|default:'' }}">
+                    <button type="submit">Tìm kiếm</button>
+                </form>
+
+                <div class="header-top-actions">
+                    <div class="action-item">
+                        <span>Hotline hỗ trợ:</span>
+                        <strong>0900 000 000</strong>
+                    </div>
+                    <div class="action-item">
+                        <span>Giỏ hàng:</span>
+                        <a href="{% url 'store:cart_detail' %}"><strong data-cart-count>{{ cart_item_count|default:0 }} sản phẩm</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-band">
+        <div class="container nav-band-inner">
+            <div class="nav-catalog">
+                <a class="nav-catalog-btn" href="{% url 'store:product_list' %}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                    Danh mục sản phẩm
+                </a>
+                <div class="catalog-dropdown">
+                    {% for category in menu_categories %}
+                        <div class="catalog-menu-item">
+                            <a class="catalog-menu-link" href="{% url 'store:product_list' %}?category={{ category.slug }}">
+                                <span>{{ category.name }}</span>
+                                {% if category.children.all %}<b>›</b>{% endif %}
+                            </a>
+                            {% if category.children.all %}
+                                <div class="catalog-submenu">
+                                    {% for child in category.children.all %}
+                                        <div class="catalog-menu-item">
+                                            <a class="catalog-menu-link" href="{% url 'store:product_list' %}?category={{ child.slug }}">
+                                                <span>{{ child.name }}</span>
+                                                {% if child.children.all %}<b>›</b>{% endif %}
+                                            </a>
+                                            {% if child.children.all %}
+                                                <div class="catalog-submenu">
+                                                    {% for grandchild in child.children.all %}
+                                                        <a class="catalog-menu-link" href="{% url 'store:product_list' %}?category={{ grandchild.slug }}">
+                                                            <span>{{ grandchild.name }}</span>
+                                                        </a>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <span class="catalog-empty">Chưa có danh mục</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="{% url 'store:home' %}">Trang chủ</a>
+                <a href="{% url 'store:product_list' %}">Sản phẩm mới</a>
+                <a href="{% url 'store:news_list' %}">Tin tức</a>
+                <a href="{% url 'store:contact' %}">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer" id="support">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>ETEK STORE</h3>
+                <p>Địa chỉ: 123 Đường Công Nghệ, Quận Cầu Giấy, Hà Nội.</p>
+                <p>Email: contact@etekstore.vn</p>
+                <p>Hotline: 0900 000 000</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Về chúng tôi</h4>
+                <ul>
+                    <li><a href="{% url 'store:home' %}">Trang chủ</a></li>
+                    <li><a href="{% url 'store:product_list' %}">Sản phẩm</a></li>
+                    <li><a href="{% url 'store:news_list' %}">Tin tức mới nhất</a></li>
+                    <li><a href="{% url 'store:contact' %}">Liên hệ tư vấn</a></li>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                </ul>
+            </div>
+            <div class="footer-service">
+                <h4>Hỗ trợ khách hàng</h4>
+                <ul>
+                    <li>Hướng dẫn mua hàng</li>
+                    <li>Chính sách vận chuyển</li>
+                    <li>Quy định đổi trả</li>
+                    <li>Tư vấn lắp đặt</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 ETEK Store. Toàn bộ bản quyền được bảo lưu.</p>
+        </div>
+    </footer>
+    <div class="store-toast" data-store-toast role="status" aria-live="polite"></div>
+    {% if messages %}
+        <div class="store-server-messages" data-server-messages hidden>
+            {% for message in messages %}
+                <div data-message="{{ message|escape }}" data-tags="{{ message.tags|default:'info' }}"></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <script src="{% static 'js/storefront.js' %}?v=20260518-toast-messages" defer></script>
+</body>
+</html>
