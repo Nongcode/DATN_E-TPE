@@ -32,6 +32,11 @@ def load_local_env():
 load_local_env()
 
 
+def env_list(name, default=''):
+    value = os.getenv(name, default)
+    return [item.strip() for item in value.split(',') if item.strip()]
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -139,7 +144,7 @@ LANGUAGES = [
 
 USE_I18N = True
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
@@ -181,7 +186,7 @@ JAZZMIN_SETTINGS = {
     # Biểu tượng mặc định nếu quên chưa set icon
     "default_icon_parents": "fas fa-folder",
     "default_icon_children": "fas fa-circle",
-    
+
     "custom_css": "css/admin_tweaks.css",
     "custom_js": "js/admin_tweaks.js",
 }
@@ -198,3 +203,20 @@ JAZZMIN_UI_TWEAKS = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Background jobs / email
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND',
+    'django.core.mail.backends.console.EmailBackend',
+)
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '25'))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'False').lower() == 'true'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'ETEK Store <no-reply@etekstore.vn>')
+
+STOCK_ALERT_EMAILS = env_list('STOCK_ALERT_EMAILS')
+BIRTHDAY_VOUCHER_AMOUNT = os.getenv('BIRTHDAY_VOUCHER_AMOUNT', '100000')
+BIRTHDAY_VOUCHER_VALID_DAYS = int(os.getenv('BIRTHDAY_VOUCHER_VALID_DAYS', '2'))

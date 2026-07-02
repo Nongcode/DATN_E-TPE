@@ -8,24 +8,72 @@
 <section class="page-shell">
     <div class="container">
         <div class="product-detail">
-            <div class="detail-media">
+            <div class="detail-media has-gallery">
+                <!-- Left Thumbnails Column -->
+                <div class="gallery-sidebar">
+                    <button class="gallery-nav-btn gallery-nav-up" type="button" aria-label="Ảnh trước">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    </button>
+                    
+                    <div class="gallery-thumbs-container">
+                        <div class="gallery-thumbs-track">
+                            <!-- Main image as first thumbnail -->
+                            <div class="thumb-item active" data-index="0" data-image-url="{% if product.image %}{{ product.image.url }}{% else %}https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80{% endif %}">
+                                <img src="{% if product.image %}{{ product.image.url }}{% else %}https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80{% endif %}" alt="{{ product.name }}">
+                            </div>
+                            
+                            <!-- Additional product images -->
+                            {% if product.images.exists %}
+                                {% for img in product.images.all %}
+                                    <div class="thumb-item" data-index="{{ forloop.counter }}" data-image-url="{{ img.image.url }}">
+                                        <img src="{{ img.image.url }}" alt="{{ product.name }} - Ảnh {{ forloop.counter }}">
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <!-- Demo fallback images for premium gallery display -->
+                                {% if "dung-dich" in product.category.slug or "dau-nhot" in product.category.slug or "phu-gia" in product.category.slug %}
+                                    <div class="thumb-item" data-index="1" data-image-url="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1200&q=80">
+                                        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1200&q=80" alt="Detail fallback 1">
+                                    </div>
+                                    <div class="thumb-item" data-index="2" data-image-url="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80">
+                                        <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80" alt="Detail fallback 2">
+                                    </div>
+                                {% else %}
+                                    <div class="thumb-item" data-index="1" data-image-url="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80">
+                                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Detail fallback 1">
+                                    </div>
+                                    <div class="thumb-item" data-index="2" data-image-url="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80">
+                                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" alt="Detail fallback 2">
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <button class="gallery-nav-btn gallery-nav-down" type="button" aria-label="Ảnh tiếp theo">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                </div>
+                
+                <!-- Main Image Wrapper -->
                 <div class="detail-image-wrap">
-                    {% if product.image %}
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                        <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80" alt="{{ product.name }}">
-                    {% endif %}
+                    <img id="main-product-image" src="{% if product.image %}{{ product.image.url }}{% else %}https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80{% endif %}" alt="{{ product.name }}">
                 </div>
             </div>
             <div class="detail-copy">
                 <span class="eyebrow">{{ product.category.name }}</span>
                 <h1>{{ product.name }}</h1>
-                <div class="detail-price">{{ product.price|vnd }}</div>
+                <div class="detail-price">
+                    <span class="price-val">{{ product.price|vnd|slice:":-2" }}</span><span class="price-symbol">đ</span>
+                </div>
                 <div class="detail-meta">
                     <span>SKU: {{ product.sku|default:"Đang cập nhật" }}</span>
-                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> {% if product.is_active %}Sản phẩm sẵn sàng{% else %}Tạm ngưng nhận đơn{% endif %}</span>
+                    {% if product.is_active %}
+                        <span class="badge-stock">Còn hàng</span>
+                    {% else %}
+                        <span class="badge-stock out-of-stock">Tạm hết hàng</span>
+                    {% endif %}
                 </div>
-                <p class="detail-description">{{ product.description }}</p>
                 <div class="detail-actions">
                     <form class="add-to-cart-form" method="post" action="{% url 'store:add_to_cart' product.pk %}">
                         {% csrf_token %}
@@ -37,14 +85,14 @@
                     <a class="ghost-btn" href="{% url 'store:product_list' %}?category={{ product.category.slug }}">Xem sản phẩm tương tự</a>
                 </div>
                 <div class="detail-buy-panel">
-                    <a href="tel:0900000000">
+                    <a href="tel:0889584290">
                         <span class="buy-icon" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9V19a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h2.1a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.8L6.5 8.6a16 16 0 0 0 8.9 8.9l1.5-1.5a2 2 0 0 1 1.8-.6l2.6.4a2 2 0 0 1 1.7 2z"></path></svg>
                         </span>
-                        <strong>0900 000 000</strong>
+                        <strong>088.958.4290</strong>
                         <small>Hotline tư vấn & đặt hàng</small>
                     </a>
-                    <a href="{% url 'store:contact' %}">
+                    <a href="#product-contact-section">
                         <span class="buy-icon" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8"></path><path d="M8 13h5"></path></svg>
                         </span>
@@ -81,6 +129,78 @@
             </div>
         </div>
 
+        <!-- Tabs Interface -->
+        <div class="detail-tabs">
+            <div class="tab-headers">
+                <button class="tab-btn active" data-tab="desc" type="button">Mô tả chi tiết</button>
+                <button class="tab-btn" data-tab="specs" type="button">Thông số kỹ thuật</button>
+                <button class="tab-btn" data-tab="policy" type="button">Chính sách ETEK</button>
+            </div>
+            <div class="tab-contents">
+                <div class="tab-pane active" id="tab-desc">
+                    {% if product.description|description_is_specs %}
+                        <p class="detail-description">{{ product.name }} thuộc nhóm {{ product.category.name }}. Các thông số kỹ thuật chi tiết của sản phẩm được trình bày trong bảng thông số để thuận tiện tra cứu và so sánh.</p>
+                    {% else %}
+                        <p class="detail-description">{{ product.description|description_text|default:product.description }}</p>
+                    {% endif %}
+                </div>
+                <div class="tab-pane" id="tab-specs">
+                    <table class="specs-table">
+                        <tbody>
+                            {% for label, value in product.description|spec_rows %}
+                                <tr>
+                                    <td>{{ label }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td>Thương hiệu</td>
+                                    <td>{% if "uptek" in product.name|lower %}UPTEK{% else %}Tân Phát ETEK{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>Danh mục</td>
+                                <td>{{ product.category.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Mã quản lý kho (SKU)</td>
+                                <td>{{ product.sku|default:"Đang cập nhật" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tình trạng bảo dưỡng</td>
+                                <td>{% if product.is_active %}Hàng mới 100%, bảo hành chính hãng{% else %}Liên hệ đặt trước{% endif %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="tab-policy">
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"></rect><path d="M16 8h3l4 4v4h-7"></path><circle cx="5.5" cy="18.5" r="1.5"></circle><circle cx="18.5" cy="18.5" r="1.5"></circle></svg>
+                            </div>
+                            <h3>Vận chuyển toàn quốc</h3>
+                            <p>Hỗ trợ đóng gói cẩn thận và chuyển phát nhanh COD an toàn tận nơi trên khắp cả nước.</p>
+                        </div>
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"></path><path d="M9.5 12l1.8 1.8L14.8 10"></path></svg>
+                            </div>
+                            <h3>Bảo hành chính hãng</h3>
+                            <p>Hỗ trợ kỹ thuật 24/7 trực tiếp từ đội ngũ kỹ sư lành nghề của Tân Phát ETEK.</p>
+                        </div>
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <h3>Cam kết chất lượng</h3>
+                            <p>Đảm bảo chính sách giá bán cạnh tranh và chất lượng sản phẩm chuẩn dòng xe của bạn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="section-head related-head">
             <div>
                 <span class="eyebrow">Gợi ý theo nội dung</span>
@@ -112,4 +232,246 @@
         </div>
     </div>
 </section>
+
+<!-- Product Detail Contact Section -->
+<section class="detail-contact-section" id="product-contact-section">
+    <div class="container">
+        <div class="detail-contact-card">
+            <div class="detail-contact-grid">
+                <!-- Cột tóm tắt sản phẩm -->
+                <div class="product-summary-col">
+                    <span class="eyebrow">Sản phẩm bạn đang quan tâm</span>
+                    <div class="product-summary-box">
+                        <div class="product-summary-img">
+                            <img src="{% if product.image %}{{ product.image.url }}{% else %}https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80{% endif %}" alt="{{ product.name }}">
+                        </div>
+                        <div class="product-summary-info">
+                            <span class="product-summary-cat">{{ product.category.name }}</span>
+                            <h3>{{ product.name }}</h3>
+                            <div class="product-summary-meta">
+                                <span>SKU: {{ product.sku|default:"Đang cập nhật" }}</span>
+                            </div>
+                            <div class="product-summary-price">
+                                <span class="price-val">{{ product.price|vnd|slice:":-2" }}</span><span class="price-symbol">đ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-summary-note">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span>Thông tin sản phẩm sẽ được đính kèm gửi tới kỹ thuật ETEK.</span>
+                    </div>
+                </div>
+
+                <!-- Cột Form liên hệ -->
+                <div class="contact-form-col">
+                    <div class="detail-contact-header">
+                        <h2>Liên hệ tư vấn sản phẩm</h2>
+                        <p>Hãy để lại thông tin liên hệ của bạn, đội ngũ kỹ sư ETEK sẽ phản hồi và giải đáp thắc mắc về sản phẩm này ngay lập tức.</p>
+                    </div>
+                    <form class="contact-form" method="post" action="{% url 'store:contact' %}">
+                        {% csrf_token %}
+                        <!-- Hidden fields gửi thông tin sản phẩm -->
+                        <input type="hidden" name="next" value="{{ request.path }}#product-contact-section">
+                        <input type="hidden" name="product_id" value="{{ product.pk }}">
+                        <input type="hidden" name="product_name" value="{{ product.name }}">
+                        <input type="hidden" name="product_sku" value="{{ product.sku|default:'' }}">
+                        <input type="hidden" name="topic" value="Tư vấn sản phẩm: {{ product.name }}">
+
+                        <div class="form-grid">
+                            <label>
+                                <span>Họ và tên <span class="required" style="color: #ef4444;">*</span></span>
+                                <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+                            </label>
+                            <label>
+                                <span>Số điện thoại <span class="required" style="color: #ef4444;">*</span></span>
+                                <input type="tel" name="phone" placeholder="0900 000 000" required>
+                            </label>
+                        </div>
+                        <div class="form-grid">
+                            <label>
+                                <span>Email</span>
+                                <input type="email" name="email" placeholder="email@example.com">
+                            </label>
+                            <label>
+                                <span>Dòng xe đang đi</span>
+                                <input type="text" name="vehicle" placeholder="Toyota Vios 2022">
+                            </label>
+                        </div>
+                        <label>
+                            <span>Nội dung yêu cầu tư vấn</span>
+                            <textarea name="message" rows="4" placeholder="Anh/chị cần tư vấn thêm về tính năng, lắp đặt hay giá bán của sản phẩm này?"></textarea>
+                        </label>
+                        <button class="primary-btn" type="submit">Gửi yêu cầu tư vấn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="image-lightbox" class="lightbox-modal" role="dialog" aria-label="Xem ảnh lớn">
+    <span class="lightbox-close" aria-label="Đóng">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Ảnh sản phẩm phóng to">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const thumbsContainer = document.querySelector(".gallery-thumbs-container");
+        const thumbItems = document.querySelectorAll(".thumb-item");
+        const mainImage = document.getElementById("main-product-image");
+        const prevArrow = document.querySelector(".main-gallery-prev");
+        const nextArrow = document.querySelector(".main-gallery-next");
+        const navUp = document.querySelector(".gallery-nav-up");
+        const navDown = document.querySelector(".gallery-nav-down");
+
+        if (!mainImage || thumbItems.length === 0) return;
+
+        let activeIndex = 0;
+
+        // Reset main image transition speed
+        mainImage.style.transition = "opacity 0.2s ease";
+
+        function setActiveImage(index) {
+            if (index < 0) index = thumbItems.length - 1;
+            if (index >= thumbItems.length) index = 0;
+
+            activeIndex = index;
+
+            thumbItems.forEach((item, i) => {
+                if (i === activeIndex) {
+                    item.classList.add("active");
+                    
+                    // Scroll thumbnail smoothly into container view
+                    if (thumbsContainer) {
+                        const containerRect = thumbsContainer.getBoundingClientRect();
+                        const itemRect = item.getBoundingClientRect();
+                        
+                        if (itemRect.top < containerRect.top) {
+                            thumbsContainer.scrollBy({ top: itemRect.top - containerRect.top - 10, behavior: "smooth" });
+                        } else if (itemRect.bottom > containerRect.bottom) {
+                            thumbsContainer.scrollBy({ top: itemRect.bottom - containerRect.bottom + 10, behavior: "smooth" });
+                        }
+                    }
+                } else {
+                    item.classList.remove("active");
+                }
+            });
+
+            const newUrl = thumbItems[activeIndex].getAttribute("data-image-url");
+            if (newUrl) {
+                mainImage.style.opacity = "0.3";
+                setTimeout(() => {
+                    mainImage.src = newUrl;
+                    mainImage.style.opacity = "1";
+                }, 150);
+            }
+        }
+
+        // Thumbnail click handler
+        thumbItems.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                setActiveImage(index);
+            });
+        });
+
+        // Up/Down arrows select previous/next image (acting as next/prev buttons)
+        if (navUp) {
+            navUp.addEventListener("click", () => {
+                setActiveImage(activeIndex - 1);
+            });
+        }
+        if (navDown) {
+            navDown.addEventListener("click", () => {
+                setActiveImage(activeIndex + 1);
+            });
+        }
+
+        // Lightbox Zoom Handler
+        const lightbox = document.getElementById("image-lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const lightboxClose = document.querySelector(".lightbox-close");
+
+        if (lightbox && lightboxImg && mainImage) {
+            mainImage.style.cursor = "zoom-in";
+            mainImage.addEventListener("click", () => {
+                lightboxImg.src = mainImage.src;
+                if (lightboxCaption) {
+                    lightboxCaption.textContent = "{{ product.name }}";
+                }
+                lightbox.classList.add("is-active");
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove("is-active");
+            };
+
+            if (lightboxClose) {
+                lightboxClose.addEventListener("click", closeLightbox);
+            }
+
+            // Click outside image to close
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox || e.target === lightboxClose) {
+                    closeLightbox();
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeLightbox();
+                }
+            });
+        }
+
+        // Tabs Handler
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        const tabPanes = document.querySelectorAll(".tab-pane");
+
+        tabBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const tabId = btn.getAttribute("data-tab");
+
+                tabBtns.forEach((b) => b.classList.remove("active"));
+                tabPanes.forEach((p) => p.classList.remove("active"));
+
+                btn.classList.add("active");
+                const targetPane = document.getElementById(`tab-${tabId}`);
+                if (targetPane) {
+                    targetPane.classList.add("active");
+                }
+            });
+        });
+
+        // Mobile Swipe Gestures on main image
+        const mainImageWrap = document.querySelector(".detail-image-wrap");
+        if (mainImageWrap) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            mainImageWrap.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            mainImageWrap.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 40;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left -> Next image
+                    setActiveImage(activeIndex + 1);
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right -> Prev image
+                    setActiveImage(activeIndex - 1);
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}

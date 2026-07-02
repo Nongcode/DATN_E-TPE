@@ -1008,3 +1008,461 @@ body {
         min-width: 760px !important;
     }
 }
+
+/* =========================================================
+   17. ADMIN SIDEBAR POLISH
+========================================================= */
+
+body:not(.sidebar-collapse) .main-sidebar,
+body:not(.sidebar-collapse) .main-sidebar::before {
+    width: 250px !important;
+}
+
+body:not(.sidebar-collapse) .content-wrapper,
+body:not(.sidebar-collapse) .main-header,
+body:not(.sidebar-collapse) .main-footer {
+    margin-left: 250px !important;
+}
+
+.main-sidebar {
+    background: #252c33 !important;
+    border-right: 1px solid #1d242a !important;
+    box-shadow: 8px 0 24px rgba(15, 23, 42, 0.16) !important;
+}
+
+.brand-link {
+    height: 52px !important;
+    min-height: 52px !important;
+    padding: 8px 14px !important;
+    background: #2f373f !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+}
+
+.brand-link .brand-image {
+    width: 34px !important;
+    height: 34px !important;
+    max-height: 34px !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    border-radius: 50% !important;
+    background: #e5e7eb !important;
+}
+
+.brand-link .brand-text {
+    color: #edf2f7 !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+.sidebar {
+    padding: 10px 8px 18px !important;
+}
+
+.sidebar .user-panel {
+    margin: 0 0 12px !important;
+    padding: 8px 4px 11px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.sidebar .user-panel .image {
+    padding-left: 0 !important;
+}
+
+.sidebar .user-panel img,
+.sidebar .user-panel .img-circle {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: cover !important;
+}
+
+.sidebar .user-panel .info {
+    padding: 0 0 0 8px !important;
+}
+
+.sidebar .user-panel a {
+    color: #e2e8f0 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+.nav-sidebar {
+    margin-top: 2px !important;
+}
+
+.nav-sidebar .nav-header {
+    padding: 12px 8px 7px !important;
+    color: #cbd5e1 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+.nav-sidebar .nav-item {
+    margin: 0 0 4px !important;
+}
+
+.nav-sidebar .nav-link {
+    height: 36px !important;
+    min-height: 36px !important;
+    margin: 0 !important;
+    padding: 8px 10px !important;
+    border-radius: 6px !important;
+    color: #c8d0da !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    transition: background-color 0.16s ease, color 0.16s ease, padding-left 0.16s ease !important;
+}
+
+.nav-sidebar .nav-link .nav-icon {
+    width: 18px !important;
+    min-width: 18px !important;
+    margin: 0 !important;
+    color: #cbd5e1 !important;
+    font-size: 14px !important;
+    text-align: center !important;
+}
+
+.nav-sidebar .nav-link p {
+    color: inherit !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+    color: #ffffff !important;
+    padding-left: 12px !important;
+}
+
+.nav-sidebar .nav-link:hover .nav-icon {
+    color: #ffffff !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: #505861 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: inset 3px 0 0 #22c55e !important;
+}
+
+.nav-sidebar .nav-link.active .nav-icon,
+.nav-sidebar .nav-link.active p {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.nav-sidebar .nav-treeview {
+    padding-left: 8px !important;
+}
+
+.nav-sidebar .nav-treeview .nav-link {
+    height: 34px !important;
+    min-height: 34px !important;
+    padding-left: 14px !important;
+}
+
+.nav-sidebar .nav-treeview .nav-link .nav-icon {
+    font-size: 11px !important;
+    opacity: 0.9 !important;
+}
+
+.sidebar-collapse .brand-link {
+    justify-content: center !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+/* =========================================================
+   16. ADMIN LAYOUT REFRESH - SIDEBAR, DATA AREA, PAGINATION
+========================================================= */
+
+.main-sidebar {
+    background: #26313a !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 10px 0 28px rgba(15, 23, 42, 0.14) !important;
+}
+
+.brand-link {
+    min-height: 58px !important;
+    padding: 12px 16px !important;
+    background: #303b44 !important;
+    color: #eef2f7 !important;
+}
+
+.brand-link .brand-text {
+    color: #eef2f7 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+}
+
+.brand-link .brand-image {
+    width: 34px !important;
+    height: 34px !important;
+    margin-top: -2px !important;
+    object-fit: contain !important;
+}
+
+.sidebar {
+    padding: 12px 8px 20px !important;
+}
+
+.sidebar .user-panel {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-bottom: 12px !important;
+    padding: 10px 4px 14px !important;
+}
+
+.sidebar .user-panel a,
+.nav-sidebar .nav-header {
+    color: #d7dee7 !important;
+}
+
+.nav-sidebar .nav-header {
+    padding: 14px 12px 7px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+.nav-sidebar > .nav-item {
+    margin-bottom: 4px !important;
+}
+
+.nav-sidebar .nav-link {
+    min-height: 38px !important;
+    margin: 2px 0 !important;
+    padding: 9px 12px !important;
+    border-radius: 6px !important;
+    color: #cbd5e1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.nav-sidebar .nav-link p {
+    color: inherit !important;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.nav-sidebar .nav-icon {
+    width: 18px !important;
+    min-width: 18px !important;
+    margin: 0 !important;
+    color: #d1d8e2 !important;
+    text-align: center !important;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: #59616a !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+.nav-sidebar .nav-link.active .nav-icon {
+    color: #ffffff !important;
+}
+
+.content-wrapper {
+    background: #f4f7fb !important;
+}
+
+.content-header {
+    padding: 22px 20px 8px !important;
+}
+
+.content-header h1,
+.content-header .m-0 {
+    color: #172033 !important;
+    font-size: 32px !important;
+    font-weight: 800 !important;
+}
+
+.content,
+.content .container-fluid {
+    padding-left: 20px !important;
+    padding-right: 12px !important;
+}
+
+#changelist.card,
+.change-list .card {
+    border-radius: 16px !important;
+    border: 1px solid #dbe4ef !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+#changelist .card-body {
+    padding: 18px !important;
+}
+
+#toolbar {
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+}
+
+#changelist-search {
+    flex: 1 1 auto !important;
+}
+
+#changelist-search input[type="text"] {
+    width: min(360px, 100%) !important;
+    min-width: 280px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+}
+
+#custom-advanced-filter-btn,
+.object-tools li a.import_link,
+.object-tools li a.export_link,
+.object-tools li a.addlink,
+.object-tools li a.btn-success {
+    min-height: 42px !important;
+    border-radius: 9px !important;
+}
+
+#result_list {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 10px !important;
+}
+
+#result_list thead th {
+    padding: 12px 14px !important;
+    color: #687384 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    background: transparent !important;
+}
+
+#result_list tbody tr {
+    background: #ffffff !important;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04) !important;
+}
+
+#result_list tbody th,
+#result_list tbody td {
+    padding: 12px 14px !important;
+    min-height: 48px !important;
+    border-color: #e8eef5 !important;
+    color: #334155 !important;
+}
+
+#result_list tbody tr:nth-child(odd) th,
+#result_list tbody tr:nth-child(odd) td {
+    background: #f4f4f4 !important;
+}
+
+#result_list tbody tr:nth-child(even) th,
+#result_list tbody tr:nth-child(even) td {
+    background: #ffffff !important;
+}
+
+#result_list tbody tr:hover th,
+#result_list tbody tr:hover td {
+    background: #eef6ff !important;
+}
+
+#result_list tbody th:first-child,
+#result_list tbody td:first-child {
+    border-radius: 12px 0 0 12px !important;
+}
+
+#result_list tbody th:last-child,
+#result_list tbody td:last-child {
+    border-radius: 0 12px 12px 0 !important;
+}
+
+#result_list .product-actions {
+    gap: 8px !important;
+}
+
+#result_list .product-actions .btn {
+    min-height: 28px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.paginator,
+.pagination {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    margin: 18px 0 0 !important;
+    padding: 8px 0 0 !important;
+    color: #64748b !important;
+}
+
+.pagination .page-link,
+.paginator a,
+.paginator .this-page {
+    min-width: 36px !important;
+    height: 36px !important;
+    border-radius: 9px !important;
+    border: 1px solid #dbe4ef !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 10px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+
+.pagination .active .page-link,
+.page-item.active .page-link,
+.paginator .this-page {
+    background: #0ea5e9 !important;
+    border-color: #0ea5e9 !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+    .content,
+    .content .container-fluid {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    #toolbar {
+        align-items: stretch !important;
+    }
+
+    #changelist-search input[type="text"] {
+        min-width: 100% !important;
+    }
+
+    .paginator,
+    .pagination {
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+    }
+}

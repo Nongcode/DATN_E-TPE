@@ -13,7 +13,7 @@ class Category(models.Model):
         ('out_of_stock', 'Hết hàng'),
     )
 
-    name = models.CharField(max_length=255, verbose_name="Tên danh mục")
+    name = models.CharField(max_length=255, unique=True, verbose_name="Tên danh mục")
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True, verbose_name="Đường dẫn tĩnh (Slug)")
     image = models.ImageField(upload_to='categories/', null=True, blank=True, verbose_name="Hình ảnh đính kèm")
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children', verbose_name="Danh mục cha")
@@ -25,7 +25,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = 'Danh mục'
-        verbose_name_plural = '1. Danh mục sản phẩm'
+        verbose_name_plural = '01. Danh mục sản phẩm'
 
     def __str__(self):
         if self.parent:
@@ -54,7 +54,22 @@ class Product(models.Model):
 
     class Meta:
         verbose_name = 'Sản phẩm'
-        verbose_name_plural = '2. Quản lý sản phẩm'
+        verbose_name_plural = '02. Quản lý sản phẩm'
+
+# ==========================================
+# 2b. BẢNG ẢNH CHI TIẾT SẢN PHẨM (Gallery)
+# ==========================================
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', verbose_name="Sản phẩm")
+    image = models.ImageField(upload_to='products/gallery/', verbose_name="Ảnh chi tiết")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Ảnh chi tiết sản phẩm'
+        verbose_name_plural = '02b. Ảnh chi tiết sản phẩm'
+
+    def __str__(self):
+        return f"Ảnh chi tiết của {self.product.name} ({self.id})"
 
 # ==========================================
 # 3. BẢNG KHO HÀNG (Inventories)
@@ -62,12 +77,12 @@ class Product(models.Model):
 class Inventory(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='inventory', verbose_name="Sản phẩm")
     quantity = models.IntegerField(default=0, verbose_name="Số lượng tồn kho thực tế")
-    low_stock_threshold = models.IntegerField(default=5, verbose_name="Ngưỡng cảnh báo (Mặc định: 5)")
+    low_stock_threshold = models.IntegerField(default=20, verbose_name="Ngưỡng cảnh báo (Mặc định: 20)")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="Lần cập nhật cuối")
 
     class Meta:
         verbose_name = 'Kho hàng'
-        verbose_name_plural = '3. Quản lý Kho hàng'
+        verbose_name_plural = '03. Quản lý Kho hàng'
 
     def __str__(self):
         return f"Kho: {self.product.name} - Tồn: {self.quantity}"
@@ -91,7 +106,7 @@ class Customer(models.Model):
 
     class Meta:
         verbose_name = 'Khách hàng'
-        verbose_name_plural = '4. Danh mục khách hàng'
+        verbose_name_plural = '04. Danh mục khách hàng'
 
 # ==========================================
 # 5. BẢNG GIỎ HÀNG VÀ CHI TIẾT GIỎ HÀNG
@@ -103,7 +118,7 @@ class Cart(models.Model):
 
     class Meta:
         verbose_name = 'Giỏ hàng'
-        verbose_name_plural = '5. Quản lý Giỏ hàng'
+        verbose_name_plural = '05. Quản lý Giỏ hàng'
 
     def __str__(self):
         return f"Giỏ hàng #{self.id}"
@@ -134,7 +149,7 @@ class Voucher(models.Model):
 
     class Meta:
         verbose_name = 'Mã giảm giá'
-        verbose_name_plural = '6. Quản lý mã giảm giá'
+        verbose_name_plural = '06. Quản lý mã giảm giá'
 
 # ==========================================
 # 7. BẢNG ĐƠN HÀNG VÀ CHI TIẾT ĐƠN HÀNG
@@ -156,7 +171,7 @@ class Order(models.Model):
 
     class Meta:
         verbose_name = 'Đơn hàng'
-        verbose_name_plural = '7. Quản lý đơn hàng'
+        verbose_name_plural = '07. Quản lý đơn hàng'
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
@@ -178,7 +193,7 @@ class Blog(models.Model):
 
     class Meta:
         verbose_name = 'Bài viết'
-        verbose_name_plural = '8. Tin tức & Khuyến mãi'
+        verbose_name_plural = '08. Tin tức & Khuyến mãi'
 
     def __str__(self):
         return self.title
@@ -199,7 +214,7 @@ class RecommendationLog(models.Model):
 
     class Meta:
         verbose_name = 'Nhật ký gợi ý'
-        verbose_name_plural = '9. Nhật ký AI Gợi ý'
+        verbose_name_plural = '09. Nhật ký AI Gợi ý'
 
 # ==========================================
 # 10. BẢNG TÁC VỤ TỰ ĐỘNG (Scheduled Tasks)
@@ -223,7 +238,8 @@ class ScheduledTask(models.Model):
 
     class Meta:
         verbose_name = 'Tác vụ Tự động'
-        verbose_name_plural = '10. Tác vụ Background'
+        verbose_name_plural = '10. Tác vụ tự động'
 
     def __str__(self):
         return f"[{self.get_status_display()}] {self.get_task_type_display()}"
+

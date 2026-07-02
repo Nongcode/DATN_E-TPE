@@ -1,7 +1,21 @@
-from django.test import TestCase
-from django.urls import reverse
+from datetime import timedelta
 
-from .models import CartItem, Category, Product
+from django.contrib.auth.models import User
+from django.core import mail
+from django.core.management import call_command
+from django.test import TestCase, override_settings
+from django.urls import reverse
+from django.utils import timezone
+
+from .background_tasks import (
+    RECURRING_DAILY_MARKER,
+    RECURRING_MINUTES_PREFIX,
+    hide_out_of_stock_products,
+    run_due_scheduled_tasks,
+    send_birthday_care_emails,
+    send_low_stock_alerts,
+)
+from .models import CartItem, Category, Customer, Inventory, Product, ScheduledTask, Voucher
 from .recommendations import get_similar_products
 
 
@@ -186,7 +200,7 @@ class ShoppingFlowTests(TestCase):
         self.assertEqual(item.quantity, 5)
         response = self.client.get(reverse("store:cart_detail"))
         self.assertContains(response, "5 sản phẩm")
-        self.assertContains(response, "7,500,000 d")
+        self.assertContains(response, "7,500,000 đ")
 
     def test_add_to_cart_ajax_returns_json_summary(self):
         response = self.client.post(
@@ -239,3 +253,272 @@ class ShoppingFlowTests(TestCase):
         self.assertEqual(detail_response.status_code, 200)
         self.assertContains(detail_response, "Quay lại xem tin tức")
         self.assertContains(detail_response, "Bài viết tương tự")
+
+
+@override_settings(
+    EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+    DEFAULT_FROM_EMAIL="ETEK Test <test@etek.local>",
+    STOCK_ALERT_EMAILS=["stock@etek.local"],
+    BIRTHDAY_VOUCHER_AMOUNT="150000",
+    BIRTHDAY_VOUCHER_VALID_DAYS=2,
+)
+class BackgroundTaskTests(TestCase):
+    def setUp(self):
+        mail.outbox = []
+        self.category = Category.objects.create(
+            name="Dụng cụ sửa chữa Garage",
+            slug="dung-cu-sua-chua-garage-bg",
+            status="visible",
+        )
+        self.low_stock_product = Product.objects.create(
+            category=self.category,
+            name="Máy chẩn đoán lỗi OBD2 ETEK",
+            slug="may-chan-doan-loi-obd2-bg",
+            sku="BG-OBD",
+            description="Máy đọc lỗi OBD2 phục vụ garage.",
+            price=1300000,
+            is_active=True,
+        )
+        self.out_of_stock_product = Product.objects.create(
+            category=self.category,
+            name="Bộ kiểm tra ắc quy ETEK",
+            slug="bo-kiem-tra-ac-quy-bg",
+            sku="BG-BT",
+            description="Dụng cụ kiểm tra ắc quy.",
+            price=900000,
+            is_active=True,
+        )
+        self.safe_product = Product.objects.create(
+            category=self.category,
+            name="Bộ khẩu tay vặn ETEK",
+            slug="bo-khau-tay-van-bg",
+            sku="BG-SAFE",
+            description="Bộ khẩu sửa chữa.",
+            price=800000,
+            is_active=True,
+        )
+        Inventory.objects.create(product=self.low_stock_product, quantity=2, low_stock_threshold=5)
+        Inventory.objects.create(product=self.out_of_stock_product, quantity=0, low_stock_threshold=5)
+        Inventory.objects.create(product=self.safe_product, quantity=12, low_stock_threshold=5)
+
+    def create_customer(self, username, email, date_of_birth):
+        user = User.objects.create_user(username=username, email=email)
+        return Customer.objects.create(
+            user=user,
+            full_name=f"Khách {username}",
+            email=email,
+            phone_number="0900000000",
+            address="Hà Nội",
+            date_of_birth=date_of_birth,
+        )
+
+    def test_low_stock_alert_sends_email_only_for_positive_low_quantity(self):
+        result = send_low_stock_alerts()
+
+        self.assertEqual(result.processed, 1)
+        self.assertEqual(result.sent, 1)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertIn(self.low_stock_product.name, mail.outbox[0].body)
+        self.assertNotIn(self.out_of_stock_product.name, mail.outbox[0].body)
+        self.assertNotIn(self.safe_product.name, mail.outbox[0].body)
+
+    def test_low_stock_alert_with_no_matching_inventory_does_not_send_email(self):
+        self.low_stock_product.inventory.quantity = 8
+        self.low_stock_product.inventory.save(update_fields=["quantity"])
+
+        result = send_low_stock_alerts()
+
+        self.assertEqual(result.processed, 0)
+        self.assertEqual(result.sent, 0)
+        self.assertEqual(len(mail.outbox), 0)
+
+    def test_low_stock_alert_dry_run_does_not_send_email(self):
+        result = send_low_stock_alerts(dry_run=True)
+
+        self.assertEqual(result.processed, 1)
+        self.assertEqual(result.sent, 0)
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(STOCK_ALERT_EMAILS=[])
+    def test_low_stock_alert_falls_back_to_staff_email(self):
+        User.objects.create_user(username="staff", email="admin@etek.local", is_staff=True)
+
+        result = send_low_stock_alerts()
+
+        self.assertEqual(result.sent, 1)
+        self.assertEqual(mail.outbox[0].to, ["admin@etek.local"])
+
+    def test_auto_hide_out_of_stock_products_only_hides_zero_quantity(self):
+        result = hide_out_of_stock_products()
+
+        self.low_stock_product.refresh_from_db()
+        self.out_of_stock_product.refresh_from_db()
+        self.safe_product.refresh_from_db()
+        self.assertEqual(result.updated, 1)
+        self.assertTrue(self.low_stock_product.is_active)
+        self.assertFalse(self.out_of_stock_product.is_active)
+        self.assertTrue(self.safe_product.is_active)
+
+    def test_auto_hide_dry_run_does_not_change_products(self):
+        result = hide_out_of_stock_products(dry_run=True)
+
+        self.out_of_stock_product.refresh_from_db()
+        self.assertEqual(result.processed, 1)
+        self.assertEqual(result.updated, 0)
+        self.assertTrue(self.out_of_stock_product.is_active)
+
+    def test_birthday_task_creates_voucher_and_sends_care_email(self):
+        today = timezone.localdate()
+        customer = self.create_customer("birthday", "birthday@etek.local", today)
+
+        result = send_birthday_care_emails(today=today)
+
+        voucher = Voucher.objects.get(customer=customer)
+        self.assertEqual(result.processed, 1)
+        self.assertEqual(result.sent, 1)
+        self.assertEqual(voucher.discount_amount, 150000)
+        self.assertIn(voucher.code, mail.outbox[0].body)
+        self.assertEqual(mail.outbox[0].to, [customer.email])
+
+    def test_birthday_task_ignores_customers_without_valid_birthday_email(self):
+        today = timezone.localdate()
+        tomorrow = today + timedelta(days=1)
+        self.create_customer("noemail", None, today)
+        self.create_customer("wrongday", "wrongday@etek.local", tomorrow)
+
+        result = send_birthday_care_emails(today=today)
+
+        self.assertEqual(result.processed, 0)
+        self.assertEqual(result.sent, 0)
+        self.assertEqual(Voucher.objects.count(), 0)
+        self.assertEqual(len(mail.outbox), 0)
+
+    def test_birthday_task_is_idempotent_for_same_day(self):
+        today = timezone.localdate()
+        customer = self.create_customer("duplicate", "duplicate@etek.local", today)
+
+        first_result = send_birthday_care_emails(today=today)
+        second_result = send_birthday_care_emails(today=today)
+
+        self.assertEqual(first_result.sent, 1)
+        self.assertEqual(second_result.sent, 0)
+        self.assertEqual(second_result.skipped, 1)
+        self.assertEqual(Voucher.objects.filter(customer=customer).count(), 1)
+        self.assertEqual(len(mail.outbox), 1)
+
+    def test_due_scheduled_task_runs_and_updates_status(self):
+        task = ScheduledTask.objects.create(
+            task_type="lock_stock",
+            run_at=timezone.now() - timedelta(minutes=1),
+        )
+
+        results = run_due_scheduled_tasks()
+
+        task.refresh_from_db()
+        self.assertEqual(len(results), 1)
+        self.assertEqual(task.status, "success")
+        self.assertIn("low_stock_alert", task.execution_log)
+
+    def test_recurring_daily_scheduled_task_reschedules_next_run(self):
+        due_time = timezone.now() - timedelta(minutes=1)
+        task = ScheduledTask.objects.create(
+            task_type="lock_stock",
+            status="pending",
+            run_at=due_time,
+            execution_log=f"{RECURRING_DAILY_MARKER}; default_task=true",
+        )
+
+        results = run_due_scheduled_tasks(now=timezone.now())
+
+        task.refresh_from_db()
+        self.assertEqual(len(results), 1)
+        self.assertEqual(task.status, "pending")
+        self.assertGreater(task.run_at, timezone.now())
+        self.assertIn(RECURRING_DAILY_MARKER, task.execution_log)
+        self.assertIn("next_run_at=", task.execution_log)
+        self.assertIn("low_stock_alert", task.execution_log)
+
+    def test_recurring_interval_scheduled_task_reschedules_by_minutes(self):
+        now = timezone.now()
+        task = ScheduledTask.objects.create(
+            task_type="auto_hide",
+            status="pending",
+            run_at=now - timedelta(minutes=1),
+            execution_log=f"{RECURRING_MINUTES_PREFIX}5; default_task=true",
+        )
+
+        results = run_due_scheduled_tasks(now=now)
+
+        task.refresh_from_db()
+        self.assertEqual(len(results), 1)
+        self.assertEqual(task.status, "pending")
+        self.assertGreater(task.run_at, now)
+        self.assertLessEqual(task.run_at, now + timedelta(minutes=5))
+        self.assertIn(f"{RECURRING_MINUTES_PREFIX}5", task.execution_log)
+        self.assertIn("auto_hide_out_of_stock", task.execution_log)
+
+    def test_due_scheduled_task_ignores_future_task(self):
+        task = ScheduledTask.objects.create(
+            task_type="auto_hide",
+            run_at=timezone.now() + timedelta(hours=1),
+        )
+
+        results = run_due_scheduled_tasks()
+
+        task.refresh_from_db()
+        self.assertEqual(results, [])
+        self.assertEqual(task.status, "pending")
+        self.assertEqual(task.execution_log, None)
+
+    def test_due_scheduled_task_marks_unknown_type_as_failed(self):
+        task = ScheduledTask.objects.create(
+            task_type="unknown",
+            run_at=timezone.now() - timedelta(minutes=1),
+        )
+
+        results = run_due_scheduled_tasks()
+
+        task.refresh_from_db()
+        self.assertEqual(len(results), 1)
+        self.assertEqual(task.status, "failed")
+        self.assertIn("Unsupported scheduled task type", task.execution_log)
+
+    def test_management_command_dry_run_does_not_hide_products(self):
+        call_command("run_scheduled_tasks", task="auto-hide", dry_run=True)
+
+        self.out_of_stock_product.refresh_from_db()
+        self.assertTrue(self.out_of_stock_product.is_active)
+
+    def test_management_command_default_runs_due_scheduled_tasks(self):
+        task = ScheduledTask.objects.create(
+            task_type="auto_hide",
+            run_at=timezone.now() - timedelta(minutes=1),
+        )
+
+        call_command("run_scheduled_tasks")
+
+        task.refresh_from_db()
+        self.out_of_stock_product.refresh_from_db()
+        self.assertEqual(task.status, "success")
+        self.assertFalse(self.out_of_stock_product.is_active)
+
+    def test_seed_default_scheduled_tasks_command_creates_three_pending_tasks_once(self):
+        call_command("seed_default_scheduled_tasks")
+        call_command("seed_default_scheduled_tasks")
+
+        pending_tasks = ScheduledTask.objects.filter(status="pending").order_by("task_type")
+        self.assertEqual(pending_tasks.count(), 3)
+        self.assertEqual(
+            set(pending_tasks.values_list("task_type", flat=True)),
+            {"auto_hide", "birthday_mail", "lock_stock"},
+        )
+        task_markers = {task.task_type: task.execution_log for task in pending_tasks}
+        self.assertIn(f"{RECURRING_MINUTES_PREFIX}5", task_markers["auto_hide"])
+        self.assertIn(f"{RECURRING_MINUTES_PREFIX}360", task_markers["lock_stock"])
+        self.assertIn(RECURRING_DAILY_MARKER, task_markers["birthday_mail"])
+        for task in pending_tasks:
+            self.assertGreater(task.run_at, timezone.now())
+
+
+
+

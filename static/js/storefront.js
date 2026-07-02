@@ -59,4 +59,37 @@
         event.preventDefault();
         submitCartForm(form);
     });
+
+    document.querySelectorAll(".product-cluster").forEach((cluster) => {
+        const scroller = cluster.querySelector("[data-product-scroll]");
+        const prevButton = cluster.querySelector("[data-product-scroll-prev]");
+        const nextButton = cluster.querySelector("[data-product-scroll-next]");
+        if (!scroller || !prevButton || !nextButton) return;
+
+        const getScrollStep = () => {
+            const card = scroller.querySelector(".product-card");
+            if (!card) return scroller.clientWidth * 0.8;
+            const styles = window.getComputedStyle(scroller);
+            const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+            return card.getBoundingClientRect().width + gap;
+        };
+
+        const updateButtons = () => {
+            const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+            prevButton.disabled = scroller.scrollLeft <= 4;
+            nextButton.disabled = scroller.scrollLeft >= maxScrollLeft - 4;
+        };
+
+        prevButton.addEventListener("click", () => {
+            scroller.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
+        });
+
+        nextButton.addEventListener("click", () => {
+            scroller.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+        });
+
+        scroller.addEventListener("scroll", updateButtons, { passive: true });
+        window.addEventListener("resize", updateButtons);
+        updateButtons();
+    });
 })();

@@ -255,10 +255,10 @@ def home(request):
     best_sellers = list(
         _active_products()
         .annotate(sold_total=Coalesce(Sum("orderitem__quantity"), 0))
-        .order_by("-sold_total", "-created_at")[:4]
+        .order_by("-sold_total", "-created_at")[:8]
     )
     if not any(product.sold_total for product in best_sellers):
-        best_sellers = list(context["featured_products"][:4])
+        best_sellers = list(context["featured_products"][:8])
 
     context.update(_editorial_context())
     context["news_cards"] = _news_cards()[:3]
@@ -266,9 +266,9 @@ def home(request):
         {
             "hero_products": _active_products().order_by("-created_at")[:4],
             "category_spotlights": context["nav_categories"].order_by("-product_total", "name")[:4],
-            "new_arrivals": _active_products().order_by("-created_at")[:4],
+            "new_arrivals": _active_products().order_by("-created_at")[:8],
             "best_sellers": best_sellers,
-            "deal_products": _active_products().order_by("price")[:4],
+            "deal_products": _active_products().order_by("price")[:8],
         }
     )
     return render(request, "store/home.html", context)
@@ -312,10 +312,18 @@ def contact(request):
     context = _storefront_context(request)
     if request.method == "POST":
         name = request.POST.get("name", "").strip() or "khách hàng"
-        messages.success(
-            request,
-            f"ETEK Store đã ghi nhận yêu cầu của {name}. Đội ngũ tư vấn sẽ liên hệ lại sớm.",
-        )
+        product_name = request.POST.get("product_name", "").strip()
+        next_url = request.POST.get("next", "").strip()
+        
+        if product_name:
+            msg = f"ETEK Store đã ghi nhận yêu cầu tư vấn sản phẩm '{product_name}' của {name}. Đội ngũ tư vấn sẽ liên hệ lại sớm."
+        else:
+            msg = f"ETEK Store đã ghi nhận yêu cầu của {name}. Đội ngũ tư vấn sẽ liên hệ lại sớm."
+            
+        messages.success(request, msg)
+        
+        if next_url:
+            return redirect(next_url)
         return redirect("store:contact")
     return render(request, "store/contact.html", context)
 
@@ -382,7 +390,7 @@ def product_list(request):
 def product_detail(request, pk):
     context = _storefront_context(request)
     product = get_object_or_404(
-        _active_products(),
+        _active_products().prefetch_related("images"),
         pk=pk,
     )
     recommendation_pool = _active_products().exclude(pk=product.pk)

@@ -17,7 +17,9 @@ class Command(BaseCommand):
         for item in UPTEK_SAMPLE_PRODUCTS:
             category_name = item["category"]
             category_slug = slugify(category_name)
-            category = Category.objects.filter(slug=category_slug).first()
+            category = Category.objects.filter(name=category_name).first()
+            if category is None:
+                category = Category.objects.filter(slug=category_slug).first()
             if category is None:
                 category, _ = Category.objects.get_or_create(
                     name=category_name,
@@ -28,7 +30,7 @@ class Command(BaseCommand):
                     },
                 )
             category.name = category_name
-            category.slug = category.slug or category_slug
+            category.slug = category_slug
             category.status = "visible"
             category.description = UPTEK_CATEGORY_DESCRIPTIONS.get(category_name, category.description)
             category.save(update_fields=["name", "slug", "status", "description"])
@@ -46,7 +48,7 @@ class Command(BaseCommand):
             )
             Inventory.objects.update_or_create(
                 product=product,
-                defaults={"quantity": 12, "low_stock_threshold": 4},
+                defaults={"quantity": 12, "low_stock_threshold": 20},
             )
             if created:
                 created_count += 1

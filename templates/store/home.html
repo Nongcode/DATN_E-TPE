@@ -220,12 +220,24 @@
                     <h3>Sản phẩm mới cập nhật</h3>
                     <span class="cluster-kicker">Mới nhất</span>
                 </div>
-                <div class="product-grid product-grid-compact">
-                    {% for product in new_arrivals %}
-                        {% include "store/partials/product_card.html" with product=product %}
-                    {% empty %}
-                        <div class="empty-inline">Chưa có sản phẩm để hiển thị.</div>
-                    {% endfor %}
+                <div class="product-scroll-shell">
+                    <button class="cluster-nav-button cluster-nav-prev" type="button" data-product-scroll-prev aria-label="Sản phẩm trước">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="product-grid product-grid-compact" data-product-scroll>
+                        {% for product in new_arrivals %}
+                            {% include "store/partials/product_card.html" with product=product %}
+                        {% empty %}
+                            <div class="empty-inline">Chưa có sản phẩm để hiển thị.</div>
+                        {% endfor %}
+                    </div>
+                    <button class="cluster-nav-button cluster-nav-next" type="button" data-product-scroll-next aria-label="Sản phẩm tiếp theo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </section>
 
@@ -234,12 +246,24 @@
                     <h3>Sản phẩm bán chạy nhất</h3>
                     <span class="cluster-kicker">Bán chạy</span>
                 </div>
-                <div class="product-grid product-grid-compact">
-                    {% for product in best_sellers %}
-                        {% include "store/partials/product_card.html" with product=product %}
-                    {% empty %}
-                        <div class="empty-inline">Chưa có dữ liệu sản phẩm bán chạy.</div>
-                    {% endfor %}
+                <div class="product-scroll-shell">
+                    <button class="cluster-nav-button cluster-nav-prev" type="button" data-product-scroll-prev aria-label="Sản phẩm trước">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="product-grid product-grid-compact" data-product-scroll>
+                        {% for product in best_sellers %}
+                            {% include "store/partials/product_card.html" with product=product %}
+                        {% empty %}
+                            <div class="empty-inline">Chưa có dữ liệu sản phẩm bán chạy.</div>
+                        {% endfor %}
+                    </div>
+                    <button class="cluster-nav-button cluster-nav-next" type="button" data-product-scroll-next aria-label="Sản phẩm tiếp theo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </section>
 
@@ -248,12 +272,24 @@
                     <h3>Sản phẩm giá tốt hôm nay</h3>
                     <span class="cluster-kicker">Giá tốt</span>
                 </div>
-                <div class="product-grid product-grid-compact">
-                    {% for product in deal_products %}
-                        {% include "store/partials/product_card.html" with product=product %}
-                    {% empty %}
-                        <div class="empty-inline">Chưa có sản phẩm giá tốt để hiển thị.</div>
-                    {% endfor %}
+                <div class="product-scroll-shell">
+                    <button class="cluster-nav-button cluster-nav-prev" type="button" data-product-scroll-prev aria-label="Sản phẩm trước">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="product-grid product-grid-compact" data-product-scroll>
+                        {% for product in deal_products %}
+                            {% include "store/partials/product_card.html" with product=product %}
+                        {% empty %}
+                            <div class="empty-inline">Chưa có sản phẩm giá tốt để hiển thị.</div>
+                        {% endfor %}
+                    </div>
+                    <button class="cluster-nav-button cluster-nav-next" type="button" data-product-scroll-next aria-label="Sản phẩm tiếp theo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </section>
         </div>

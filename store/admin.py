@@ -15,10 +15,12 @@ from .models import (
     Order,
     OrderItem,
     Product,
+    ProductImage,
     RecommendationLog,
     ScheduledTask,
     Voucher,
 )
+from .background_tasks import execute_scheduled_task, is_recurring_daily_task
 
 
 def action_buttons_for(obj, admin_name):
@@ -34,6 +36,9 @@ def action_buttons_for(obj, admin_name):
         edit_url,
         delete_url,
     )
+
+
+ADMIN_LIST_PER_PAGE = 8
 
 
 class ProductCountFilter(admin.SimpleListFilter):
@@ -64,6 +69,7 @@ class CategoryAdmin(ImportExportModelAdmin):
     list_filter = ("status", "parent", ProductCountFilter)
     search_fields = ("name",)
     prepopulated_fields = {"slug": ("name",)}
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def get_product_count(self, obj):
         count = Product.objects.filter(category=obj).count()
@@ -97,8 +103,13 @@ class CategoryAdmin(ImportExportModelAdmin):
     status_badge.short_description = "Trang thai"
 
 
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 3
+
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
+    inlines = [ProductImageInline]
     list_display = (
         "product_preview",
         "name",
@@ -112,7 +123,7 @@ class ProductAdmin(ImportExportModelAdmin):
     list_display_links = ("name",)
     search_fields = ("name", "sku", "category__name")
     prepopulated_fields = {"slug": ("name",)}
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def product_preview(self, obj):
         if obj.image:
@@ -154,7 +165,7 @@ class InventoryAdmin(ImportExportModelAdmin):
     search_fields = ("product__name", "product__sku")
     list_filter = ("last_updated",)
     list_select_related = ("product",)
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def quantity_badge(self, obj):
         return format_html('<span class="product-sku">{} sp</span>', obj.quantity)
@@ -181,7 +192,7 @@ class CustomerAdmin(ImportExportModelAdmin):
     list_display = ("customer_name", "username", "email", "phone_number", "address", "action_buttons")
     list_display_links = ("customer_name",)
     search_fields = ("full_name", "user__username", "email", "phone_number", "address")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def customer_name(self, obj):
         return obj.full_name or obj.user.get_full_name() or obj.user.username
@@ -205,7 +216,7 @@ class VoucherAdmin(ImportExportModelAdmin):
     list_display_links = ("code",)
     list_filter = ("is_used", "valid_until")
     search_fields = ("code", "customer__full_name", "customer__user__username")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def discount_display(self, obj):
         amount = f"{obj.discount_amount:,.0f}" if obj.discount_amount is not None else "0"
@@ -249,7 +260,7 @@ class CartAdmin(ImportExportModelAdmin):
     search_fields = ("id", "user__username", "items__product__name", "items__product__sku")
     list_filter = ("created_at", "updated_at")
     inlines = (CartItemInline,)
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def cart_label(self, obj):
         return f"Gio hang #{obj.id}"
@@ -279,7 +290,7 @@ class OrderAdmin(ImportExportModelAdmin):
     list_display_links = ("order_label",)
     list_filter = ("status", "created_at")
     search_fields = ("id", "customer__full_name", "customer__user__username", "voucher__code")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def order_label(self, obj):
         return f"Don hang #{obj.id}"
@@ -314,7 +325,7 @@ class OrderItemAdmin(ImportExportModelAdmin):
     list_display_links = ("order",)
     search_fields = ("order__id", "product__name", "product__sku")
     list_filter = ("order__created_at",)
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def price_display(self, obj):
         price = f"{obj.price:,.0f}" if obj.price is not None else "0"
@@ -341,7 +352,7 @@ class CartItemAdmin(ImportExportModelAdmin):
     search_fields = ("cart__id", "product__name", "product__sku")
     list_filter = ("cart__created_at",)
     list_select_related = ("cart", "product")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def line_total(self, obj):
         total = (obj.product.price or 0) * obj.quantity
@@ -362,7 +373,7 @@ class BlogAdmin(ImportExportModelAdmin):
     search_fields = ("title", "content", "author__username")
     list_filter = ("created_at", "author")
     list_select_related = ("author",)
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_blog")
@@ -376,18 +387,75 @@ class RecommendationLogAdmin(ImportExportModelAdmin):
     search_fields = ("user__username", "product__name", "product__sku")
     list_filter = ("interaction_type", "created_at")
     list_select_related = ("user", "product")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
 
 
 @admin.register(ScheduledTask)
 class ScheduledTaskAdmin(ImportExportModelAdmin):
-    list_display = ("task_type", "status", "run_at", "created_at", "action_buttons")
-    list_display_links = ("task_type",)
+    list_display = ("task_type_badge", "status_badge", "run_at", "execution_preview", "created_at", "action_buttons")
+    list_display_links = ("task_type_badge",)
     search_fields = ("task_type", "status", "execution_log")
     list_filter = ("task_type", "status", "run_at")
-    list_per_page = 12
+    list_per_page = ADMIN_LIST_PER_PAGE
+    actions = ("execute_selected_tasks", "reset_to_pending")
+
+    def task_type_badge(self, obj):
+        labels = {
+            "lock_stock": ("Canh bao ton kho", "#0f766e"),
+            "birthday_mail": ("Email sinh nhat", "#2563eb"),
+            "auto_hide": ("An het hang", "#7c3aed"),
+        }
+        label, color = labels.get(obj.task_type, (obj.task_type, "#334155"))
+        return format_html(
+            '<span class="badge" style="background-color: {}; font-size: 13px; padding: 5px 10px;">{}</span>',
+            color,
+            label,
+        )
+
+    task_type_badge.short_description = "Loai tac vu"
+
+    def status_badge(self, obj):
+        if obj.status == "success":
+            return mark_safe('<span class="product-status product-status--active">Thanh cong</span>')
+        if obj.status == "failed":
+            return mark_safe('<span class="product-status product-status--danger">That bai</span>')
+        if is_recurring_daily_task(obj):
+            return mark_safe('<span class="product-status product-status--hidden">Da len lich</span>')
+        return mark_safe('<span class="product-status product-status--hidden">Cho xu ly</span>')
+
+    status_badge.short_description = "Trang thai"
+
+    def execution_preview(self, obj):
+        if not obj.execution_log:
+            return "-"
+        return obj.execution_log[:120] + ("..." if len(obj.execution_log) > 120 else "")
+
+    execution_preview.short_description = "Ket qua gan nhat"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_scheduledtask")
 
     action_buttons.short_description = "Thao tac"
+
+    def execute_selected_tasks(self, request, queryset):
+        success_count = 0
+        failed_count = 0
+        for task in queryset:
+            result = execute_scheduled_task(task)
+            if result.message.startswith("failed:"):
+                failed_count += 1
+            else:
+                success_count += 1
+
+        self.message_user(
+            request,
+            f"Da chay {success_count} tac vu thanh cong, {failed_count} tac vu that bai.",
+        )
+
+    execute_selected_tasks.short_description = "Chay ngay tac vu da chon"
+
+    def reset_to_pending(self, request, queryset):
+        updated = queryset.update(status="pending")
+        self.message_user(request, f"Da dua {updated} tac vu ve trang thai cho xu ly.")
+
+    reset_to_pending.short_description = "Dua ve trang thai cho xu ly"
