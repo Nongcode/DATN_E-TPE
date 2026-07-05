@@ -1,0 +1,5942 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$vcCJBvo1R0IX4BntC7SWKn$QjC903AigiWprTOiKcR5m8QbEP25krhDFiYdxp/pLmg=",
+      "last_login": "2026-07-04T01:52:28.965Z",
+      "is_superuser": true,
+      "username": "Long",
+      "first_name": "",
+      "last_name": "",
+      "email": "long109204@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-24T04:40:41.167Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$lOrJpU39plVAlxUZ2rr5Us$yiOz1bM4lp3U9tVW1RmKnXxYTCGHS9vrrXdf/+xxHk4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_001",
+      "first_name": "Nguyễn",
+      "last_name": "Minh Anh",
+      "email": "demo.customer.001@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:00.881Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$WBSVJbOQ4z2qGBY8broTpJ$srHYJcuIt2dqqosMY1rjpXnfyD8WOtIxap1H9gGmMAU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_002",
+      "first_name": "Trần",
+      "last_name": "Quốc Bảo",
+      "email": "demo.customer.002@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:01.839Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$ARmKSRHvBAivKEn4FCfRhC$CZGsWqMmJ6nisE5U9UJD9g3O2ueo9WCqkKs5DMSf2FE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_003",
+      "first_name": "Lê",
+      "last_name": "Hoàng Nam",
+      "email": "demo.customer.003@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:02.813Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$5qUG1wSA9gYugsIwkJEi9i$rx2oN3fr9ZjATKD2e/9fb9Xio6mxWwd4Y6DkPI0ADTI=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_004",
+      "first_name": "Phạm",
+      "last_name": "Đức Long",
+      "email": "demo.customer.004@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:03.723Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$lozdiXw3sqwTyH0YOdvGQ8$kus9pcTe+WE8LitfuWMabAKvfqZc1L8tf5qJ233cYgQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_005",
+      "first_name": "Vũ",
+      "last_name": "Gia Hân",
+      "email": "demo.customer.005@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:04.630Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$CQhrVqzpUagBaRP7d2rFnB$zy4k7nDFoNbwF7NWp8R+jzjDH8k4VXdEG9bwkrJtvn4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_006",
+      "first_name": "Đỗ",
+      "last_name": "Thành Đạt",
+      "email": "demo.customer.006@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:05.560Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$KexV6y0QcrWQfeVDqAbwBf$K20fzAFxbKi3RugVPRe2D4Sigf3YNhpMxdVSkM+9yxw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_007",
+      "first_name": "Hoàng",
+      "last_name": "Tuấn Kiệt",
+      "email": "demo.customer.007@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:06.537Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$el1YSHTEqzKACFE5ztgKYX$lnErxPLfcrsTWhECE3s4/a3RFxvXokoNAW6w82ImrLA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_008",
+      "first_name": "Bùi",
+      "last_name": "Khánh Linh",
+      "email": "demo.customer.008@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:07.520Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$jPolD4I6jxjUCKtScRUada$NHSl70zKgDqYfg4hP4wkfuh0bjVMZR2gpGq3hkQLqt0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_009",
+      "first_name": "Ngô",
+      "last_name": "Nhật Minh",
+      "email": "demo.customer.009@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:08.452Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$WEdIHDLH5nG9G4BpYyG2bW$Y6Gh6xEegJZRknsTOsbkWgXNDCbEbqwjBvixRRXV4L4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_010",
+      "first_name": "Đặng",
+      "last_name": "Thanh Tùng",
+      "email": "demo.customer.010@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:09.381Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$a9gE6Se83aQ3xf4m44Ary4$fEDyiOm3SeQCJm6/dKf622C4RQURv2rhAAj+3MiOUko=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_011",
+      "first_name": "Phan",
+      "last_name": "Hải Yến",
+      "email": "demo.customer.011@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:10.422Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$d9Qh96DlEbaz0NtYyHVfev$vBUgMbZu5hOom4GzQuCyxVlXfH6pYCrfUmohblsfVsw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_012",
+      "first_name": "Mai",
+      "last_name": "Quang Huy",
+      "email": "demo.customer.012@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:11.456Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$Eexsl0ylcj1t0iEUhssO9O$HdVf8bEPaQtvfhPzbW1TWrfz+/f9JWw3D/1eovH+bQ8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_013",
+      "first_name": "Tạ",
+      "last_name": "Hữu Phước",
+      "email": "demo.customer.013@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:12.474Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$yQ5ToBxdzdYUPlM0B12Zk0$1vP4icBtgTEQIsIns8FYQtB5dSjYqTX+gLdXHNaziXk=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_014",
+      "first_name": "Dương",
+      "last_name": "Bảo Ngọc",
+      "email": "demo.customer.014@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:13.408Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$sjWqeCF5dTb2aqyJ7ugMxQ$9q9iBmje1h7LZ1CzHICc9SvLUUG1GW31An8iyWGBlG8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_015",
+      "first_name": "Cao",
+      "last_name": "Anh Khoa",
+      "email": "demo.customer.015@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:14.340Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$o9FVOV8wKqS4nRlt0Yo0I8$+/6QXonPqwSj9Xku8dfdoiDN88CniCvr4KM0aCpFwR8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_016",
+      "first_name": "Lương",
+      "last_name": "Thùy Dương",
+      "email": "demo.customer.016@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:15.277Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$k6SINfW95BI9h0linxZFli$feIyPB9WBpld/HepKsZgNG3iGAbmzDD83wth28faPmE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_017",
+      "first_name": "Hà",
+      "last_name": "Việt Hoàng",
+      "email": "demo.customer.017@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:16.215Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$6MKj6BNMEL2yH4aIaDMvW5$VIyGjwF+i9Fuobb6U9HOfzeq+hu1VNSxQqWjPhfvhu0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_018",
+      "first_name": "Chu",
+      "last_name": "Minh Quân",
+      "email": "demo.customer.018@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:17.163Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$kMNa5zXdYKACowDNkCtq30$qoswl5b8zl1DwUYyPaDnMOSgPh0f0ahF8hZulHSg2Gc=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_019",
+      "first_name": "Đinh",
+      "last_name": "Phương Thảo",
+      "email": "demo.customer.019@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:18.188Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$9cogfm8D7RIjgFE3IvM5Oi$XUic4mOQbCqIWxHSADSQ6OVZWiOrB4vjSSH5kSaQtT0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_020",
+      "first_name": "Trịnh",
+      "last_name": "An Nhiên",
+      "email": "demo.customer.020@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:19.126Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$lwwygayOUWHV7qiSSKgrNy$qBdZMPHE6Wy/4LOSkwaPJrtFSsy57ZebqWs4+gwLEO8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_021",
+      "first_name": "Đào",
+      "last_name": "Công Vinh",
+      "email": "demo.customer.021@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:20.077Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$omTbNRHgLYw4DnlpKSsQp3$9k5/M1gHlglINYti9OJeESP9262PnrYg7tY5wvU0x48=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_022",
+      "first_name": "Kiều",
+      "last_name": "Thanh Mai",
+      "email": "demo.customer.022@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:21.013Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$ZX689lK6AyW9QfhibMiFyD$VqxLdGvmdAD2xB2iPH3+ldpCozHVPgEfbE8gWZFMpzU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_023",
+      "first_name": "Lâm",
+      "last_name": "Gia Bách",
+      "email": "demo.customer.023@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:21.957Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$dBEyEcfMw23j2gDt5DmqT0$DY78F+D2S/4tiXBGIcN/prpdZZGlU25m14fX/9UPSCQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo_customer_024",
+      "first_name": "Tô",
+      "last_name": "Khánh An",
+      "email": "demo.customer.024@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-02T10:12:22.888Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 1,
+    "fields": {
+      "name": "Cảm biến ô tô",
+      "slug": null,
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Nhiều của đến đó khiến cũng. Mỗi cách là trong từ. Có đang một vì làm khi như sẽ."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 2,
+    "fields": {
+      "name": "Phụ tùng máy",
+      "slug": null,
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Của lớn chưa và cũng có gần thì. Làm hơn của này như."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 3,
+    "fields": {
+      "name": "Phụ kiện ô tô",
+      "slug": null,
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Vì tự vẫn người gần. Để cũng một vẫn để của đang. Của một của khiến giữa vẫn với."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 4,
+    "fields": {
+      "name": "Dầu nhớt & Phụ gia",
+      "slug": null,
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Như hoặc sẽ sẽ giống hơn nhiều. Trong cũng vài. Đó điều tôi đang như."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 6,
+    "fields": {
+      "name": "Màn hình Android",
+      "slug": "man-hinh-android",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Nhóm màn hình android phục vụ tìm kiếm thông minh theo nhu cầu sử dụng xe."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 7,
+    "fields": {
+      "name": "Âm thanh ô tô",
+      "slug": "am-thanh-o-to",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Nhóm âm thanh ô tô phục vụ tìm kiếm thông minh theo nhu cầu sử dụng xe."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 8,
+    "fields": {
+      "name": "Đèn ô tô",
+      "slug": "en-o-to",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Nhóm đèn ô tô phục vụ tìm kiếm thông minh theo nhu cầu sử dụng xe."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 9,
+    "fields": {
+      "name": "Thiết bị lốp",
+      "slug": "thiet-bi-lop",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Nhóm máy ra vào lốp, máy cân bằng lốp và phụ kiện dịch vụ lốp cho garage."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 10,
+    "fields": {
+      "name": "Thiết bị nâng hạ",
+      "slug": "thiet-bi-nang-ha",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Cầu nâng, kích nâng và thiết bị hỗ trợ nâng xe trong xưởng sửa chữa."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 11,
+    "fields": {
+      "name": "Máy rửa xe & chăm sóc xe",
+      "slug": "may-rua-xe-cham-soc-xe",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Thiết bị rửa xe, chăm sóc nội thất, đánh bóng và detailing ô tô."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 12,
+    "fields": {
+      "name": "Dung dịch & súc rửa",
+      "slug": "dung-dich-suc-rua",
+      "image": "",
+      "parent": null,
+      "status": "visible",
+      "description": "Thiết bị và hóa chất vệ sinh kim phun, buồng đốt, bình xăng con và hệ thống nhiên liệu."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 13,
+    "fields": {
+      "name": "Tủ dụng cụ & lưu trữ",
+      "slug": "tu-dung-cu-luu-tru",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Tủ dụng cụ, xe đẩy và giải pháp sắp xếp khu vực kỹ thuật."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 14,
+    "fields": {
+      "name": "Dụng cụ sửa chữa chung",
+      "slug": "dung-cu-sua-chua-chung",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Dụng cụ cơ khí, máy chẩn đoán và thiết bị hỗ trợ sửa chữa ô tô."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 15,
+    "fields": {
+      "name": "Dụng cụ hơi",
+      "slug": "dung-cu-hoi",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Máy nén khí, súng hơi, dây hơi và bộ lọc khí nén cho garage."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 16,
+    "fields": {
+      "name": "Thiết bị đồng sơn",
+      "slug": "thiet-bi-ong-son",
+      "image": "",
+      "parent": null,
+      "status": "hidden",
+      "description": "Thiết bị phun sơn, sấy sơn và hỗ trợ xưởng đồng sơn ô tô."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 17,
+    "fields": {
+      "name": "Thiết bị lốp & nâng hạ",
+      "slug": "thiet-bi-lop-nang-ha",
+      "image": "",
+      "parent": null,
+      "status": "visible",
+      "description": "Nhóm máy ra vào lốp, máy cân bằng lốp, cầu nâng và kích nâng cho garage."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 18,
+    "fields": {
+      "name": "Rửa xe, Detailing & Đồng sơn",
+      "slug": "rua-xe-detailing-ong-son",
+      "image": "",
+      "parent": null,
+      "status": "visible",
+      "description": "Thiết bị rửa xe, chăm sóc nội thất, đánh bóng, phun sơn và sấy sơn ô tô."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 19,
+    "fields": {
+      "name": "Dụng cụ sửa chữa Garage",
+      "slug": "dung-cu-sua-chua-garage",
+      "image": "",
+      "parent": null,
+      "status": "visible",
+      "description": "Dụng cụ cơ khí, dụng cụ hơi, tủ đồ nghề, máy chẩn đoán và thiết bị hỗ trợ sửa chữa."
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 23,
+    "fields": {
+      "name": "Camera hành trình",
+      "slug": "camera-hanh-trinh",
+      "image": "",
+      "parent": null,
+      "status": "visible",
+      "description": "Nhóm camera hành trình phục vụ tìm kiếm thông minh theo nhu cầu sử dụng xe."
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "category": 17,
+      "name": "Cầu nâng cắt kéo nâng bụng 3.5 tấn, lắp chìm (3 pha, màu xanh RAL 3001).",
+      "slug": "cau-nang-cat-keo-nang-bung",
+      "sku": "GC-3.5SB",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tGC-3.5SB\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tWuhu Gaochang Hydraulic Technology Co., Ltd.\r\nTải trọng nâng:\t3500 Kg\r\nChiều cao nâng:\t1830 mm\r\nNguồn điện:\t380 V\r\nCông suất mô tơ:\t2,2 Kw\r\nChiều dài bàn nâng:\t1640 - 2040 mm",
+      "price": "48500000.00",
+      "image": "products/GC-GC-35SB_02_Cầu_nâng_cắt_kéo_nâng_bụng_3.5_tấn_lắp_chìm_3_pha_màu_xanhRAL_3001.png",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.037Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "category": 17,
+      "name": "Máy cân bằng lốp xe con, màn hình LCD, (Gồm Laser vị trí và cảm biến độ rộng - màu đỏ)",
+      "slug": "may-can-bang-lop-man-hinh-lcd",
+      "sku": "EM9380 XLINE",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tEM9380 XLINE\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t220/50 V/Hz\r\nĐường kính lốp lớn nhất:\t44 inch\r\nBề rộng lốp lớn nhất:\t23,5 inch\r\nĐường kính lazang: \t11 - 28 inch\r\nTốc độ cân bằng lớn nhất:\t90 - 130 rpm\r\nKiểu nhập kích thước lốp:\tTự động .",
+      "price": "58500000.00",
+      "image": "products/COGI-EM9380XLINE_Máy_cân_bằng_lốp_xe_con_màn_hình_LCD.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.039Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "category": 17,
+      "name": "Máy cân bằng lốp xe tải, xe bus di động 4kw",
+      "slug": "may-can-bang-lop-xe-tai",
+      "sku": "EF13CE",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tEF13CE\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t400/50 V/Hz\r\nCông suất mô tơ:\t4 Kw\r\nTốc độ cân bằng lớn nhất:\t150 Km/h",
+      "price": "68000000.00",
+      "image": "products/COGI-221406010116_Máy_cân_bằng_lốp_xe_tải_xe_bus_di_động_4kw.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.040Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "category": 17,
+      "name": "Máy cân bằng lốp xe con, màn hình cảm ứng, hoàn toàn tự động với tính năng chẩn đoán lốp",
+      "slug": "may-can-bang-lop-xe-con-man-hinh-cam-ung",
+      "sku": "EM9980C PLUS",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tEM9980C PLUS\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t220 V\r\nCông suất mô tơ:\t550 W\r\nĐường kính lốp lớn nhất\t:      44 inch\r\nBề rộng lốp lớn nhất:\t23.6 inch\r\nĐường kính lazang:     32 inch\r\nTốc độ cân bằng lớn nhất:\t75-85-98 inch",
+      "price": "115000000.00",
+      "image": "products/COGI-0-2110998400-16_Máy_cân_bằng_lốp_xe_con_màn_hình_cảm_ứng.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.040Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "category": 17,
+      "name": "Máy cân bằng lốp xe con, hiển thị LED, phanh điện (Gồm laser vị trí và bàn đạp phanh- màu đỏ)",
+      "slug": "may-can-bang-lop-xe-con-hien-thi-led",
+      "sku": "PROLINE 750 PROF",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tPROLINE 750 PROF\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t220/50 V/Hz\r\nĐường kính lốp lớn nhất:\t44 inch\r\nBề rộng lốp lớn nhất:\t22,8 inch\r\nĐường kính lazang: \t10- 26 inch\r\nTốc độ cân bằng lớn nhất:\t150 vòng/phút\r\nKiểu nhập kích thước lốp:\tTự động .",
+      "price": "82000000.00",
+      "image": "products/COGI-0-2190003600-16_Máy_cân_bằng_lốp_xe_con_hiển_thị_LED_phanh_điện.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.041Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 6,
+    "fields": {
+      "category": 17,
+      "name": "Máy cân bằng lốp xe con, hoàn toàn tự động (Tích hợp chẩn đoán độ mòn lốp và hỗ trợ nâng bánh xe - màu đỏ)",
+      "slug": "may-can-bang-lop-xe-con",
+      "sku": "EYE-LIGHT PLUS",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tEYE-LIGHT PLUS\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t220/50 V/Hz\r\nCông suất mô tơ:\t400 W\r\nĐường kính lốp lớn nhất:\t44 inch\r\nBề rộng lốp lớn nhất:\t23,5 inch\r\nĐường kính lazang: \t11 - 32 inch\r\nTốc độ cân bằng lớn nhất:\t75 - 85 - 98 rpm",
+      "price": "145000000.00",
+      "image": "products/COGI-EYE-LIGHTPLUS_Máy_cân_bằng_lốp_xe_con.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.041Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 7,
+    "fields": {
+      "category": 18,
+      "name": "Hóa chất vệ sinh lazăng CROMOBRILL 2G 6 KG",
+      "slug": "hoa-chat-ve-sinh-lazang",
+      "sku": "P0722",
+      "brand": "CROMOBRILL",
+      "manufacturer": "Ma-Fra Italy",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi, Nissan",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander, Navara",
+      "description": "Model:\tP0722\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t6 Kg\r\nCách sử dụng: \tXịt trực tiếp dung dịch và xả lại bằng áp lực cao. Hoặc pha với tỷ lệ 1:3 - 1:5 .\r\nCông dụng:\tLàm sạch mạt bụi phanh trên vành xe. Loại bỏ vết gỉ sét trên bề mặt kim loại .",
+      "price": "1260000.00",
+      "image": "products/Hóa_chất_vệ_sinh_lazăng_CROMOBRILL_2G_6_KG.png",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.042Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 8,
+    "fields": {
+      "category": 18,
+      "name": "Hóa chất wax bóng bề mặt sơn UNIKA-HYDROCOATING WAX-PO1 12 L",
+      "slug": "hoa-chat-wax-bong-be-mat-son",
+      "sku": "P0911",
+      "brand": "UNIKA",
+      "manufacturer": "Unika Professional Care",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi, Nissan",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander, Navara",
+      "description": "Model:\tP0911\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t12 lít\r\nCách sử dụng: \tThực hiện sau khi rửa sạch xe, bề mặt sơn. Pha hóa chất ra xô và rửa có chạm .\r\nTỷ lệ pha: \t8 - 25 ml/xe\r\nCông dụng:\tTạo hiệu ứng lá sen, chống bám dính nước cho bề mặt sơn và kính .",
+      "price": "2850000.00",
+      "image": "products/Hóa_chất_wax_bóng_bề_mặt_sơn_UNIKA-HYDROCOATING_WAX-PO1_12_L.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.043Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 9,
+    "fields": {
+      "category": 18,
+      "name": "Máy hút bụi khô ướt 70 lít, 2400W (Không đặt PK + xe đẩy)",
+      "slug": "may-hut-bui-kho-uot-70l",
+      "sku": "6605-B70-2M",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\t6605-B70-2M\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tKoisu (Yongkang Maijida Tools Manufacture Co., Ltd.)\r\nNguồn điện:\t220 V\r\nCông suất mô tơ:\t2400 W\r\nThùng chứa bụi:\t70 lít\r\nLưu lượng hút:\t312 m3/h\r\nÁp suất hút:\t22 Kpa",
+      "price": "3200000.00",
+      "image": "products/MJ-6605-B70-2M_01_Máy_hút_bụi_khô_ướt_70_lít_2400W_Không_đặt_PK__xe_đẩy.jpg",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.043Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 10,
+    "fields": {
+      "category": 18,
+      "name": "Máy hút bụi công nghiệp khô ướt GS 1/35 ASDO15019",
+      "slug": "may-hut-bui-cong-nghiep-kho-uot",
+      "sku": "GP 1/35 W&D",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi, Nissan",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander, Navara",
+      "description": "Model:\tGP 1/35 W&D\r\nThương hiệu:\tIPC\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tIPC (IP Cleaning Srl.)",
+      "price": "7200000.00",
+      "image": "products/POTO-GP135WD_Máy_hút_bụi_công_nghiệp_khô_ướt_GS_1-35_ASDO15019.jpg",
+      "is_active": false,
+      "created_at": "2026-03-10T03:27:29.044Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 11,
+    "fields": {
+      "category": 12,
+      "name": "Bộ hóa chất phục hồi đèn pha REGENERA HEADLIGHT RESTORATION KIT (6 chi tiết)",
+      "slug": "bo-hoa-chat-phuc-hoi-den-pha",
+      "sku": "H0590",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3",
+      "description": "Model:\tH0590\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t80g + 125ml .\r\nCách sử dụng: \tKết hợp với giấy nhám với độ nhám khác nhau .\r\nCông dụng:\tLàm mới và tăng độ sáng bóng của kính đèn pha .",
+      "price": "1450000.00",
+      "image": "products/MARA-H0590_Bộ_hóa_chất_phục_hồi_đèn_pha_REGENERA_HEADLIGHT_RESTORATION_KIT.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.044Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 12,
+    "fields": {
+      "category": 12,
+      "name": "Hóa chất vệ sinh kính ô tô GLASS CLEANER 500ml",
+      "slug": "hoa-chat-ve-sinh-kinh-o-to",
+      "sku": "H0909",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3",
+      "description": "Model:\tH0909\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t500 ml",
+      "price": "180000.00",
+      "image": "products/MARA-H0909_Hóa_chất_vệ_sinh_kính_ô_tô_GLASS_CLEANER_500ml.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.045Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 13,
+    "fields": {
+      "category": 12,
+      "name": "Hóa chất loại bỏ côn trùng Ma-fra Killer",
+      "slug": "uptek-cc01-13",
+      "sku": "H0847",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3",
+      "description": "Model:\tH0847\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t500 ml\r\nCách sử dụng: \tDùng trực tiếp trên bề mặt xe .\r\nCông dụng:\tLoại bỏ xác côn trùng trên bề mặt thân xe, kính .",
+      "price": "260000.00",
+      "image": "products/MARA-H0847_Hóa_chất_loại_bỏ_côn_trùng_Ma-fra_Killer.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.045Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 14,
+    "fields": {
+      "category": 12,
+      "name": "Hóa chất vệ sinh dưỡng nội thất - phục hồi da 3 in 1 (Leather Care 3in1)",
+      "slug": "hoa-chat-ve-sinh-duong-noi-that",
+      "sku": "H0848",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi, Nissan",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander, Navara",
+      "description": "Model:\tH0848\r\nThương hiệu:\tMAFRA\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tMafra S.p.A\r\nDung tích:\t500 ml",
+      "price": "280000.00",
+      "image": "products/MARA-H0848_Hóa_chất_vệ_sinh_dưỡng_nội_thất_.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.046Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 15,
+    "fields": {
+      "category": 17,
+      "name": "Kích cá sấu 3-3.5 tấn, siêu mỏng",
+      "slug": "kich-ca-sau-3-3-5-tan",
+      "sku": "T83508",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tT83508\r\nThương hiệu:\tTORIN\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tTORIN (Changshu Tongrun Auto Accessory Import & Export Co., Ltd.)\r\nKhối lượng:\t43,3 Kg\r\nKích thước:\t760*345*170 mm\r\nTải trọng nâng:\t3000/3500 Kg\r\nChiều cao nâng:\t535 mm\r\nChiều cao tối thiểu:\t98 mm",
+      "price": "3650000.00",
+      "image": "products/TORI-T83508_Kích_cá_sấu_3-3.5_tấn_siêu_mỏng.webp",
+      "is_active": true,
+      "created_at": "2026-03-10T03:27:29.047Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 16,
+    "fields": {
+      "category": 17,
+      "name": "Mễ kê 3 tấn, chiều cao nâng 276-420 mm (1 đôi)",
+      "slug": "me-ke-3-tan",
+      "sku": "T43001",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tT43001\r\nThương hiệu:\tTORIN\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tTORIN (Changshu Tongrun Auto Accessory Import & Export Co., Ltd.)\r\nKhối lượng:\t6,6 Kg\r\nKích thước:\t225x205x365 mm\r\nTải trọng nâng:\t3000 Kg\r\nChiều cao nâng:\t276-420 mm",
+      "price": "760000.00",
+      "image": "products/TORI-T43001_Mễ_kê_3_tấn_chiều_cao_nâng_276-420_mm_1_đôi.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.175Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 17,
+    "fields": {
+      "category": 19,
+      "name": "Súng vặn ốc 1/2\", 50-500 Nm - Chuyên dùng cho đào tạo",
+      "slug": "sung-van-oc-1-2-dao-tao",
+      "sku": "SP-1140EX",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tSP-1140EX\r\nThương hiệu:\tSP-AIR\r\nXuất xứ:\tJapan\r\nHãng sản xuất:\tSP-AIR (Vessel Co. Inc.)\r\nKhối lượng:\t2,6 Kg\r\nMô men xoắn (lực siết) lớn nhất:\t1000 Nm\r\nMô men xoắn (lực siết) làm việc:\t50~500 Nm\r\nTốc độ không tải:\t6,000 rpm\r\nChiều dài tổng thể:\t185 mm\r\nKích thước đầu lắp khẩu:\t1/2 inch\r\nKiểu búa:\tBúa đôi .",
+      "price": "2350000.00",
+      "image": "products/SPAI-SP-1140EX_04_Súng_vặn_ốc_1-2__50-500_Nm_-_Chuyên_dùng_cho_đào_tạo.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.186Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 18,
+    "fields": {
+      "category": 19,
+      "name": "Súng bơm lốp 90 PSI hiển thị số",
+      "slug": "sung-bom-lop-90-psi",
+      "sku": "AG010090A",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:     AG010090A\r\nThương hiệu:\tJONNESWAY\r\nXuất xứ:\tTaiwan\r\nHãng sản xuất:\tJonnesway Enterprise Co., Ltd.\r\nDải áp suất:\t(6.2 bar) - 90 PSI\r\nKích cỡ đầu vào:\t1/4 inch",
+      "price": "980000.00",
+      "image": "products/JONN-AG010090A_Súng_bơm_lốp_90_PSI_hiển_thị_số.png",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.189Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 19,
+    "fields": {
+      "category": 19,
+      "name": "Súng vặn ốc 1/2\", 1491 Nm (Magnesium Composite siêu nhẹ)",
+      "slug": "uptek-iw1200-19",
+      "sku": "ST-C5444S",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tST-C5444S\r\nThương hiệu:\tSUMAKE\r\nXuất xứ:\tTaiwan\r\nHãng sản xuất:\tSumake Industrial Co., Ltd.\r\nKhối lượng:\t1,65 Kg\r\nMô men xoắn (lực siết) lớn nhất:\t1491 Nm\r\nMô men xoắn (lực siết) làm việc:\t1080 Nm\r\nTốc độ không tải:\t8500 rpm\r\nKích thước đầu lắp khẩu:\t1/2 inch",
+      "price": "3250000.00",
+      "image": "products/SUKE-ST-C5444S_Súng_vặn_ốc_1-2__1491_Nm_Magnesium_Composite_siêu_nhẹ.png",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.193Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 20,
+    "fields": {
+      "category": 19,
+      "name": "Đầu bơm lốp xe tải 25\"/27mm",
+      "slug": "dau-bom-lop-xe-tai",
+      "sku": "300102",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\t300102\r\nThương hiệu:\tTAITEC\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tTAITEC (Xiamen Autotop Technology Corp)\r\nKích cỡ đầu vào:\tNghiêng 25 .",
+      "price": "850000.00",
+      "image": "products/TATE-300102_Đầu_bơm_lốp_xe_tải_25_-27mm.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.196Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 21,
+    "fields": {
+      "category": 19,
+      "name": "Tủ dụng cụ 7 ngăn, 240 chi tiết (Màu ghi)",
+      "slug": "tu-dung-cu-7-ngan-240-chi-tiet",
+      "sku": "2400S G7/E-S",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\t2400S G7/E-S\r\nThương hiệu:\tBETA\r\nXuất xứ:\tItaly, China, Taiwan\r\nHãng sản xuất:\tBeta Utensili S.p.A\r\nKích thước:\t955x445x740 mm\r\nSố lượng chi tiết:\t240 .\r\nSố lượng ngăn:\t7 .",
+      "price": "18500000.00",
+      "image": "products/BETA-024002222_Tủ_dụng_cụ_7_ngăn_240_chi_tiết_Màu_ghi.png",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.200Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 22,
+    "fields": {
+      "category": 19,
+      "name": "Tủ dụng cụ 7 ngăn, 217 chi tiết (màu đỏ)",
+      "slug": "tu-dung-cu-7-ngan-217-chi-tiet",
+      "sku": "TBR3007B-X",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tTBR3007B-X\r\nThương hiệu:\tTORIN\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tTORIN (Changshu Tongrun Auto Accessory Import & Export Co., Ltd.)\r\nKhối lượng:\t58 Kg\r\nKích thước:\t688 x 458 x 735 mm\r\nSố lượng chi tiết:\t217 .\r\nSố lượng ngăn:\t7 .",
+      "price": "16800000.00",
+      "image": "products/TORI-TBR3007B-X_Tủ_dụng_cụ_7_ngăn_217_chi_tiết_màu_đỏ.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.205Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 23,
+    "fields": {
+      "category": 18,
+      "name": "Thiết bị rửa gầm ô tô 275 bar (Kiểu giàn thẳng)",
+      "slug": "thiet-bi-rua-gam-o-to",
+      "sku": "FT10180",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi, Nissan",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander, Navara",
+      "description": "Model:\tFT10180\r\nThương hiệu:\tDANAU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tZhejiang Danau Industries Co., Ltd.\r\nÁp suất nước:\t275 bar",
+      "price": "14500000.00",
+      "image": "products/DANA-FT10180_Thiết_bị_rửa_gầm_ô_tô_275_bar_Kiểu_giàn_thẳng.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.209Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 24,
+    "fields": {
+      "category": 18,
+      "name": "Máy rửa áp lực cao nước lạnh 180 Bar, 4 Kw (3 Pha, Kiểu treo tường, gồm dây)",
+      "slug": "may-rua-ap-luc-cao-180-bar",
+      "sku": "WA-4018T4",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tWA-4018T4\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tKoisu (Taizhou Mingyu Machinery Equipment Co., Ltd.)\r\nKích thước:\t760 x 400 x 600 mm\r\nNguồn điện:\t380V - 50Hz V/Hz\r\nCông suất tiêu thụ:\t4,0 Kw\r\nÁp lực phun tối đa:\t180 bar\r\nLưu lượng nước:\t900 lít/giờ\r\nTốc độ vòng quay mô tơ:\t1450 vòng/phút",
+      "price": "18500000.00",
+      "image": "products/MY-WA-4018T4_03_Máy_rửa_áp_lực_cao_nước_lạnh_180_Bar_4_Kw_3_Pha_Kiểu_treo_tường_gồm_dây.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.214Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 25,
+    "fields": {
+      "category": 18,
+      "name": "Máy phun rửa áp lực cao nước lạnh 190 Bar, 4.9 Kw 3 pha kèm PK -Model: PW-C45 D1915P4 T - IDAF40906 -",
+      "slug": "may-phun-rua-ap-luc-cao-nuoc-lanh",
+      "sku": "PW-C45 D1915P4 T",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tPW-C45 D1915P4 T\r\nThương hiệu:\tIPC\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tIPC (IP Cleaning Srl.)\r\nKích thước:\t67 x 42 x 95 cm\r\nNguồn điện:\t380/50 V/Hz\r\nCông suất tiêu thụ:\t4.9 Kw\r\nÁp lực phun tối đa:\t190 bar\r\nLưu lượng nước:\t900 lít/giờ\r\nTốc độ vòng quay mô tơ:\t1400 rpm",
+      "price": "22500000.00",
+      "image": "products/POTO-IDAF40906_Máy_phun_rửa_áp_lực_cao.png",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.218Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 26,
+    "fields": {
+      "category": 18,
+      "name": "Máy rửa áp lực cao nước lạnh 140 Bar, 4 Kw (3 Pha, Kèm phụ kiện).",
+      "slug": "may-rua-ap-luc-cao-140-bar",
+      "sku": "VJW-4S",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tVJW-4S\r\nThương hiệu:\tOKATSUNE\r\nXuất xứ:\tJapan\r\nHãng sản xuất:\tOkatsune Gears Manufacturing Co., Ltd.\r\nNguồn điện:\t380/50 V/Hz\r\nCông suất tiêu thụ:\t4 Kw\r\nÁp lực phun tối đa:\t140 bar\r\nLưu lượng nước:\t780 lít/giờ\r\nTốc độ vòng quay mô tơ:\t1450 vòng/phút",
+      "price": "15500000.00",
+      "image": "products/OKAT-VJW-4S_05_Máy_rửa_áp_lực_cao_nước_lạnh_140_Bar_4_Kw_3_Pha_Kèm_phụ_kiện.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.221Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 27,
+    "fields": {
+      "category": 18,
+      "name": "Máy rửa áp lực cao nước lạnh 248 Bar, 5.5 Kw (3 Pha, Kèm phụ kiện), không dây",
+      "slug": "may-rua-ap-lu-cao-nuoc-lanh",
+      "sku": "18M36-5.5T4",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\t18M36-5.5T4\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tKoisu (Lutian Machinery Co., Ltd.)\r\nKích thước:\t880 x 630 x 630 mm\r\nNguồn điện:\t380/50 V/Hz\r\nCông suất tiêu thụ:\t5,5 Kw\r\nÁp lực phun tối đa:\t248 bar\r\nLưu lượng nước:\t660 lít/giờ\r\nTốc độ vòng quay mô tơ:\t1450 vòng/phút.",
+      "price": "29500000.00",
+      "image": "products/LT-18M36-55T4_03_Máy_rửa_áp_lực_cao_nước_lạnh_78WrtE8.5_Kw_3_Pha_Kèm_phụ_kiện_không_dây.png",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.224Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 28,
+    "fields": {
+      "category": 19,
+      "name": "Tủ dụng cụ 8 ngăn, 398 chi tiết (màu đỏ)",
+      "slug": "tu-dung-cu-8-ngan-398-chi-tiet",
+      "sku": "BW 2400S R8/E-L",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford, Mitsubishi",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger, Xpander",
+      "description": "Model:\tBW 2400S R8/E-L\r\nThương hiệu:\tBETA\r\nXuất xứ:\tItaly, China, Taiwan\r\nHãng sản xuất:\tBeta Utensili S.p.A\r\nKích thước:\t740x445x955 mm\r\nSố lượng chi tiết:\t398 .\r\nSố lượng ngăn:\t8 .",
+      "price": "28500000.00",
+      "image": "products/BETA-024006243_Tủ_dụng_cụ_8_ngăn_398_chi_tiết_màu_đỏ.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.227Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 29,
+    "fields": {
+      "category": 17,
+      "name": "Máy ra vào lốp xe con (3 pha, màu đỏ RAL 3002)",
+      "slug": "uptek-obd500-29",
+      "sku": "A224",
+      "brand": "CORGHI",
+      "manufacturer": "Corghi S.p.A",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tA224\r\nThương hiệu:\tCORGHI (Italy)\r\nXuất xứ:\tItaly\r\nHãng sản xuất:\tCorghi (Nexion S.p.A)\r\nNguồn điện:\t380/50 V/Hz\r\nKhả năng kẹp trong:\t13 - 26 inch\r\nKhả năng kẹp ngoài:\t10 - 24 inch\r\nĐường kính lốp lớn nhất:\t1100 mm\r\nBề rộng lốp lớn nhất:\t360 mm",
+      "price": "58000000.00",
+      "image": "products/COGI-0-1111590100-16_Máy_ra_vào_lốp_xe_con_3_pha_màu_đỏ_RAL_3002.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.230Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 30,
+    "fields": {
+      "category": 19,
+      "name": "Máy Sạc và khởi động ắc quy bình điện và hỗ trợ đề - code: 026490 (startium 680E)",
+      "slug": "may-sac-va-khoi-dong-ac-quy-binh-dien",
+      "sku": "STARTIUM 680E",
+      "brand": "STARTIUM",
+      "manufacturer": "GYS France",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tSTARTIUM 680E\r\nThương hiệu:\tGYS\r\nXuất xứ:\tFrance\r\nHãng sản xuất:\tSAS GYS\r\nKích thước:\t305 x 475 x 795 mm\r\nNguồn điện:\t220/50 V/Hz\r\nCông suất tiêu thụ:\t2200 W\r\nDùng cho loại ắc quy:\tLiquid, Gel, AGM .",
+      "price": "18500000.00",
+      "image": "products/GYSP-026490_Máy_Sạc_và_khởi_động_ắc_quy.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.234Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 31,
+    "fields": {
+      "category": 18,
+      "name": "Máy rửa áp lực cao nước lạnh 180 Bar, 4 Kw (3 Pha, Không gồm dây)",
+      "slug": "may-rua-ap-luc-cao",
+      "sku": "LA-4018T4",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tLA-4018T4\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:     Koisu (Taizhou Mingyu Machinery Equipment Co., Ltd.)\r\nKích thước:\t760 x 400 x 600 mm\r\nNguồn điện:\t380V/50Hz V/Hz\r\nCông suất tiêu thụ:\t4,0 Kw\r\nÁp lực phun tối đa:\t180 bar\r\nLưu lượng nước:\t900 lít/giờ\r\nTốc độ vòng quay mô tơ:\t1450 vòng/phút",
+      "price": "16800000.00",
+      "image": "products/luba.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T03:07:06.238Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 32,
+    "fields": {
+      "category": 23,
+      "name": "Camera ETEK A1",
+      "slug": "p",
+      "sku": "ETEK-A1",
+      "brand": "ETEK",
+      "manufacturer": "ETEK Store",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Camera hành trình rõ nét.",
+      "price": "1500000.00",
+      "image": "products/etek-a1.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T08:15:09.378Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 33,
+    "fields": {
+      "category": 19,
+      "name": "Thiết bị nạp ắc quy và khởi động đề 12-24V/60A/1300A (1pha) đã bao gồm cáp kết nối, model: KS-1300",
+      "slug": "thiet-bi-nap-ac-quy",
+      "sku": "KS-1300",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tKS-1300\r\nThương hiệu:\tKOISU\r\nXuất xứ:\tChina\r\nHãng sản xuất:\tGUANGZHOU KARJOYS AUTO EQUIPMENT CO.LTD\r\nNguồn điện:\t220/50 V/Hz\r\nDòng nạp:\t60 A\r\nDòng đề khởi động:\t1300 A\r\nCông suất tiêu thụ: \t3 KVA\r\nDùng cho loại ắc quy:\t12 V và 24 V",
+      "price": "12500000.00",
+      "image": "products/anh.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T08:15:09.390Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 34,
+    "fields": {
+      "category": 23,
+      "name": "Camera hậu",
+      "slug": "camera-etek-a1-x",
+      "sku": "ETEK-A1X",
+      "brand": "ETEK",
+      "manufacturer": "ETEK Store",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Camera hành trình rõ nét.",
+      "price": "1200000.00",
+      "image": "products/Car-Rear-View-Camera-Top-Quality-Best-Price-HD-1080P-Dash-Cam-with-Night-Visio_AFn0NzN.webp",
+      "is_active": true,
+      "created_at": "2026-05-18T08:16:25.729Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 35,
+    "fields": {
+      "category": 23,
+      "name": "Camera hành trình mini ETEK",
+      "slug": "camera-mini-x",
+      "sku": "ETEK-MINIX",
+      "brand": "ETEK",
+      "manufacturer": "ETEK Store",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Camera hành trình nhỏ gọn, góc rộng.",
+      "price": "1000000.00",
+      "image": "products/camera-hanh-trinh-mini-3.jpg",
+      "is_active": true,
+      "created_at": "2026-05-18T08:16:25.741Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 36,
+    "fields": {
+      "category": 19,
+      "name": "Thiết bị kiểm tra ắc quy (40-2000 CCA)",
+      "slug": "thiet-bi-kiem-tra-ac-quy",
+      "sku": "BT900",
+      "brand": "ETEK Garage",
+      "manufacturer": "ETEK Garage Equipment",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Model:\tBT900\r\nThương hiệu:\tDHC\r\nXuất xứ:\tTaiwan\r\nHãng sản xuất:     DHC Specialty Corp.\r\nKích thước:\t250 x 130 x 45 mm\r\nKiểm tra loại ắc quy:\t12 V\r\nDải điện áp đo:\t8 - 31.5 V",
+      "price": "2400000.00",
+      "image": "products/DHC-BT900_Thiết_bị_kiểm_tra_ắc_quy_40-2000_CCA.png",
+      "is_active": true,
+      "created_at": "2026-05-18T08:16:25.746Z"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 37,
+    "fields": {
+      "category": 23,
+      "name": "Sản phẩm test hết hàng đang ẩn",
+      "slug": "san-pham-test-het-hang-dang-an",
+      "sku": "TEST-HET-HANG-AN",
+      "brand": "ETEK",
+      "manufacturer": "ETEK Store",
+      "compatible_car_brands": "Toyota, Honda, Hyundai, Kia, Mazda, Ford",
+      "compatible_car_models": "Vios, City, Accent, Cerato, Mazda 3, Ranger",
+      "description": "Sản phẩm dùng để demo task tự động ẩn sản phẩm hết hàng. Tồn kho hiện tại bằng 0.",
+      "price": "1000000.00",
+      "image": "",
+      "is_active": false,
+      "created_at": "2026-07-04T01:54:01.268Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 1,
+    "fields": {
+      "product": 16,
+      "quantity": 5,
+      "low_stock_threshold": 17,
+      "last_updated": "2026-07-02T10:12:23.957Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 2,
+    "fields": {
+      "product": 17,
+      "quantity": 90,
+      "low_stock_threshold": 14,
+      "last_updated": "2026-07-02T10:12:23.958Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 3,
+    "fields": {
+      "product": 18,
+      "quantity": 95,
+      "low_stock_threshold": 17,
+      "last_updated": "2026-07-02T10:12:23.960Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 4,
+    "fields": {
+      "product": 19,
+      "quantity": 4,
+      "low_stock_threshold": 9,
+      "last_updated": "2026-07-02T10:12:23.961Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 5,
+    "fields": {
+      "product": 20,
+      "quantity": 56,
+      "low_stock_threshold": 16,
+      "last_updated": "2026-07-02T10:12:23.962Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 6,
+    "fields": {
+      "product": 21,
+      "quantity": 10,
+      "low_stock_threshold": 20,
+      "last_updated": "2026-07-02T10:12:23.964Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 7,
+    "fields": {
+      "product": 22,
+      "quantity": 62,
+      "low_stock_threshold": 15,
+      "last_updated": "2026-07-02T10:12:23.965Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 8,
+    "fields": {
+      "product": 23,
+      "quantity": 64,
+      "low_stock_threshold": 15,
+      "last_updated": "2026-07-02T10:12:23.966Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 9,
+    "fields": {
+      "product": 24,
+      "quantity": 31,
+      "low_stock_threshold": 8,
+      "last_updated": "2026-07-02T10:12:23.967Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 10,
+    "fields": {
+      "product": 25,
+      "quantity": 44,
+      "low_stock_threshold": 15,
+      "last_updated": "2026-07-02T10:12:23.969Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 11,
+    "fields": {
+      "product": 26,
+      "quantity": 7,
+      "low_stock_threshold": 16,
+      "last_updated": "2026-07-02T10:12:23.970Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 12,
+    "fields": {
+      "product": 27,
+      "quantity": 36,
+      "low_stock_threshold": 16,
+      "last_updated": "2026-07-02T10:12:23.971Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 13,
+    "fields": {
+      "product": 28,
+      "quantity": 1,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.973Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 14,
+    "fields": {
+      "product": 29,
+      "quantity": 76,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.974Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 15,
+    "fields": {
+      "product": 30,
+      "quantity": 79,
+      "low_stock_threshold": 9,
+      "last_updated": "2026-07-02T10:12:23.976Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 16,
+    "fields": {
+      "product": 31,
+      "quantity": 6,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.977Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 17,
+    "fields": {
+      "product": 1,
+      "quantity": 1,
+      "low_stock_threshold": 9,
+      "last_updated": "2026-07-02T10:12:23.932Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 18,
+    "fields": {
+      "product": 2,
+      "quantity": 30,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.935Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 19,
+    "fields": {
+      "product": 3,
+      "quantity": 44,
+      "low_stock_threshold": 9,
+      "last_updated": "2026-07-02T10:12:23.936Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 20,
+    "fields": {
+      "product": 4,
+      "quantity": 57,
+      "low_stock_threshold": 13,
+      "last_updated": "2026-07-02T10:12:23.938Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 21,
+    "fields": {
+      "product": 5,
+      "quantity": 42,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.940Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 22,
+    "fields": {
+      "product": 6,
+      "quantity": 7,
+      "low_stock_threshold": 20,
+      "last_updated": "2026-07-02T10:12:23.942Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 23,
+    "fields": {
+      "product": 7,
+      "quantity": 39,
+      "low_stock_threshold": 17,
+      "last_updated": "2026-07-02T10:12:23.943Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 24,
+    "fields": {
+      "product": 8,
+      "quantity": 82,
+      "low_stock_threshold": 11,
+      "last_updated": "2026-07-02T10:12:23.944Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 25,
+    "fields": {
+      "product": 9,
+      "quantity": 27,
+      "low_stock_threshold": 12,
+      "last_updated": "2026-07-02T10:12:23.946Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 26,
+    "fields": {
+      "product": 10,
+      "quantity": 0,
+      "low_stock_threshold": 11,
+      "last_updated": "2026-07-02T10:12:23.948Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 27,
+    "fields": {
+      "product": 11,
+      "quantity": 11,
+      "low_stock_threshold": 16,
+      "last_updated": "2026-07-02T10:12:23.949Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 28,
+    "fields": {
+      "product": 12,
+      "quantity": 89,
+      "low_stock_threshold": 13,
+      "last_updated": "2026-07-02T10:12:23.951Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 29,
+    "fields": {
+      "product": 13,
+      "quantity": 88,
+      "low_stock_threshold": 13,
+      "last_updated": "2026-07-02T10:12:23.952Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 30,
+    "fields": {
+      "product": 14,
+      "quantity": 95,
+      "low_stock_threshold": 17,
+      "last_updated": "2026-07-02T10:12:23.954Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 31,
+    "fields": {
+      "product": 15,
+      "quantity": 24,
+      "low_stock_threshold": 13,
+      "last_updated": "2026-07-02T10:12:23.955Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 32,
+    "fields": {
+      "product": 32,
+      "quantity": 72,
+      "low_stock_threshold": 10,
+      "last_updated": "2026-07-02T10:12:23.979Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 33,
+    "fields": {
+      "product": 33,
+      "quantity": 39,
+      "low_stock_threshold": 16,
+      "last_updated": "2026-07-02T10:12:23.995Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 34,
+    "fields": {
+      "product": 34,
+      "quantity": 60,
+      "low_stock_threshold": 9,
+      "last_updated": "2026-07-02T10:12:23.996Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 35,
+    "fields": {
+      "product": 35,
+      "quantity": 44,
+      "low_stock_threshold": 14,
+      "last_updated": "2026-07-02T10:12:23.998Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 36,
+    "fields": {
+      "product": 36,
+      "quantity": 8,
+      "low_stock_threshold": 14,
+      "last_updated": "2026-07-02T10:12:23.999Z"
+    }
+  },
+  {
+    "model": "store.inventory",
+    "pk": 37,
+    "fields": {
+      "product": 37,
+      "quantity": 0,
+      "low_stock_threshold": 5,
+      "last_updated": "2026-07-04T01:54:01.303Z"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "demo_customer_001"
+      ],
+      "full_name": "Nguyễn Minh Anh",
+      "email": "demo.customer.001@example.com",
+      "phone_number": "0900000001",
+      "address": "12 Đường Demo, Cầu Giấy, Hà Nội",
+      "date_of_birth": "2002-07-08"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 2,
+    "fields": {
+      "user": [
+        "demo_customer_002"
+      ],
+      "full_name": "Trần Quốc Bảo",
+      "email": "demo.customer.002@example.com",
+      "phone_number": "0900000002",
+      "address": "13 Đường Demo, Thanh Xuân, Hà Nội",
+      "date_of_birth": "2001-06-29"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 3,
+    "fields": {
+      "user": [
+        "demo_customer_003"
+      ],
+      "full_name": "Lê Hoàng Nam",
+      "email": "demo.customer.003@example.com",
+      "phone_number": "0900000003",
+      "address": "14 Đường Demo, Nam Từ Liêm, Hà Nội",
+      "date_of_birth": "2000-06-20"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 4,
+    "fields": {
+      "user": [
+        "demo_customer_004"
+      ],
+      "full_name": "Phạm Đức Long",
+      "email": "demo.customer.004@example.com",
+      "phone_number": "0900000004",
+      "address": "15 Đường Demo, Hải Châu, Đà Nẵng",
+      "date_of_birth": "1999-06-12"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 5,
+    "fields": {
+      "user": [
+        "demo_customer_005"
+      ],
+      "full_name": "Vũ Gia Hân",
+      "email": "demo.customer.005@example.com",
+      "phone_number": "0900000005",
+      "address": "16 Đường Demo, Quận 1, TP. Hồ Chí Minh",
+      "date_of_birth": "1998-06-03"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 6,
+    "fields": {
+      "user": [
+        "demo_customer_006"
+      ],
+      "full_name": "Đỗ Thành Đạt",
+      "email": "demo.customer.006@example.com",
+      "phone_number": "0900000006",
+      "address": "17 Đường Demo, Bình Thạnh, TP. Hồ Chí Minh",
+      "date_of_birth": "1997-05-25"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 7,
+    "fields": {
+      "user": [
+        "demo_customer_007"
+      ],
+      "full_name": "Hoàng Tuấn Kiệt",
+      "email": "demo.customer.007@example.com",
+      "phone_number": "0900000007",
+      "address": "18 Đường Demo, Ninh Kiều, Cần Thơ",
+      "date_of_birth": "1996-05-16"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 8,
+    "fields": {
+      "user": [
+        "demo_customer_008"
+      ],
+      "full_name": "Bùi Khánh Linh",
+      "email": "demo.customer.008@example.com",
+      "phone_number": "0900000008",
+      "address": "19 Đường Demo, Lê Chân, Hải Phòng",
+      "date_of_birth": "1995-05-08"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 9,
+    "fields": {
+      "user": [
+        "demo_customer_009"
+      ],
+      "full_name": "Ngô Nhật Minh",
+      "email": "demo.customer.009@example.com",
+      "phone_number": "0900000009",
+      "address": "20 Đường Demo, Cầu Giấy, Hà Nội",
+      "date_of_birth": "1994-04-29"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 10,
+    "fields": {
+      "user": [
+        "demo_customer_010"
+      ],
+      "full_name": "Đặng Thanh Tùng",
+      "email": "demo.customer.010@example.com",
+      "phone_number": "0900000010",
+      "address": "21 Đường Demo, Thanh Xuân, Hà Nội",
+      "date_of_birth": "1993-04-20"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 11,
+    "fields": {
+      "user": [
+        "demo_customer_011"
+      ],
+      "full_name": "Phan Hải Yến",
+      "email": "demo.customer.011@example.com",
+      "phone_number": "0900000011",
+      "address": "22 Đường Demo, Nam Từ Liêm, Hà Nội",
+      "date_of_birth": "1992-04-11"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 12,
+    "fields": {
+      "user": [
+        "demo_customer_012"
+      ],
+      "full_name": "Mai Quang Huy",
+      "email": "demo.customer.012@example.com",
+      "phone_number": "0900000012",
+      "address": "23 Đường Demo, Hải Châu, Đà Nẵng",
+      "date_of_birth": "1991-04-03"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 13,
+    "fields": {
+      "user": [
+        "demo_customer_013"
+      ],
+      "full_name": "Tạ Hữu Phước",
+      "email": "demo.customer.013@example.com",
+      "phone_number": "0900000013",
+      "address": "24 Đường Demo, Quận 1, TP. Hồ Chí Minh",
+      "date_of_birth": "1990-03-25"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 14,
+    "fields": {
+      "user": [
+        "demo_customer_014"
+      ],
+      "full_name": "Dương Bảo Ngọc",
+      "email": "demo.customer.014@example.com",
+      "phone_number": "0900000014",
+      "address": "25 Đường Demo, Bình Thạnh, TP. Hồ Chí Minh",
+      "date_of_birth": "1989-03-16"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 15,
+    "fields": {
+      "user": [
+        "demo_customer_015"
+      ],
+      "full_name": "Cao Anh Khoa",
+      "email": "demo.customer.015@example.com",
+      "phone_number": "0900000015",
+      "address": "26 Đường Demo, Ninh Kiều, Cần Thơ",
+      "date_of_birth": "1988-03-07"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 16,
+    "fields": {
+      "user": [
+        "demo_customer_016"
+      ],
+      "full_name": "Lương Thùy Dương",
+      "email": "demo.customer.016@example.com",
+      "phone_number": "0900000016",
+      "address": "27 Đường Demo, Lê Chân, Hải Phòng",
+      "date_of_birth": "1987-02-27"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 17,
+    "fields": {
+      "user": [
+        "demo_customer_017"
+      ],
+      "full_name": "Hà Việt Hoàng",
+      "email": "demo.customer.017@example.com",
+      "phone_number": "0900000017",
+      "address": "28 Đường Demo, Cầu Giấy, Hà Nội",
+      "date_of_birth": "1986-02-18"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 18,
+    "fields": {
+      "user": [
+        "demo_customer_018"
+      ],
+      "full_name": "Chu Minh Quân",
+      "email": "demo.customer.018@example.com",
+      "phone_number": "0900000018",
+      "address": "29 Đường Demo, Thanh Xuân, Hà Nội",
+      "date_of_birth": "1985-02-09"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 19,
+    "fields": {
+      "user": [
+        "demo_customer_019"
+      ],
+      "full_name": "Đinh Phương Thảo",
+      "email": "demo.customer.019@example.com",
+      "phone_number": "0900000019",
+      "address": "30 Đường Demo, Nam Từ Liêm, Hà Nội",
+      "date_of_birth": "2002-01-27"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 20,
+    "fields": {
+      "user": [
+        "demo_customer_020"
+      ],
+      "full_name": "Trịnh An Nhiên",
+      "email": "demo.customer.020@example.com",
+      "phone_number": "0900000020",
+      "address": "31 Đường Demo, Hải Châu, Đà Nẵng",
+      "date_of_birth": "2001-01-18"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 21,
+    "fields": {
+      "user": [
+        "demo_customer_021"
+      ],
+      "full_name": "Đào Công Vinh",
+      "email": "demo.customer.021@example.com",
+      "phone_number": "0900000021",
+      "address": "32 Đường Demo, Quận 1, TP. Hồ Chí Minh",
+      "date_of_birth": "2000-01-10"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 22,
+    "fields": {
+      "user": [
+        "demo_customer_022"
+      ],
+      "full_name": "Kiều Thanh Mai",
+      "email": "demo.customer.022@example.com",
+      "phone_number": "0900000022",
+      "address": "33 Đường Demo, Bình Thạnh, TP. Hồ Chí Minh",
+      "date_of_birth": "1999-01-01"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 23,
+    "fields": {
+      "user": [
+        "demo_customer_023"
+      ],
+      "full_name": "Lâm Gia Bách",
+      "email": "demo.customer.023@example.com",
+      "phone_number": "0900000023",
+      "address": "34 Đường Demo, Ninh Kiều, Cần Thơ",
+      "date_of_birth": "1997-12-23"
+    }
+  },
+  {
+    "model": "store.customer",
+    "pk": 24,
+    "fields": {
+      "user": [
+        "demo_customer_024"
+      ],
+      "full_name": "Tô Khánh An",
+      "email": "demo.customer.024@example.com",
+      "phone_number": "0900000024",
+      "address": "35 Đường Demo, Lê Chân, Hải Phòng",
+      "date_of_birth": "1996-12-14"
+    }
+  },
+  {
+    "model": "store.cart",
+    "pk": 1,
+    "fields": {
+      "user": null,
+      "created_at": "2026-05-17T02:19:30.286Z",
+      "updated_at": "2026-05-17T02:19:30.286Z"
+    }
+  },
+  {
+    "model": "store.cart",
+    "pk": 2,
+    "fields": {
+      "user": null,
+      "created_at": "2026-05-17T02:20:32.050Z",
+      "updated_at": "2026-05-17T02:20:32.050Z"
+    }
+  },
+  {
+    "model": "store.cart",
+    "pk": 3,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "created_at": "2026-05-25T08:36:01.418Z",
+      "updated_at": "2026-05-25T08:36:01.418Z"
+    }
+  },
+  {
+    "model": "store.cartitem",
+    "pk": 1,
+    "fields": {
+      "cart": 1,
+      "product": 13,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.cartitem",
+    "pk": 6,
+    "fields": {
+      "cart": 2,
+      "product": 13,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 1,
+    "fields": {
+      "code": "DEMO001",
+      "customer": 1,
+      "discount_amount": "150000.00",
+      "valid_until": "2026-07-16T10:12:00.881Z",
+      "is_used": true
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 2,
+    "fields": {
+      "code": "DEMO004",
+      "customer": 4,
+      "discount_amount": "200000.00",
+      "valid_until": "2026-07-23T10:12:00.881Z",
+      "is_used": false
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 3,
+    "fields": {
+      "code": "DEMO007",
+      "customer": 7,
+      "discount_amount": "50000.00",
+      "valid_until": "2026-08-03T10:12:00.881Z",
+      "is_used": true
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 4,
+    "fields": {
+      "code": "DEMO010",
+      "customer": 10,
+      "discount_amount": "50000.00",
+      "valid_until": "2026-08-11T10:12:00.881Z",
+      "is_used": false
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 5,
+    "fields": {
+      "code": "DEMO013",
+      "customer": 13,
+      "discount_amount": "50000.00",
+      "valid_until": "2026-07-10T10:12:00.881Z",
+      "is_used": true
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 6,
+    "fields": {
+      "code": "DEMO016",
+      "customer": 16,
+      "discount_amount": "100000.00",
+      "valid_until": "2026-07-27T10:12:00.881Z",
+      "is_used": false
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 7,
+    "fields": {
+      "code": "DEMO019",
+      "customer": 19,
+      "discount_amount": "200000.00",
+      "valid_until": "2026-08-27T10:12:00.881Z",
+      "is_used": true
+    }
+  },
+  {
+    "model": "store.voucher",
+    "pk": 8,
+    "fields": {
+      "code": "DEMO022",
+      "customer": 22,
+      "discount_amount": "200000.00",
+      "valid_until": "2026-08-12T10:12:00.881Z",
+      "is_used": false
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 1,
+    "fields": {
+      "customer": 1,
+      "voucher": 7,
+      "total_amount": "25700000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-11T03:13:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 2,
+    "fields": {
+      "customer": 21,
+      "voucher": null,
+      "total_amount": "123400000.00",
+      "status": "Pending",
+      "created_at": "2026-05-09T22:54:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 3,
+    "fields": {
+      "customer": 3,
+      "voucher": null,
+      "total_amount": "54950000.00",
+      "status": "Pending",
+      "created_at": "2026-04-30T00:10:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 4,
+    "fields": {
+      "customer": 20,
+      "voucher": null,
+      "total_amount": "49550000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-11T02:34:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 5,
+    "fields": {
+      "customer": 10,
+      "voucher": null,
+      "total_amount": "36400000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-05T03:03:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 6,
+    "fields": {
+      "customer": 3,
+      "voucher": null,
+      "total_amount": "1000000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-02T00:56:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 7,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "11100000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-14T19:42:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 8,
+    "fields": {
+      "customer": 22,
+      "voucher": 2,
+      "total_amount": "1650000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-08T02:25:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 9,
+    "fields": {
+      "customer": 8,
+      "voucher": null,
+      "total_amount": "13900000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-21T04:33:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 10,
+    "fields": {
+      "customer": 11,
+      "voucher": null,
+      "total_amount": "11950000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-16T05:00:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 11,
+    "fields": {
+      "customer": 7,
+      "voucher": null,
+      "total_amount": "42800000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-25T22:20:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 12,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "15590000.00",
+      "status": "Pending",
+      "created_at": "2026-06-26T22:38:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 13,
+    "fields": {
+      "customer": 7,
+      "voucher": null,
+      "total_amount": "24850000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-12T05:25:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 14,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "0.00",
+      "status": "Pending",
+      "created_at": "2026-03-09T02:30:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 15,
+    "fields": {
+      "customer": 23,
+      "voucher": 4,
+      "total_amount": "4450000.00",
+      "status": "Shipped",
+      "created_at": "2026-06-20T22:35:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 16,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "31600000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-17T22:38:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 17,
+    "fields": {
+      "customer": 3,
+      "voucher": null,
+      "total_amount": "23600000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-24T20:34:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 18,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "83050000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-08T01:12:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 19,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "12700000.00",
+      "status": "Pending",
+      "created_at": "2026-03-22T05:59:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 20,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "8550000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-05T04:32:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 21,
+    "fields": {
+      "customer": 15,
+      "voucher": null,
+      "total_amount": "43700000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-03T21:18:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 22,
+    "fields": {
+      "customer": 24,
+      "voucher": 5,
+      "total_amount": "22450000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-10T19:19:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 23,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "8850000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-29T19:03:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 24,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "3250000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-09T22:21:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 25,
+    "fields": {
+      "customer": 23,
+      "voucher": null,
+      "total_amount": "23650000.00",
+      "status": "Shipped",
+      "created_at": "2026-06-02T00:06:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 26,
+    "fields": {
+      "customer": 18,
+      "voucher": null,
+      "total_amount": "53650000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-01T21:15:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 27,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "8550000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-14T23:04:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 28,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "37300000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-18T03:33:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 29,
+    "fields": {
+      "customer": 6,
+      "voucher": 6,
+      "total_amount": "123950000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-04T23:50:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 30,
+    "fields": {
+      "customer": 18,
+      "voucher": null,
+      "total_amount": "1000000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-25T07:00:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 31,
+    "fields": {
+      "customer": 18,
+      "voucher": null,
+      "total_amount": "76360000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-12T06:54:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 32,
+    "fields": {
+      "customer": 17,
+      "voucher": null,
+      "total_amount": "26300000.00",
+      "status": "Shipped",
+      "created_at": "2026-06-22T01:02:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 33,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "21400000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-05T22:16:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 34,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "12700000.00",
+      "status": "Pending",
+      "created_at": "2026-03-08T21:30:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 35,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "8550000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-21T01:25:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 36,
+    "fields": {
+      "customer": 3,
+      "voucher": 3,
+      "total_amount": "67900000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-17T06:06:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 37,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "30300000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-10T01:00:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 38,
+    "fields": {
+      "customer": 23,
+      "voucher": null,
+      "total_amount": "4300000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-13T05:49:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 39,
+    "fields": {
+      "customer": 20,
+      "voucher": null,
+      "total_amount": "19600000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-22T00:21:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 40,
+    "fields": {
+      "customer": 23,
+      "voucher": null,
+      "total_amount": "100550000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-16T06:56:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 41,
+    "fields": {
+      "customer": 6,
+      "voucher": null,
+      "total_amount": "27300000.00",
+      "status": "Pending",
+      "created_at": "2026-04-22T20:50:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 42,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "17810000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-23T01:45:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 43,
+    "fields": {
+      "customer": 17,
+      "voucher": 6,
+      "total_amount": "289000000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-15T19:08:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 44,
+    "fields": {
+      "customer": 20,
+      "voucher": null,
+      "total_amount": "138730000.00",
+      "status": "Pending",
+      "created_at": "2026-01-26T20:08:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 45,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "14350000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-17T00:09:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 46,
+    "fields": {
+      "customer": 20,
+      "voucher": null,
+      "total_amount": "23500000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-04T01:25:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 47,
+    "fields": {
+      "customer": 2,
+      "voucher": null,
+      "total_amount": "3000000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-07T22:40:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 48,
+    "fields": {
+      "customer": 22,
+      "voucher": null,
+      "total_amount": "5700000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-21T22:25:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 49,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "59350000.00",
+      "status": "Pending",
+      "created_at": "2026-01-07T07:09:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 50,
+    "fields": {
+      "customer": 2,
+      "voucher": 1,
+      "total_amount": "15750000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-27T01:39:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 51,
+    "fields": {
+      "customer": 3,
+      "voucher": null,
+      "total_amount": "34000000.00",
+      "status": "Pending",
+      "created_at": "2026-06-21T04:10:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 52,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "152700000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-18T00:38:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 53,
+    "fields": {
+      "customer": 3,
+      "voucher": null,
+      "total_amount": "4150000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-10T20:36:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 54,
+    "fields": {
+      "customer": 22,
+      "voucher": null,
+      "total_amount": "18500000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-07T02:11:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 55,
+    "fields": {
+      "customer": 12,
+      "voucher": null,
+      "total_amount": "11100000.00",
+      "status": "Pending",
+      "created_at": "2026-04-22T04:40:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 56,
+    "fields": {
+      "customer": 12,
+      "voucher": null,
+      "total_amount": "44100000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-17T21:06:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 57,
+    "fields": {
+      "customer": 20,
+      "voucher": 6,
+      "total_amount": "86340000.00",
+      "status": "Pending",
+      "created_at": "2026-02-03T19:19:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 58,
+    "fields": {
+      "customer": 4,
+      "voucher": null,
+      "total_amount": "215040000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-16T23:51:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 59,
+    "fields": {
+      "customer": 1,
+      "voucher": null,
+      "total_amount": "141950000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-06T19:36:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 60,
+    "fields": {
+      "customer": 22,
+      "voucher": null,
+      "total_amount": "75600000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-24T05:52:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 61,
+    "fields": {
+      "customer": 7,
+      "voucher": null,
+      "total_amount": "78000000.00",
+      "status": "Pending",
+      "created_at": "2026-04-17T19:04:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 62,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "73250000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-08T23:09:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 63,
+    "fields": {
+      "customer": 12,
+      "voucher": null,
+      "total_amount": "25700000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-15T04:51:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 64,
+    "fields": {
+      "customer": 17,
+      "voucher": 7,
+      "total_amount": "4300000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-07T00:04:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 65,
+    "fields": {
+      "customer": 20,
+      "voucher": null,
+      "total_amount": "5550000.00",
+      "status": "Pending",
+      "created_at": "2026-02-03T23:30:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 66,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "33400000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-21T00:35:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 67,
+    "fields": {
+      "customer": 15,
+      "voucher": null,
+      "total_amount": "36450000.00",
+      "status": "Pending",
+      "created_at": "2026-05-31T20:19:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 68,
+    "fields": {
+      "customer": 17,
+      "voucher": null,
+      "total_amount": "30150000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-09T05:55:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 69,
+    "fields": {
+      "customer": 12,
+      "voucher": null,
+      "total_amount": "61800000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-24T03:10:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 70,
+    "fields": {
+      "customer": 14,
+      "voucher": null,
+      "total_amount": "47300000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-07T03:07:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 71,
+    "fields": {
+      "customer": 7,
+      "voucher": 6,
+      "total_amount": "12900000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-26T20:00:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 72,
+    "fields": {
+      "customer": 5,
+      "voucher": null,
+      "total_amount": "61400000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-01T04:09:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 73,
+    "fields": {
+      "customer": 11,
+      "voucher": null,
+      "total_amount": "18480000.00",
+      "status": "Cancelled",
+      "created_at": "2026-04-21T02:26:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 74,
+    "fields": {
+      "customer": 8,
+      "voucher": null,
+      "total_amount": "48550000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-20T22:39:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 75,
+    "fields": {
+      "customer": 10,
+      "voucher": null,
+      "total_amount": "152280000.00",
+      "status": "Pending",
+      "created_at": "2026-02-08T01:53:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 76,
+    "fields": {
+      "customer": 1,
+      "voucher": null,
+      "total_amount": "23050000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-17T00:13:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 77,
+    "fields": {
+      "customer": 9,
+      "voucher": null,
+      "total_amount": "43500000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-27T23:24:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 78,
+    "fields": {
+      "customer": 5,
+      "voucher": 3,
+      "total_amount": "31900000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-11T23:22:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 79,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "5260000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-07T19:05:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 80,
+    "fields": {
+      "customer": 15,
+      "voucher": null,
+      "total_amount": "31600000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-05T01:55:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 81,
+    "fields": {
+      "customer": 11,
+      "voucher": null,
+      "total_amount": "255100000.00",
+      "status": "Pending",
+      "created_at": "2026-06-23T18:19:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 82,
+    "fields": {
+      "customer": 4,
+      "voucher": null,
+      "total_amount": "98100000.00",
+      "status": "Shipped",
+      "created_at": "2026-03-16T03:07:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 83,
+    "fields": {
+      "customer": 14,
+      "voucher": null,
+      "total_amount": "43500000.00",
+      "status": "Cancelled",
+      "created_at": "2026-03-10T02:32:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 84,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "6700000.00",
+      "status": "Pending",
+      "created_at": "2026-06-25T04:28:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 85,
+    "fields": {
+      "customer": 1,
+      "voucher": 8,
+      "total_amount": "1000000.00",
+      "status": "Pending",
+      "created_at": "2026-01-29T00:39:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 86,
+    "fields": {
+      "customer": 7,
+      "voucher": null,
+      "total_amount": "30680000.00",
+      "status": "Cancelled",
+      "created_at": "2026-04-25T05:20:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 87,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "74350000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-04T23:53:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 88,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "14800000.00",
+      "status": "Shipped",
+      "created_at": "2026-01-26T22:19:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 89,
+    "fields": {
+      "customer": 21,
+      "voucher": null,
+      "total_amount": "26050000.00",
+      "status": "Shipped",
+      "created_at": "2026-06-26T00:28:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 90,
+    "fields": {
+      "customer": 15,
+      "voucher": null,
+      "total_amount": "3250000.00",
+      "status": "Cancelled",
+      "created_at": "2026-04-04T00:17:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 91,
+    "fields": {
+      "customer": 23,
+      "voucher": null,
+      "total_amount": "65350000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-01T05:27:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 92,
+    "fields": {
+      "customer": 7,
+      "voucher": 5,
+      "total_amount": "168450000.00",
+      "status": "Shipped",
+      "created_at": "2026-02-16T19:12:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 93,
+    "fields": {
+      "customer": 4,
+      "voucher": null,
+      "total_amount": "154500000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-15T02:47:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 94,
+    "fields": {
+      "customer": 19,
+      "voucher": null,
+      "total_amount": "116150000.00",
+      "status": "Shipped",
+      "created_at": "2026-06-25T01:35:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 95,
+    "fields": {
+      "customer": 23,
+      "voucher": null,
+      "total_amount": "77850000.00",
+      "status": "Shipped",
+      "created_at": "2026-04-13T19:32:00.881Z"
+    }
+  },
+  {
+    "model": "store.order",
+    "pk": 96,
+    "fields": {
+      "customer": 24,
+      "voucher": null,
+      "total_amount": "5040000.00",
+      "status": "Shipped",
+      "created_at": "2026-05-26T21:17:00.881Z"
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 2,
+    "fields": {
+      "order": 1,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 3,
+    "fields": {
+      "order": 1,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 4,
+    "fields": {
+      "order": 1,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 5,
+    "fields": {
+      "order": 2,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 6,
+    "fields": {
+      "order": 2,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 7,
+    "fields": {
+      "order": 3,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 8,
+    "fields": {
+      "order": 3,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 9,
+    "fields": {
+      "order": 3,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 10,
+    "fields": {
+      "order": 3,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 11,
+    "fields": {
+      "order": 4,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 12,
+    "fields": {
+      "order": 4,
+      "product": 1,
+      "price": "38500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 13,
+    "fields": {
+      "order": 4,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 14,
+    "fields": {
+      "order": 4,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 15,
+    "fields": {
+      "order": 5,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 16,
+    "fields": {
+      "order": 5,
+      "product": 26,
+      "price": "3600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 17,
+    "fields": {
+      "order": 5,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 18,
+    "fields": {
+      "order": 5,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 19,
+    "fields": {
+      "order": 6,
+      "product": 33,
+      "price": "1000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 20,
+    "fields": {
+      "order": 7,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 21,
+    "fields": {
+      "order": 7,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 22,
+    "fields": {
+      "order": 7,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 23,
+    "fields": {
+      "order": 7,
+      "product": 13,
+      "price": "2450000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 24,
+    "fields": {
+      "order": 8,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 25,
+    "fields": {
+      "order": 8,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 26,
+    "fields": {
+      "order": 9,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 27,
+    "fields": {
+      "order": 9,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 28,
+    "fields": {
+      "order": 9,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 29,
+    "fields": {
+      "order": 10,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 30,
+    "fields": {
+      "order": 10,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 31,
+    "fields": {
+      "order": 10,
+      "product": 13,
+      "price": "2450000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 32,
+    "fields": {
+      "order": 11,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 33,
+    "fields": {
+      "order": 12,
+      "product": 25,
+      "price": "4200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 34,
+    "fields": {
+      "order": 12,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 35,
+    "fields": {
+      "order": 12,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 36,
+    "fields": {
+      "order": 12,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 37,
+    "fields": {
+      "order": 13,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 38,
+    "fields": {
+      "order": 13,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 39,
+    "fields": {
+      "order": 13,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 40,
+    "fields": {
+      "order": 14,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 41,
+    "fields": {
+      "order": 15,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 42,
+    "fields": {
+      "order": 16,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 43,
+    "fields": {
+      "order": 17,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 44,
+    "fields": {
+      "order": 17,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 45,
+    "fields": {
+      "order": 17,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 46,
+    "fields": {
+      "order": 18,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 47,
+    "fields": {
+      "order": 18,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 48,
+    "fields": {
+      "order": 18,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 49,
+    "fields": {
+      "order": 19,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 50,
+    "fields": {
+      "order": 19,
+      "product": 25,
+      "price": "4200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 51,
+    "fields": {
+      "order": 20,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 52,
+    "fields": {
+      "order": 20,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 53,
+    "fields": {
+      "order": 20,
+      "product": 27,
+      "price": "2950000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 54,
+    "fields": {
+      "order": 21,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 55,
+    "fields": {
+      "order": 21,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 56,
+    "fields": {
+      "order": 21,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 57,
+    "fields": {
+      "order": 21,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 58,
+    "fields": {
+      "order": 22,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 59,
+    "fields": {
+      "order": 22,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 60,
+    "fields": {
+      "order": 22,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 61,
+    "fields": {
+      "order": 23,
+      "product": 27,
+      "price": "2950000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 62,
+    "fields": {
+      "order": 24,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 63,
+    "fields": {
+      "order": 25,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 64,
+    "fields": {
+      "order": 25,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 65,
+    "fields": {
+      "order": 25,
+      "product": 21,
+      "price": "6900000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 66,
+    "fields": {
+      "order": 26,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 67,
+    "fields": {
+      "order": 26,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 68,
+    "fields": {
+      "order": 26,
+      "product": 27,
+      "price": "2950000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 69,
+    "fields": {
+      "order": 26,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 70,
+    "fields": {
+      "order": 27,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 71,
+    "fields": {
+      "order": 28,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 72,
+    "fields": {
+      "order": 28,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 73,
+    "fields": {
+      "order": 29,
+      "product": 1,
+      "price": "38500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 74,
+    "fields": {
+      "order": 29,
+      "product": 15,
+      "price": "9800000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 75,
+    "fields": {
+      "order": 29,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 76,
+    "fields": {
+      "order": 29,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 77,
+    "fields": {
+      "order": 30,
+      "product": 33,
+      "price": "1000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 78,
+    "fields": {
+      "order": 31,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 79,
+    "fields": {
+      "order": 31,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 80,
+    "fields": {
+      "order": 32,
+      "product": 15,
+      "price": "9800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 81,
+    "fields": {
+      "order": 32,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 82,
+    "fields": {
+      "order": 33,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 83,
+    "fields": {
+      "order": 33,
+      "product": 26,
+      "price": "3600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 84,
+    "fields": {
+      "order": 34,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 85,
+    "fields": {
+      "order": 34,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 86,
+    "fields": {
+      "order": 35,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 87,
+    "fields": {
+      "order": 36,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 88,
+    "fields": {
+      "order": 36,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 89,
+    "fields": {
+      "order": 36,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 90,
+    "fields": {
+      "order": 36,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 91,
+    "fields": {
+      "order": 37,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 92,
+    "fields": {
+      "order": 37,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 93,
+    "fields": {
+      "order": 38,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 94,
+    "fields": {
+      "order": 39,
+      "product": 15,
+      "price": "9800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 95,
+    "fields": {
+      "order": 40,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 96,
+    "fields": {
+      "order": 40,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 97,
+    "fields": {
+      "order": 40,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 98,
+    "fields": {
+      "order": 40,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 99,
+    "fields": {
+      "order": 41,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 100,
+    "fields": {
+      "order": 41,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 101,
+    "fields": {
+      "order": 42,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 102,
+    "fields": {
+      "order": 42,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 103,
+    "fields": {
+      "order": 42,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 104,
+    "fields": {
+      "order": 42,
+      "product": 25,
+      "price": "4200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 105,
+    "fields": {
+      "order": 43,
+      "product": 4,
+      "price": "69500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 106,
+    "fields": {
+      "order": 43,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 107,
+    "fields": {
+      "order": 43,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 108,
+    "fields": {
+      "order": 44,
+      "product": 15,
+      "price": "9800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 109,
+    "fields": {
+      "order": 44,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 110,
+    "fields": {
+      "order": 44,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 111,
+    "fields": {
+      "order": 44,
+      "product": 1,
+      "price": "38500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 112,
+    "fields": {
+      "order": 45,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 113,
+    "fields": {
+      "order": 45,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 114,
+    "fields": {
+      "order": 45,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 115,
+    "fields": {
+      "order": 45,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 116,
+    "fields": {
+      "order": 46,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 117,
+    "fields": {
+      "order": 46,
+      "product": 15,
+      "price": "9800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 118,
+    "fields": {
+      "order": 47,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 119,
+    "fields": {
+      "order": 48,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 120,
+    "fields": {
+      "order": 49,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 121,
+    "fields": {
+      "order": 49,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 122,
+    "fields": {
+      "order": 49,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 123,
+    "fields": {
+      "order": 49,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 124,
+    "fields": {
+      "order": 50,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 125,
+    "fields": {
+      "order": 51,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 126,
+    "fields": {
+      "order": 51,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 127,
+    "fields": {
+      "order": 51,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 128,
+    "fields": {
+      "order": 51,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 129,
+    "fields": {
+      "order": 52,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 130,
+    "fields": {
+      "order": 52,
+      "product": 1,
+      "price": "38500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 131,
+    "fields": {
+      "order": 52,
+      "product": 21,
+      "price": "6900000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 132,
+    "fields": {
+      "order": 52,
+      "product": 4,
+      "price": "69500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 133,
+    "fields": {
+      "order": 53,
+      "product": 27,
+      "price": "2950000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 134,
+    "fields": {
+      "order": 53,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 135,
+    "fields": {
+      "order": 54,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 136,
+    "fields": {
+      "order": 54,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 137,
+    "fields": {
+      "order": 55,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 138,
+    "fields": {
+      "order": 55,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 139,
+    "fields": {
+      "order": 55,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 140,
+    "fields": {
+      "order": 55,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 141,
+    "fields": {
+      "order": 56,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 142,
+    "fields": {
+      "order": 56,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 143,
+    "fields": {
+      "order": 57,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 144,
+    "fields": {
+      "order": 57,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 145,
+    "fields": {
+      "order": 58,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 146,
+    "fields": {
+      "order": 58,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 147,
+    "fields": {
+      "order": 58,
+      "product": 4,
+      "price": "69500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 148,
+    "fields": {
+      "order": 59,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 149,
+    "fields": {
+      "order": 59,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 150,
+    "fields": {
+      "order": 59,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 151,
+    "fields": {
+      "order": 59,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 152,
+    "fields": {
+      "order": 60,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 153,
+    "fields": {
+      "order": 60,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 154,
+    "fields": {
+      "order": 60,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 155,
+    "fields": {
+      "order": 60,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 156,
+    "fields": {
+      "order": 61,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 157,
+    "fields": {
+      "order": 61,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 158,
+    "fields": {
+      "order": 61,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 159,
+    "fields": {
+      "order": 62,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 160,
+    "fields": {
+      "order": 62,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 161,
+    "fields": {
+      "order": 62,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 162,
+    "fields": {
+      "order": 63,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 163,
+    "fields": {
+      "order": 63,
+      "product": 25,
+      "price": "4200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 164,
+    "fields": {
+      "order": 63,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 165,
+    "fields": {
+      "order": 63,
+      "product": 27,
+      "price": "2950000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 166,
+    "fields": {
+      "order": 64,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 167,
+    "fields": {
+      "order": 64,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 168,
+    "fields": {
+      "order": 65,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 169,
+    "fields": {
+      "order": 66,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 170,
+    "fields": {
+      "order": 66,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 171,
+    "fields": {
+      "order": 67,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 172,
+    "fields": {
+      "order": 67,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 173,
+    "fields": {
+      "order": 67,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 174,
+    "fields": {
+      "order": 68,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 175,
+    "fields": {
+      "order": 68,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 176,
+    "fields": {
+      "order": 68,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 177,
+    "fields": {
+      "order": 69,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 178,
+    "fields": {
+      "order": 69,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 179,
+    "fields": {
+      "order": 69,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 180,
+    "fields": {
+      "order": 70,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 181,
+    "fields": {
+      "order": 70,
+      "product": 13,
+      "price": "2450000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 182,
+    "fields": {
+      "order": 70,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 183,
+    "fields": {
+      "order": 71,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 184,
+    "fields": {
+      "order": 71,
+      "product": 24,
+      "price": "2150000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 185,
+    "fields": {
+      "order": 71,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 186,
+    "fields": {
+      "order": 71,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 187,
+    "fields": {
+      "order": 72,
+      "product": 13,
+      "price": "2450000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 188,
+    "fields": {
+      "order": 72,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 189,
+    "fields": {
+      "order": 72,
+      "product": 22,
+      "price": "2000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 190,
+    "fields": {
+      "order": 72,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 191,
+    "fields": {
+      "order": 73,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 192,
+    "fields": {
+      "order": 73,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 193,
+    "fields": {
+      "order": 73,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 194,
+    "fields": {
+      "order": 74,
+      "product": 33,
+      "price": "1000000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 195,
+    "fields": {
+      "order": 74,
+      "product": 8,
+      "price": "2850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 196,
+    "fields": {
+      "order": 74,
+      "product": 7,
+      "price": "12600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 197,
+    "fields": {
+      "order": 74,
+      "product": 13,
+      "price": "2450000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 198,
+    "fields": {
+      "order": 75,
+      "product": 21,
+      "price": "6900000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 199,
+    "fields": {
+      "order": 75,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 200,
+    "fields": {
+      "order": 75,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 201,
+    "fields": {
+      "order": 75,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 202,
+    "fields": {
+      "order": 76,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 203,
+    "fields": {
+      "order": 76,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 204,
+    "fields": {
+      "order": 76,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 205,
+    "fields": {
+      "order": 77,
+      "product": 1,
+      "price": "38500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 206,
+    "fields": {
+      "order": 77,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 207,
+    "fields": {
+      "order": 77,
+      "product": 28,
+      "price": "0.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 208,
+    "fields": {
+      "order": 77,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 209,
+    "fields": {
+      "order": 78,
+      "product": 11,
+      "price": "5300000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 210,
+    "fields": {
+      "order": 78,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 211,
+    "fields": {
+      "order": 78,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 212,
+    "fields": {
+      "order": 79,
+      "product": 14,
+      "price": "280000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 213,
+    "fields": {
+      "order": 79,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 214,
+    "fields": {
+      "order": 80,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 215,
+    "fields": {
+      "order": 81,
+      "product": 5,
+      "price": "82000000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 216,
+    "fields": {
+      "order": 81,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 217,
+    "fields": {
+      "order": 81,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 218,
+    "fields": {
+      "order": 81,
+      "product": 32,
+      "price": "1500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 219,
+    "fields": {
+      "order": 82,
+      "product": 25,
+      "price": "4200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 220,
+    "fields": {
+      "order": 82,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 221,
+    "fields": {
+      "order": 82,
+      "product": 36,
+      "price": "1300000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 222,
+    "fields": {
+      "order": 82,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 223,
+    "fields": {
+      "order": 83,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 224,
+    "fields": {
+      "order": 83,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 225,
+    "fields": {
+      "order": 83,
+      "product": 12,
+      "price": "15800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 226,
+    "fields": {
+      "order": 84,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 227,
+    "fields": {
+      "order": 85,
+      "product": 35,
+      "price": "1200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 228,
+    "fields": {
+      "order": 86,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 229,
+    "fields": {
+      "order": 86,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 230,
+    "fields": {
+      "order": 87,
+      "product": 20,
+      "price": "2150000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 231,
+    "fields": {
+      "order": 87,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 232,
+    "fields": {
+      "order": 87,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 233,
+    "fields": {
+      "order": 87,
+      "product": 18,
+      "price": "1850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 234,
+    "fields": {
+      "order": 88,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 235,
+    "fields": {
+      "order": 88,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 236,
+    "fields": {
+      "order": 88,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 237,
+    "fields": {
+      "order": 89,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 238,
+    "fields": {
+      "order": 89,
+      "product": 16,
+      "price": "7600000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 239,
+    "fields": {
+      "order": 90,
+      "product": 19,
+      "price": "3250000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 240,
+    "fields": {
+      "order": 90,
+      "product": 29,
+      "price": "0.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 241,
+    "fields": {
+      "order": 91,
+      "product": 31,
+      "price": "3350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 242,
+    "fields": {
+      "order": 91,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 243,
+    "fields": {
+      "order": 91,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 244,
+    "fields": {
+      "order": 92,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 245,
+    "fields": {
+      "order": 92,
+      "product": 6,
+      "price": "36500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 246,
+    "fields": {
+      "order": 93,
+      "product": 4,
+      "price": "69500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 247,
+    "fields": {
+      "order": 93,
+      "product": 5,
+      "price": "82000000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 248,
+    "fields": {
+      "order": 93,
+      "product": 34,
+      "price": "1500000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 249,
+    "fields": {
+      "order": 94,
+      "product": 21,
+      "price": "6900000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 250,
+    "fields": {
+      "order": 94,
+      "product": 17,
+      "price": "2350000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 251,
+    "fields": {
+      "order": 94,
+      "product": 3,
+      "price": "42800000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 252,
+    "fields": {
+      "order": 94,
+      "product": 10,
+      "price": "7200000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 253,
+    "fields": {
+      "order": 95,
+      "product": 30,
+      "price": "2850000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 254,
+    "fields": {
+      "order": 95,
+      "product": 23,
+      "price": "14500000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 255,
+    "fields": {
+      "order": 95,
+      "product": 2,
+      "price": "29500000.00",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 256,
+    "fields": {
+      "order": 95,
+      "product": 33,
+      "price": "1000000.00",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "store.orderitem",
+    "pk": 257,
+    "fields": {
+      "order": 96,
+      "product": 9,
+      "price": "1680000.00",
+      "quantity": 3
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 32,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-06-01T07:21:01.063Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 2,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 35,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-06-01T07:21:11.255Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 3,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 22,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-06-01T07:21:27.339Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 4,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 35,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-06-28T11:18:46.981Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 5,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 33,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-06-30T04:35:31.761Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 6,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 35,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-07-04T02:05:17.684Z"
+    }
+  },
+  {
+    "model": "store.recommendationlog",
+    "pk": 7,
+    "fields": {
+      "user": [
+        "Long"
+      ],
+      "product": 35,
+      "interaction_type": "add_to_cart",
+      "created_at": "2026-07-04T02:16:23.658Z"
+    }
+  },
+  {
+    "model": "store.scheduledtask",
+    "pk": 4,
+    "fields": {
+      "task_type": "lock_stock",
+      "status": "pending",
+      "execution_log": "recurring_minutes=360; default_task=true; next_run_at=30/06/2026 06:33; label=Canh bao ton kho thap",
+      "run_at": "2026-06-29T23:33:00Z",
+      "created_at": "2026-06-03T10:13:13.999Z"
+    }
+  },
+  {
+    "model": "store.scheduledtask",
+    "pk": 5,
+    "fields": {
+      "task_type": "auto_hide",
+      "status": "pending",
+      "execution_log": "recurring_minutes=5; default_task=true; next_run_at=30/06/2026 00:38; label=Tu dong an san pham het hang",
+      "run_at": "2026-06-29T17:38:00Z",
+      "created_at": "2026-06-03T10:13:14.001Z"
+    }
+  },
+  {
+    "model": "store.scheduledtask",
+    "pk": 6,
+    "fields": {
+      "task_type": "birthday_mail",
+      "status": "pending",
+      "execution_log": "recurring=daily; default_task=true; next_run_at=04/06/2026 08:00; label=Gui email cham soc sinh nhat",
+      "run_at": "2026-06-04T01:00:00Z",
+      "created_at": "2026-06-03T10:13:14.003Z"
+    }
+  }
+]

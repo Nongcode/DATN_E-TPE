@@ -10,6 +10,8 @@ from .models import (
     Cart,
     CartItem,
     Category,
+    ConsultationRequest,
+    ConsultationRequestItem,
     Customer,
     Inventory,
     Order,
@@ -29,9 +31,9 @@ def action_buttons_for(obj, admin_name):
     return format_html(
         '<div class="product-actions">'
         '<a class="btn btn-sm btn-info text-white" href="{}" style="margin-right: 5px;">'
-        '<i class="fas fa-edit"></i> Sua</a>'
+        '<i class="fas fa-edit"></i> Sửa</a>'
         '<a class="btn btn-sm btn-danger text-white" href="{}">'
-        '<i class="fas fa-trash"></i> Xoa</a>'
+        '<i class="fas fa-trash"></i> Xóa</a>'
         '</div>',
         edit_url,
         delete_url,
@@ -42,14 +44,14 @@ ADMIN_LIST_PER_PAGE = 8
 
 
 class ProductCountFilter(admin.SimpleListFilter):
-    title = "So luong SP"
+    title = "Số lượng SP"
     parameter_name = "product_count"
 
     def lookups(self, request, model_admin):
         return (
-            ("0", "0 san pham"),
-            ("1_10", "1 - 10 san pham"),
-            ("10+", "Tren 10 san pham"),
+            ("0", "0 sản phẩm"),
+            ("1_10", "1 - 10 sản phẩm"),
+            ("10+", "Trên 10 sản phẩm"),
         )
 
     def queryset(self, request, queryset):
@@ -73,34 +75,34 @@ class CategoryAdmin(ImportExportModelAdmin):
 
     def get_product_count(self, obj):
         count = Product.objects.filter(category=obj).count()
-        return format_html('<span class="badge bg-secondary">{} san pham</span>', count)
+        return format_html('<span class="badge bg-secondary">{} sản phẩm</span>', count)
 
-    get_product_count.short_description = "So luong SP"
+    get_product_count.short_description = "Số lượng SP"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_category")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
     def status_badge(self, obj):
         if obj.status == "visible":
             return format_html(
                 '<span class="badge" style="background-color: #10b981; font-size: 13px; padding: 5px 10px;">{}</span>',
-                "Hien thi",
+                "Hiển thị",
             )
         if obj.status == "hidden":
             return format_html(
                 '<span class="badge" style="background-color: #64748b; font-size: 13px; padding: 5px 10px;">{}</span>',
-                "An",
+                "Ẩn",
             )
         if obj.status == "out_of_stock":
             return format_html(
                 '<span class="badge" style="background-color: #f59e0b; color: white; font-size: 13px; padding: 5px 10px;">{}</span>',
-                "Het hang",
+                "Hết hàng",
             )
         return obj.status
 
-    status_badge.short_description = "Trang thai"
+    status_badge.short_description = "Trạng thái"
 
 
 class ProductImageInline(admin.TabularInline):
@@ -115,13 +117,23 @@ class ProductAdmin(ImportExportModelAdmin):
         "name",
         "category",
         "sku_badge",
+        "brand_badge",
+        "compatibility_badge",
         "price_display",
         "active_badge",
         "action_buttons",
     )
-    list_filter = ("is_active", "category", "created_at")
+    list_filter = ("is_active", "category", "brand", "manufacturer", "created_at")
     list_display_links = ("name",)
-    search_fields = ("name", "sku", "category__name")
+    search_fields = (
+        "name",
+        "sku",
+        "brand",
+        "manufacturer",
+        "compatible_car_brands",
+        "compatible_car_models",
+        "category__name",
+    )
     prepopulated_fields = {"slug": ("name",)}
     list_per_page = ADMIN_LIST_PER_PAGE
 
@@ -135,27 +147,45 @@ class ProductAdmin(ImportExportModelAdmin):
     product_preview.short_description = ""
 
     def sku_badge(self, obj):
-        return format_html('<span class="product-sku">{}</span>', obj.sku or "Chua co SKU")
+        return format_html('<span class="product-sku">{}</span>', obj.sku or "Chưa có SKU")
 
     sku_badge.short_description = "SKU"
+
+    def brand_badge(self, obj):
+        if obj.brand:
+            return format_html('<span class="badge bg-light text-dark">{}</span>', obj.brand)
+        return "-"
+
+    brand_badge.short_description = "Thương hiệu"
+
+    def compatibility_badge(self, obj):
+        car_brands = obj.compatible_car_brands or "-"
+        car_models = obj.compatible_car_models or "-"
+        return format_html(
+            '<span class="text-nowrap"><strong>Hãng xe:</strong> {}<br><strong>Dòng xe:</strong> {}</span>',
+            car_brands,
+            car_models,
+        )
+
+    compatibility_badge.short_description = "Tương thích"
 
     def price_display(self, obj):
         price = f"{obj.price:,.0f}" if obj.price is not None else "0"
         return format_html('<span class="product-price">{} d</span>', price)
 
-    price_display.short_description = "Gia ban"
+    price_display.short_description = "Giá bán"
 
     def active_badge(self, obj):
         if obj.is_active:
-            return mark_safe('<span class="product-status product-status--active">Dang hien thi</span>')
-        return mark_safe('<span class="product-status product-status--hidden">Dang an</span>')
+            return mark_safe('<span class="product-status product-status--active">Đang hiển thị</span>')
+        return mark_safe('<span class="product-status product-status--hidden">Đang ẩn</span>')
 
-    active_badge.short_description = "Trang thai"
+    active_badge.short_description = "Trạng thái"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_product")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(Inventory)
@@ -168,46 +198,47 @@ class InventoryAdmin(ImportExportModelAdmin):
     list_per_page = ADMIN_LIST_PER_PAGE
 
     def quantity_badge(self, obj):
-        return format_html('<span class="product-sku">{} sp</span>', obj.quantity)
+        return format_html('<span class="product-sku">{} SP</span>', obj.quantity)
 
-    quantity_badge.short_description = "Ton kho"
+    quantity_badge.short_description = "Tồn kho"
 
     def stock_badge(self, obj):
         if obj.quantity <= 0:
-            return mark_safe('<span class="product-status product-status--danger">Het hang</span>')
+            return mark_safe('<span class="product-status product-status--danger">Hết hàng</span>')
         if obj.quantity <= obj.low_stock_threshold:
-            return mark_safe('<span class="product-status product-status--hidden">Sap het</span>')
-        return mark_safe('<span class="product-status product-status--active">Con hang</span>')
+            return mark_safe('<span class="product-status product-status--hidden">Sắp hết</span>')
+        return mark_safe('<span class="product-status product-status--active">Còn hàng</span>')
 
-    stock_badge.short_description = "Canh bao"
+    stock_badge.short_description = "Cảnh báo"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_inventory")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(Customer)
 class CustomerAdmin(ImportExportModelAdmin):
-    list_display = ("customer_name", "username", "email", "phone_number", "address", "action_buttons")
+    list_display = ("customer_name", "username", "email", "phone_number", "date_of_birth", "address", "action_buttons")
     list_display_links = ("customer_name",)
     search_fields = ("full_name", "user__username", "email", "phone_number", "address")
+    list_filter = ("date_of_birth",)
     list_per_page = ADMIN_LIST_PER_PAGE
 
     def customer_name(self, obj):
         return obj.full_name or obj.user.get_full_name() or obj.user.username
 
-    customer_name.short_description = "Khach hang"
+    customer_name.short_description = "Khách hàng"
 
     def username(self, obj):
         return obj.user.username
 
-    username.short_description = "Tai khoan"
+    username.short_description = "Tài khoản"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_customer")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(Voucher)
@@ -222,19 +253,19 @@ class VoucherAdmin(ImportExportModelAdmin):
         amount = f"{obj.discount_amount:,.0f}" if obj.discount_amount is not None else "0"
         return format_html('<span class="product-price">{} d</span>', amount)
 
-    discount_display.short_description = "Gia tri"
+    discount_display.short_description = "Giá trị"
 
     def used_badge(self, obj):
         if obj.is_used:
-            return mark_safe('<span class="product-status product-status--hidden">Da su dung</span>')
-        return mark_safe('<span class="product-status product-status--active">Con hieu luc</span>')
+            return mark_safe('<span class="product-status product-status--hidden">Đã sử dụng</span>')
+        return mark_safe('<span class="product-status product-status--active">Còn hiệu lực</span>')
 
-    used_badge.short_description = "Trang thai"
+    used_badge.short_description = "Trạng thái"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_voucher")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 class CartItemInline(admin.TabularInline):
@@ -250,7 +281,7 @@ class CartItemInline(admin.TabularInline):
         total = (obj.product.price or 0) * obj.quantity
         return f"{total:,.0f} d"
 
-    line_total.short_description = "Thanh tien"
+    line_total.short_description = "Thành tiền"
 
 
 @admin.register(Cart)
@@ -263,25 +294,25 @@ class CartAdmin(ImportExportModelAdmin):
     list_per_page = ADMIN_LIST_PER_PAGE
 
     def cart_label(self, obj):
-        return f"Gio hang #{obj.id}"
+        return f"Giỏ hàng #{obj.id}"
 
-    cart_label.short_description = "Gio hang"
+    cart_label.short_description = "Giỏ hàng"
 
     def item_count(self, obj):
         return sum(item.quantity for item in obj.items.all())
 
-    item_count.short_description = "So luong"
+    item_count.short_description = "Số lượng"
 
     def cart_total(self, obj):
         total = sum((item.product.price or 0) * item.quantity for item in obj.items.select_related("product"))
         return format_html('<span class="product-price">{} d</span>', f"{total:,.0f}")
 
-    cart_total.short_description = "Tam tinh"
+    cart_total.short_description = "Tạm tính"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_cart")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(Order)
@@ -293,30 +324,32 @@ class OrderAdmin(ImportExportModelAdmin):
     list_per_page = ADMIN_LIST_PER_PAGE
 
     def order_label(self, obj):
-        return f"Don hang #{obj.id}"
+        return f"Đơn hàng #{obj.id}"
 
-    order_label.short_description = "Don hang"
+    order_label.short_description = "Đơn hàng"
 
     def total_display(self, obj):
         total = f"{obj.total_amount:,.0f}" if obj.total_amount is not None else "0"
         return format_html('<span class="product-price">{} d</span>', total)
 
-    total_display.short_description = "Tong tien"
+    total_display.short_description = "Tổng tiền"
 
     def status_badge(self, obj):
         status_map = {
-            "Pending": '<span class="product-status product-status--hidden">Cho xu ly</span>',
-            "Shipped": '<span class="product-status product-status--active">Da giao hang</span>',
-            "Cancelled": '<span class="product-status product-status--danger">Da huy</span>',
+            "Pending": '<span class="product-status product-status--hidden">Chờ xử lý</span>',
+            "Confirmed": '<span class="product-status product-status--active">Đã lên đơn</span>',
+            "Shipping": '<span class="product-status product-status--hidden">Đang vận chuyển</span>',
+            "Shipped": '<span class="product-status product-status--active">Đã giao hàng</span>',
+            "Cancelled": '<span class="product-status product-status--danger">Đã hủy</span>',
         }
         return mark_safe(status_map.get(obj.status, obj.status))
 
-    status_badge.short_description = "Trang thai"
+    status_badge.short_description = "Trạng thái"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_order")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(OrderItem)
@@ -331,18 +364,18 @@ class OrderItemAdmin(ImportExportModelAdmin):
         price = f"{obj.price:,.0f}" if obj.price is not None else "0"
         return format_html('<span class="product-price">{} d</span>', price)
 
-    price_display.short_description = "Gia"
+    price_display.short_description = "Giá"
 
     def line_total(self, obj):
         total = (obj.price or 0) * obj.quantity
         return format_html('<span class="product-price">{} d</span>', f"{total:,.0f}")
 
-    line_total.short_description = "Thanh tien"
+    line_total.short_description = "Thành tiền"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_orderitem")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(CartItem)
@@ -358,12 +391,110 @@ class CartItemAdmin(ImportExportModelAdmin):
         total = (obj.product.price or 0) * obj.quantity
         return format_html('<span class="product-price">{} d</span>', f"{total:,.0f}")
 
-    line_total.short_description = "Thanh tien"
+    line_total.short_description = "Thành tiền"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_cartitem")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
+
+
+class ConsultationRequestItemInline(admin.TabularInline):
+    model = ConsultationRequestItem
+    extra = 0
+    fields = ("product", "quantity", "line_total")
+    readonly_fields = ("line_total",)
+    autocomplete_fields = ("product",)
+
+    def line_total(self, obj):
+        if not obj.pk:
+            return "-"
+        total = (obj.product.price or 0) * obj.quantity
+        return f"{total:,.0f} d"
+
+    line_total.short_description = "Tạm tính"
+
+
+@admin.register(ConsultationRequest)
+class ConsultationRequestAdmin(ImportExportModelAdmin):
+    list_display = (
+        "request_label",
+        "customer",
+        "phone",
+        "status_badge",
+        "product_summary",
+        "created_at",
+        "action_buttons",
+    )
+    list_display_links = ("request_label",)
+    list_filter = ("status", "created_at", "updated_at")
+    search_fields = (
+        "id",
+        "name",
+        "phone",
+        "email",
+        "customer__full_name",
+        "customer__user__username",
+        "items__product__name",
+        "items__product__sku",
+        "message",
+    )
+    readonly_fields = ("created_at", "updated_at")
+    list_select_related = ("customer", "customer__user")
+    inlines = (ConsultationRequestItemInline,)
+    actions = ("mark_contacted", "mark_converted", "mark_cancelled")
+    list_per_page = ADMIN_LIST_PER_PAGE
+
+    def request_label(self, obj):
+        return f"Yêu cầu #{obj.id}"
+
+    request_label.short_description = "Yêu cầu"
+
+    def product_summary(self, obj):
+        items = list(obj.items.select_related("product")[:3])
+        if not items:
+            return "-"
+        labels = [f"{item.product.name} x{item.quantity}" for item in items]
+        extra_count = obj.items.count() - len(items)
+        if extra_count > 0:
+            labels.append(f"+{extra_count} sản phẩm khác")
+        return ", ".join(labels)
+
+    product_summary.short_description = "Sản phẩm"
+
+    def status_badge(self, obj):
+        status_map = {
+            "pending": '<span class="product-status product-status--hidden">Chờ tư vấn</span>',
+            "contacted": '<span class="product-status product-status--active">Đã liên hệ</span>',
+            "converted": '<span class="product-status product-status--active">Đã lên đơn</span>',
+            "cancelled": '<span class="product-status product-status--danger">Đã hủy</span>',
+        }
+        return mark_safe(status_map.get(obj.status, obj.status))
+
+    status_badge.short_description = "Trạng thái"
+
+    def action_buttons(self, obj):
+        return action_buttons_for(obj, "store_consultationrequest")
+
+    action_buttons.short_description = "Thao tác"
+
+    def mark_contacted(self, request, queryset):
+        updated = queryset.update(status="contacted")
+        self.message_user(request, f"Đã đánh dấu {updated} yêu cầu là đã liên hệ.")
+
+    mark_contacted.short_description = "Đánh dấu đã liên hệ"
+
+    def mark_converted(self, request, queryset):
+        updated = queryset.update(status="converted")
+        self.message_user(request, f"Đã đánh dấu {updated} yêu cầu là đã lên đơn.")
+
+    mark_converted.short_description = "Đánh dấu đã lên đơn"
+
+    def mark_cancelled(self, request, queryset):
+        updated = queryset.update(status="cancelled")
+        self.message_user(request, f"Đã hủy {updated} yêu cầu tư vấn.")
+
+    mark_cancelled.short_description = "Đánh dấu đã hủy"
 
 
 @admin.register(Blog)
@@ -378,7 +509,7 @@ class BlogAdmin(ImportExportModelAdmin):
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_blog")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
 
 @admin.register(RecommendationLog)
@@ -401,9 +532,9 @@ class ScheduledTaskAdmin(ImportExportModelAdmin):
 
     def task_type_badge(self, obj):
         labels = {
-            "lock_stock": ("Canh bao ton kho", "#0f766e"),
-            "birthday_mail": ("Email sinh nhat", "#2563eb"),
-            "auto_hide": ("An het hang", "#7c3aed"),
+            "lock_stock": ("Cảnh báo tồn kho", "#0f766e"),
+            "birthday_mail": ("Email sinh nhật", "#2563eb"),
+            "auto_hide": ("Ẩn hết hàng", "#7c3aed"),
         }
         label, color = labels.get(obj.task_type, (obj.task_type, "#334155"))
         return format_html(
@@ -412,30 +543,30 @@ class ScheduledTaskAdmin(ImportExportModelAdmin):
             label,
         )
 
-    task_type_badge.short_description = "Loai tac vu"
+    task_type_badge.short_description = "Loại tác vụ"
 
     def status_badge(self, obj):
         if obj.status == "success":
-            return mark_safe('<span class="product-status product-status--active">Thanh cong</span>')
+            return mark_safe('<span class="product-status product-status--active">Thành công</span>')
         if obj.status == "failed":
-            return mark_safe('<span class="product-status product-status--danger">That bai</span>')
+            return mark_safe('<span class="product-status product-status--danger">Thất bại</span>')
         if is_recurring_daily_task(obj):
-            return mark_safe('<span class="product-status product-status--hidden">Da len lich</span>')
-        return mark_safe('<span class="product-status product-status--hidden">Cho xu ly</span>')
+            return mark_safe('<span class="product-status product-status--hidden">Đã lên lịch</span>')
+        return mark_safe('<span class="product-status product-status--hidden">Chờ xử lý</span>')
 
-    status_badge.short_description = "Trang thai"
+    status_badge.short_description = "Trạng thái"
 
     def execution_preview(self, obj):
         if not obj.execution_log:
             return "-"
         return obj.execution_log[:120] + ("..." if len(obj.execution_log) > 120 else "")
 
-    execution_preview.short_description = "Ket qua gan nhat"
+    execution_preview.short_description = "Kết quả gần nhất"
 
     def action_buttons(self, obj):
         return action_buttons_for(obj, "store_scheduledtask")
 
-    action_buttons.short_description = "Thao tac"
+    action_buttons.short_description = "Thao tác"
 
     def execute_selected_tasks(self, request, queryset):
         success_count = 0
@@ -449,13 +580,13 @@ class ScheduledTaskAdmin(ImportExportModelAdmin):
 
         self.message_user(
             request,
-            f"Da chay {success_count} tac vu thanh cong, {failed_count} tac vu that bai.",
+            f"Đã chạy {success_count} tác vụ thành công, {failed_count} tác vụ thất bại.",
         )
 
-    execute_selected_tasks.short_description = "Chay ngay tac vu da chon"
+    execute_selected_tasks.short_description = "Chạy ngay tác vụ đã chọn"
 
     def reset_to_pending(self, request, queryset):
         updated = queryset.update(status="pending")
-        self.message_user(request, f"Da dua {updated} tac vu ve trang thai cho xu ly.")
+        self.message_user(request, f"Đã đưa {updated} tác vụ về trạng thái chờ xử lý.")
 
-    reset_to_pending.short_description = "Dua ve trang thai cho xu ly"
+    reset_to_pending.short_description = "Đưa về trạng thái chờ xử lý"

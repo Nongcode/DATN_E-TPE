@@ -1,253 +1,202 @@
-{% extends "admin/index.html" %}
-{% load i18n static %}
+﻿{% extends "admin/index.html" %}
+{% load i18n static admin_dashboard %}
 
 {% block extrastyle %}
 {{ block.super }}
 <style>
-    /* CSS Các thẻ thống kê */
+    .dashboard-shell { width: 100%; }
     .modern-stat-card {
-        background: #ffffff; border-radius: 16px; padding: 24px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex;
-        align-items: center; justify-content: space-between;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 24px; border: 1px solid #f4f5f7;
+        background: #fff; border-radius: 16px; padding: 24px;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        display: flex; align-items: center; justify-content: space-between;
+        transition: transform .2s ease, box-shadow .2s ease;
+        margin-bottom: 24px; border: 1px solid #eef2f7; min-height: 108px;
     }
-    .modern-stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-    .stat-content h3 { font-size: 28px; font-weight: 700; color: #2b3643; margin: 0 0 5px 0; }
-    .stat-content p { color: #828d9f; margin: 0; font-size: 14px; font-weight: 500; }
+    .modern-stat-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08); }
+    .stat-content h3 { font-size: 28px; font-weight: 800; color: #233044; margin: 0 0 5px; }
+    .stat-content p { color: #7c8798; margin: 0; font-size: 14px; font-weight: 600; }
     .stat-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-    
-    .icon-blue { background: #eef2fa; color: #3b82f6; }
+    .icon-blue { background: #eef4ff; color: #3b82f6; }
     .icon-green { background: #ecfdf5; color: #10b981; }
     .icon-orange { background: #fff7ed; color: #f97316; }
     .icon-red { background: #fef2f2; color: #ef4444; }
     .icon-purple { background: #f3e8ff; color: #a855f7; }
-    .icon-teal { background: #fef2f2; color: #e02323; } 
-
-    /* CSS Khối chứa Biểu đồ & Bảng */
+    .icon-teal { background: #fef2f2; color: #e02323; }
     .modern-box-container {
-        background: #ffffff; border-radius: 16px; padding: 24px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f4f5f7;
-        margin-bottom: 24px;
+        background: #fff; border-radius: 16px; padding: 24px;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        border: 1px solid #eef2f7; margin-bottom: 24px;
     }
     .modern-box-title {
-        font-size: 16px; font-weight: 600; color: #2b3643;
-        margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f4f5f7;
-        /* Thêm Flexbox để đẩy nút lọc sang phải */
-        display: flex; justify-content: space-between; align-items: center; 
+        font-size: 16px; font-weight: 700; color: #2b3643;
+        margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eef2f7;
+        display: flex; justify-content: space-between; align-items: center; gap: 16px;
     }
-
-    /* CSS cho Nút Lọc Tháng (Bộ lọc thời gian) */
+    .dashboard-meta { color: #64748b; font-size: 13px; font-weight: 600; white-space: nowrap; }
     .modern-filter {
         border: 1px solid #e2e8f0 !important;
         border-radius: 8px !important;
-        padding: 5px 30px 5px 15px !important;
+        padding: 5px 32px 5px 15px !important;
         font-size: 13px !important;
         color: #475569 !important;
         background-color: #f8fafc !important;
         cursor: pointer !important;
-        transition: all 0.2s ease !important;
-        font-weight: 500 !important;
+        transition: all .2s ease !important;
+        font-weight: 600 !important;
         outline: none !important;
         height: 35px !important;
-        width: 10% !important;
+        min-width: 160px !important;
     }
     .modern-filter:hover, .modern-filter:focus {
-        border-color: #3b82f6;
-        background-color: #ffffff;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: #3b82f6 !important;
+        background-color: #fff !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, .1) !important;
+    }
+    .filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .column-chart-shell { position: relative; height: 330px; width: 100%; padding: 12px 4px 0; }
+    .column-chart-grid {
+        position: absolute; inset: 12px 0 42px 0; pointer-events: none;
+        background: repeating-linear-gradient(to bottom, #e5e7eb 0, #e5e7eb 1px, transparent 1px, transparent 20%);
+        border-bottom: 1px solid #cbd5e1;
+    }
+    .column-chart {
+        position: relative; z-index: 1; height: 100%; display: grid;
+        grid-template-columns: repeat(8, minmax(72px, 1fr)); gap: 28px;
+        align-items: end; padding: 0 34px 34px; overflow-x: auto;
+    }
+    .column-item { min-width: 72px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px; }
+    .column-value { color: #334155; font-size: 12px; font-weight: 800; min-height: 16px; }
+    .column-bar-wrap { height: 250px; width: 100%; display: flex; align-items: end; justify-content: center; }
+    .column-bar {
+        width: min(100%, 138px); min-height: 4px; border-radius: 6px 6px 0 0;
+        background: rgba(59, 130, 246, .24); border: 1px solid rgba(59, 130, 246, .95);
+        box-shadow: inset 0 0 0 999px rgba(59, 130, 246, .04);
+    }
+    .column-label { color: #555f6d; font-size: 12px; line-height: 1.25; text-align: center; min-height: 32px; max-width: 130px; }
+    .empty-state { padding: 34px 18px; text-align: center; color: #64748b; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; }
+    .empty-state i { color: #94a3b8; font-size: 28px; margin-bottom: 10px; }
+    .status-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .status-pill { padding: 6px 10px; border-radius: 999px; background: #f8fafc; color: #475569; font-size: 12px; font-weight: 700; border: 1px solid #e2e8f0; }
+    .customer-card-head { align-items: flex-start; }
+    .customer-filter-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    @media (max-width: 768px) {
+        .modern-box-title { align-items: flex-start; flex-direction: column; }
+        .filter-row, .customer-filter-meta { align-items: flex-start; justify-content: flex-start; }
+        .column-chart { gap: 18px; padding-left: 12px; padding-right: 12px; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="col-12 pt-2">
-    
+{% admin_dashboard_data as dashboard %}
+<div class="col-12 pt-2 dashboard-shell">
     <div class="row">
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/product/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3>120</h3>
-                        <p>Sản Phẩm</p>
+        {% for stat in dashboard.stats %}
+            <div class="col-lg-4 col-md-6">
+                <a href="{{ stat.url }}" style="text-decoration: none;">
+                    <div class="modern-stat-card">
+                        <div class="stat-content">
+                            <h3>{{ stat.value }}</h3>
+                            <p>{{ stat.label }}</p>
+                        </div>
+                        <div class="stat-icon icon-{{ stat.tone }}">
+                            <i class="{{ stat.icon }}"></i>
+                        </div>
                     </div>
-                    <div class="stat-icon icon-blue">
-                        <i class="fas fa-box-open"></i>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="modern-box-container">
+                <div class="modern-box-title">
+                    <div><i class="fas fa-chart-bar text-info mr-2"></i> Top thiết bị ô tô bán chạy</div>
+                    <div class="dashboard-meta">Doanh thu ghi nhận: {{ dashboard.total_revenue|admin_vnd }}</div>
+                </div>
+
+                {% if dashboard.top_products %}
+                    <div class="column-chart-shell">
+                        <div class="column-chart-grid"></div>
+                        <div class="column-chart">
+                            {% for item in dashboard.top_products %}
+                                <div class="column-item" title="{{ item.product__name }} - {{ item.sold_total }} sản phẩm">
+                                    <div class="column-value">{{ item.sold_total }}</div>
+                                    <div class="column-bar-wrap">
+                                        <div class="column-bar" style="height: {{ item.bar_percent }}%;"></div>
+                                    </div>
+                                    <div class="column-label">{{ item.short_name }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-chart-column"></i>
+                        <h5>Chưa có dữ liệu bán hàng</h5>
+                        <p>Dashboard sẽ tự hiển thị top sản phẩm sau khi có đơn hàng và chi tiết đơn hàng.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="modern-box-container">
+                <div class="modern-box-title customer-card-head">
+                    <div><i class="fas fa-crown text-warning mr-2"></i> Top khách hàng chi tiêu nhiều nhất</div>
+                    <div class="customer-filter-meta">
+                        <form method="get" class="filter-row">
+                            <select class="modern-filter" name="customer_month" onchange="this.form.submit()">
+                                {% for option in dashboard.customer_month_options %}
+                                    <option value="{{ option.value }}" {% if option.selected %}selected{% endif %}>{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                        <div class="status-pills">
+                            <span class="status-pill">{{ dashboard.selected_customer_period_label }}</span>
+                            <span class="status-pill">Tổng đơn: {{ dashboard.order_count }}</span>
+                            <span class="status-pill">Chờ xử lý: {{ dashboard.order_statuses.Pending|default:0 }}</span>
+                            <span class="status-pill">Đã giao: {{ dashboard.order_statuses.Shipped|default:0 }}</span>
+                            <span class="status-pill">Đã hủy: {{ dashboard.order_statuses.Cancelled|default:0 }}</span>
+                        </div>
                     </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/customer/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3>45</h3>
-                        <p>Khách Hàng</p>
+
+                {% if dashboard.top_customers %}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Thứ hạng</th>
+                                    <th>Khách hàng</th>
+                                    <th class="text-center">Số đơn đã mua</th>
+                                    <th class="text-right">Tổng chi tiêu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for customer in dashboard.top_customers %}
+                                    <tr>
+                                        <td><span class="badge {% if customer.rank == 1 %}bg-warning text-dark{% elif customer.rank == 2 %}bg-secondary{% elif customer.rank == 3 %}bg-danger{% else %}bg-light text-dark{% endif %} px-3 py-2">#{{ customer.rank }}</span></td>
+                                        <td><strong>{{ customer.display_name }}</strong></td>
+                                        <td class="text-center">{{ customer.order_count }}</td>
+                                        <td class="text-right text-success font-weight-bold">{{ customer.total_spent_display }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="stat-icon icon-green">
+                {% else %}
+                    <div class="empty-state">
                         <i class="fas fa-users"></i>
+                        <h5>Không có dữ liệu trong kỳ đã chọn</h5>
+                        <p>Hãy chọn tháng khác hoặc tạo thêm đơn hàng để bảng thống kê có dữ liệu.</p>
                     </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/order/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3>12</h3>
-                        <p>Đơn Hàng Mới</p>
-                    </div>
-                    <div class="stat-icon icon-orange">
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/product/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3 class="text-danger">3</h3>
-                        <p>Sắp Hết Hàng</p>
-                    </div>
-                    <div class="stat-icon icon-red">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/category/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3>6</h3>
-                        <p>Danh Mục Sản Phẩm</p>
-                    </div>
-                    <div class="stat-icon icon-purple">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <a href="/admin/store/voucher/" style="text-decoration: none;">
-                <div class="modern-stat-card">
-                    <div class="stat-content">
-                        <h3>8</h3>
-                        <p>Mã Voucher</p>
-                    </div>
-                    <div class="stat-icon icon-teal">
-                        <i class="fas fa-ticket-alt"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="modern-box-container">
-                <div class="modern-box-title">
-                    <div><i class="fas fa-chart-bar text-info mr-2"></i> Top Thiết Bị Ô Tô Bán Chạy</div>
-                    <select class="modern-filter">
-                        <option value="0">Tất cả các tháng</option>
-                        <option value="1">Tháng 1/2026</option>
-                        <option value="2">Tháng 2/2026</option>
-                        <option value="3" selected>Tháng 3/2026</option>
-                    </select>
-                </div>
-                <div style="position: relative; height: 320px; width: 100%;">
-                    <canvas id="topProductsChart"></canvas>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="modern-box-container">
-                <div class="modern-box-title">
-                    <div><i class="fas fa-crown text-warning mr-2"></i> Top Khách Hàng Chi Tiêu Nhiều Nhất</div>
-                    <select class="modern-filter">
-                        <option value="0">Tất cả thời gian</option>
-                        <option value="1">Tháng 1/2026</option>
-                        <option value="2">Tháng 2/2026</option>
-                        <option value="3" selected>Tháng 3/2026</option>
-                    </select>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Thứ hạng</th><th>Khách hàng</th><th class="text-center">Số đơn đã mua</th><th class="text-right">Tổng chi tiêu</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span class="badge bg-warning text-dark px-3 py-2">#1</span>
-                                </td>
-                                <td>
-                                    <strong>Nguyễn Văn A</strong>
-                                </td>
-                                <td class="text-center">15</td>
-                                <td class="text-right text-success font-weight-bold">45,500,000 ₫</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="badge bg-secondary px-3 py-2">#2</span>
-                                </td>
-                                <td>
-                                    <strong>Trần Thị B</strong>
-                                </td>
-                                <td class="text-center">8</td>
-                                <td class="text-right text-success font-weight-bold">22,100,000 ₫</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="badge bg-danger px-3 py-2">#3</span>
-                                </td>
-                                <td>
-                                    <strong>Lê Hoàng C</strong>
-                                </td>
-                                <td class="text-center">5</td>
-                                <td class="text-right text-success font-weight-bold">18,000,000 ₫</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="badge bg-light text-dark px-3 py-2">#4</span>
-                                </td>
-                                <td>
-                                    <strong>Phạm Đức Long</strong>
-                                </td>
-                                <td class="text-center">4</td>
-                                <td class="text-right text-success font-weight-bold">12,500,000 ₫</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var ctx = document.getElementById('topProductsChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar', 
-            data: {
-                labels: ['Cảm biến lốp', 'Camera HT', 'Bơm lốp', 'Dầu nhớt', 'Thảm sàn', 'Bọc vô lăng', 'Gạt mưa', 'Đèn LED'], 
-                datasets: [{
-                    label: 'Đã bán', data: [150, 120, 95, 80, 65, 40, 35, 20], 
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1, borderRadius: 4
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true } } }
-        });
-    });
-</script>
 {% endblock content %}

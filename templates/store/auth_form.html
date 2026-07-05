@@ -1,0 +1,51 @@
+{% extends "store/base.html" %}
+
+{% block title %}{% if auth_mode == "register" %}Đăng ký{% else %}Đăng nhập{% endif %} | ETEK STORE{% endblock %}
+
+{% block content %}
+{% include "store/partials/page_banner.html" with banner_label="Tài khoản khách hàng" banner_title="Tài khoản ETEK" banner_text="Lưu thông tin liên hệ một lần để gửi yêu cầu tư vấn và đặt hàng nhanh hơn trong các lần sau." banner_image="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80" %}
+
+<section class="page-shell auth-page">
+    <div class="container auth-layout">
+        <div class="auth-panel">
+            <span class="eyebrow">{% if auth_mode == "register" %}Khách hàng mới{% else %}Khách hàng thân thiết{% endif %}</span>
+            <h2>{% if auth_mode == "register" %}Đăng ký tài khoản{% else %}Đăng nhập{% endif %}</h2>
+            <p>{% if auth_mode == "register" %}Hệ thống sẽ lưu họ tên, số điện thoại và email để tự động điền vào form liên hệ khi anh/chị cần tư vấn.{% else %}Đăng nhập để dùng lại thông tin liên hệ đã lưu và tiếp tục giỏ hàng hiện tại.{% endif %}</p>
+
+            <form class="auth-form" method="post" novalidate>
+                {% csrf_token %}
+                {% if next_url %}<input type="hidden" name="next" value="{{ next_url }}">{% endif %}
+
+                {% if form.non_field_errors %}
+                    <div class="auth-errors">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                {% for field in form %}
+                    <label class="auth-field auth-field-{{ field.name }}{% if field.errors %} has-error{% endif %}">
+                        <span>{{ field.label }}</span>
+                        {{ field }}
+                        {% if field.help_text and form.is_bound %}<small>{{ field.help_text }}</small>{% endif %}
+                        {% for error in field.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                {% endfor %}
+
+                <div class="auth-submit-row">
+                    <button class="primary-btn" type="submit">{% if auth_mode == "register" %}Tạo tài khoản{% else %}Đăng nhập{% endif %}</button>
+                </div>
+            </form>
+        </div>
+
+        <aside class="auth-side">
+            {% if auth_mode == "register" %}
+                <span>Đã có tài khoản?</span>
+                <strong>Đăng nhập để tiếp tục tư vấn nhanh.</strong>
+                <a class="ghost-btn" href="{% url 'store:login' %}{% if next_url %}?next={{ next_url|urlencode }}{% endif %}">Đăng nhập</a>
+            {% else %}
+                <span>Chưa có tài khoản?</span>
+                <strong>Tạo tài khoản để không cần nhập lại thông tin liên hệ.</strong>
+                <a class="ghost-btn" href="{% url 'store:register' %}{% if next_url %}?next={{ next_url|urlencode }}{% endif %}">Đăng ký</a>
+            {% endif %}
+        </aside>
+    </div>
+</section>
+{% endblock %}

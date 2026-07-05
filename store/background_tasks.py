@@ -97,17 +97,27 @@ def send_low_stock_alerts(dry_run=False):
     recipients = _configured_stock_recipients()
 
     if not inventories:
-        return TaskResult("low_stock_alert", message="Khong co san pham sap het hang.")
+        return TaskResult("low_stock_alert", message="Không có sản phẩm sắp hết hàng.")
 
     lines = [
-        "Danh sách sản phẩm cần cảnh báo tồn kho thấp:",
+        "Xin chào quản trị viên,",
+        "",
+        "Hệ thống ETEK Store ghi nhận các sản phẩm sau đang có tồn kho thấp và cần được kiểm tra:",
         "",
     ]
     for item in inventories:
         lines.append(
-            f"- {item.product.name} ({item.product.sku or 'Chua co SKU'}): "
-            f"tồn kho: {item.quantity}, ngưỡng: {item.low_stock_threshold}"
+            f"- {item.product.name} | SKU: {item.product.sku or 'Chưa có SKU'} | "
+            f"Tồn kho hiện tại: {item.quantity} | Ngưỡng cảnh báo: {item.low_stock_threshold}"
         )
+
+    lines.extend([
+        "",
+        "Vui lòng kiểm tra kho và bổ sung hàng nếu cần.",
+        "",
+        "Trân trọng,",
+        "ETEK Store",
+    ])
 
     if recipients and not dry_run:
         send_mail(
@@ -118,7 +128,7 @@ def send_low_stock_alerts(dry_run=False):
             fail_silently=False,
         )
 
-    message = "Đã gửi email cảnh báo." if recipients and not dry_run else "Khong gui email trong che do dry-run hoac chua co nguoi nhan."
+    message = "Đã gửi email cảnh báo." if recipients and not dry_run else "Không gửi email trong chế độ chạy thử hoặc chưa có người nhận."
     return TaskResult(
         "low_stock_alert",
         processed=len(inventories),
@@ -140,7 +150,7 @@ def hide_out_of_stock_products(dry_run=False):
         "auto_hide_out_of_stock",
         processed=len(product_ids),
         updated=0 if dry_run else len(product_ids),
-        message="An san pham ton kho <= 0." if product_ids else "Khong co san pham can an.",
+        message="Ẩn sản phẩm có tồn kho <= 0." if product_ids else "Không có sản phẩm cần ẩn.",
     )
 
 
@@ -177,14 +187,16 @@ def send_birthday_care_emails(today=None, dry_run=False):
             valid_until=valid_until,
         )
         name = customer.full_name or customer.user.get_full_name() or customer.user.username
+        discount_text = f"{voucher.discount_amount:,.0f}".replace(",", ".")
+        valid_until_text = timezone.localtime(voucher.valid_until).strftime("%d/%m/%Y")
         send_mail(
-            subject="ETEK Store chuc mung sinh nhat anh/chi",
+            subject="ETEK Store chúc mừng sinh nhật anh/chị",
             message=(
-                f"Xin chao {name},\n\n"
-                "ETEK Store chuc anh/chi mot ngay sinh nhat that vui ve. "
-                f"Ma uu dai sinh nhat cua anh/chi la {voucher.code}, tri gia {voucher.discount_amount:,.0f} d, "
-                f"co hieu luc den {voucher.valid_until:%d/%m/%Y}.\n\n"
-                "Cam on anh/chi da dong hanh cung ETEK Store."
+                f"Xin chào {name},\n\n"
+                "ETEK Store chúc anh/chị một ngày sinh nhật thật vui vẻ, nhiều sức khỏe và luôn gặp nhiều may mắn.\n\n"
+                f"Nhân dịp sinh nhật, hệ thống gửi tặng anh/chị mã ưu đãi {voucher.code} trị giá {discount_text} đ. "
+                f"Mã ưu đãi có hiệu lực đến hết ngày {valid_until_text}.\n\n"
+                "Cảm ơn anh/chị đã tin tưởng và đồng hành cùng ETEK Store."
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[customer.email],
@@ -197,7 +209,7 @@ def send_birthday_care_emails(today=None, dry_run=False):
         processed=len(customers),
         sent=sent_count,
         skipped=skipped_count,
-        message=f"Ngay xu ly {today:%d/%m/%Y}.",
+        message=f"Ngày xử lý {today:%d/%m/%Y}.",
     )
 
 

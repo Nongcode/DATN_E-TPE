@@ -74,6 +74,44 @@
                         <span class="badge-stock out-of-stock">Tạm hết hàng</span>
                     {% endif %}
                 </div>
+                {% if product.brand or product.manufacturer or product.compatible_car_brands or product.compatible_car_models %}
+                    <div class="compatibility-panel" aria-label="Thông tin tương thích và gợi ý sản phẩm">
+                        <div class="compatibility-panel-head">
+                            <span class="compatibility-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2-4H8l-2 4-2.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle><path d="M7 10h10"></path></svg>
+                            </span>
+                            <div>
+                                <strong>Thông tin tương thích</strong>
+                            </div>
+                        </div>
+                        <div class="compatibility-grid">
+                            {% if product.brand %}
+                                <div class="compatibility-item">
+                                    <span>Thương hiệu</span>
+                                    <strong>{{ product.brand }}</strong>
+                                </div>
+                            {% endif %}
+                            {% if product.manufacturer %}
+                                <div class="compatibility-item">
+                                    <span>Hãng sản xuất</span>
+                                    <strong>{{ product.manufacturer }}</strong>
+                                </div>
+                            {% endif %}
+                            {% if product.compatible_car_brands %}
+                                <div class="compatibility-item compatibility-item-wide">
+                                    <span>Hãng xe tương thích</span>
+                                    <strong>{{ product.compatible_car_brands }}</strong>
+                                </div>
+                            {% endif %}
+                            {% if product.compatible_car_models %}
+                                <div class="compatibility-item compatibility-item-wide">
+                                    <span>Dòng xe tương thích</span>
+                                    <strong>{{ product.compatible_car_models }}</strong>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
                 <div class="detail-actions">
                     <form class="add-to-cart-form" method="post" action="{% url 'store:add_to_cart' product.pk %}">
                         {% csrf_token %}
@@ -82,7 +120,7 @@
                         <input id="quantity-{{ product.pk }}" type="number" name="quantity" value="1" min="1" max="99">
                         <button class="primary-btn" type="submit">Thêm vào giỏ hàng</button>
                     </form>
-                    <a class="ghost-btn" href="{% url 'store:product_list' %}?category={{ product.category.slug }}">Xem sản phẩm tương tự</a>
+                    <a class="ghost-btn" href="#similar-products">Xem sản phẩm tương tự</a>
                 </div>
                 <div class="detail-buy-panel">
                     <a href="tel:0889584290">
@@ -155,9 +193,27 @@
                             {% empty %}
                                 <tr>
                                     <td>Thương hiệu</td>
-                                    <td>{% if "uptek" in product.name|lower %}UPTEK{% else %}Tân Phát ETEK{% endif %}</td>
+                                    <td>{{ product.brand|default:"Tân Phát ETEK" }}</td>
                                 </tr>
                             {% endfor %}
+                            {% if product.manufacturer %}
+                                <tr>
+                                    <td>Hãng sản xuất</td>
+                                    <td>{{ product.manufacturer }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if product.compatible_car_brands %}
+                                <tr>
+                                    <td>Hãng xe tương thích</td>
+                                    <td>{{ product.compatible_car_brands }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if product.compatible_car_models %}
+                                <tr>
+                                    <td>Dòng xe tương thích</td>
+                                    <td>{{ product.compatible_car_models }}</td>
+                                </tr>
+                            {% endif %}
                             <tr>
                                 <td>Danh mục</td>
                                 <td>{{ product.category.name }}</td>
@@ -201,34 +257,46 @@
             </div>
         </div>
 
-        <div class="section-head related-head">
+        <div class="section-head related-head" id="similar-products">
             <div>
                 <span class="eyebrow">Gợi ý theo nội dung</span>
                 <h2>Sản phẩm tương tự</h2>
-                <p class="recommendation-copy">Dựa trên tên sản phẩm, mô tả, danh mục, SKU và các thuộc tính liên quan.</p>
+                <p class="recommendation-copy">Dựa trên hãng xe, dòng xe tương thích, thương hiệu, hãng sản xuất, mô tả, danh mục và SKU.</p>
+            </div>
+            <div class="recommendation-controls" aria-label="Điều hướng sản phẩm tương tự">
+                <button class="recommendation-nav" type="button" data-recommendation-prev="similar" aria-label="Sản phẩm tương tự trước">&lsaquo;</button>
+                <button class="recommendation-nav" type="button" data-recommendation-next="similar" aria-label="Sản phẩm tương tự tiếp theo">&rsaquo;</button>
             </div>
         </div>
-        <div class="product-grid">
-            {% for product in similar_products %}
-                {% include "store/partials/product_card.html" with product=product %}
-            {% empty %}
-                <div class="empty-inline wide">Chưa có sản phẩm tương tự để hiển thị.</div>
-            {% endfor %}
+        <div class="recommendation-carousel" data-recommendation-carousel="similar">
+            <div class="recommendation-track" data-recommendation-track>
+                {% for product in similar_products %}
+                    {% include "store/partials/product_card.html" with product=product %}
+                {% empty %}
+                    <div class="empty-inline wide">Chưa có sản phẩm tương tự để hiển thị.</div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="section-head related-head bundle-head">
             <div>
                 <span class="eyebrow">Gợi ý mua kèm</span>
                 <h2>Sản phẩm thường dùng cùng</h2>
-                <p class="recommendation-copy">Ưu tiên nhóm bổ trợ theo nhu cầu sử dụng như dụng cụ, dung dịch, thiết bị lốp và chăm sóc xe.</p>
+                <p class="recommendation-copy">Ưu tiên sản phẩm bổ trợ theo nhóm công việc, xe tương thích, phụ kiện liên quan và mức giá phù hợp với sản phẩm đang xem.</p>
+            </div>
+            <div class="recommendation-controls" aria-label="Điều hướng sản phẩm mua kèm">
+                <button class="recommendation-nav" type="button" data-recommendation-prev="bundle" aria-label="Sản phẩm mua kèm trước">&lsaquo;</button>
+                <button class="recommendation-nav" type="button" data-recommendation-next="bundle" aria-label="Sản phẩm mua kèm tiếp theo">&rsaquo;</button>
             </div>
         </div>
-        <div class="product-grid">
-            {% for product in bundle_products %}
-                {% include "store/partials/product_card.html" with product=product %}
-            {% empty %}
-                <div class="empty-inline wide">Chưa có sản phẩm mua kèm phù hợp để hiển thị.</div>
-            {% endfor %}
+        <div class="recommendation-carousel" data-recommendation-carousel="bundle">
+            <div class="recommendation-track" data-recommendation-track>
+                {% for product in bundle_products %}
+                    {% include "store/partials/product_card.html" with product=product %}
+                {% empty %}
+                    <div class="empty-inline wide">Chưa có sản phẩm mua kèm phù hợp để hiển thị.</div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
@@ -268,33 +336,35 @@
                         <h2>Liên hệ tư vấn sản phẩm</h2>
                         <p>Hãy để lại thông tin liên hệ của bạn, đội ngũ kỹ sư ETEK sẽ phản hồi và giải đáp thắc mắc về sản phẩm này ngay lập tức.</p>
                     </div>
+                    {% if request.user.is_authenticated %}
                     <form class="contact-form" method="post" action="{% url 'store:contact' %}">
                         {% csrf_token %}
                         <!-- Hidden fields gửi thông tin sản phẩm -->
                         <input type="hidden" name="next" value="{{ request.path }}#product-contact-section">
-                        <input type="hidden" name="product_id" value="{{ product.pk }}">
+                        <input type="hidden" name="product_ids" value="{{ product.pk }}">
                         <input type="hidden" name="product_name" value="{{ product.name }}">
                         <input type="hidden" name="product_sku" value="{{ product.sku|default:'' }}">
+                        <input type="hidden" name="request_type" value="consultation">
                         <input type="hidden" name="topic" value="Tư vấn sản phẩm: {{ product.name }}">
 
                         <div class="form-grid">
                             <label>
                                 <span>Họ và tên <span class="required" style="color: #ef4444;">*</span></span>
-                                <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+                                <input type="text" name="name" placeholder="Nguyễn Văn A" value="{{ contact_defaults.name|default:'' }}" required>
                             </label>
                             <label>
                                 <span>Số điện thoại <span class="required" style="color: #ef4444;">*</span></span>
-                                <input type="tel" name="phone" placeholder="0900 000 000" required>
+                                <input type="tel" name="phone" placeholder="0889584290" value="{{ contact_defaults.phone|default:'' }}" required>
                             </label>
                         </div>
                         <div class="form-grid">
                             <label>
                                 <span>Email</span>
-                                <input type="email" name="email" placeholder="email@example.com">
+                                <input type="email" name="email" placeholder="email@example.com" value="{{ contact_defaults.email|default:'' }}">
                             </label>
                             <label>
                                 <span>Dòng xe đang đi</span>
-                                <input type="text" name="vehicle" placeholder="Toyota Vios 2022">
+                                <input type="text" name="vehicle" placeholder="Toyota Vios 2022" value="{{ contact_defaults.vehicle|default:'' }}">
                             </label>
                         </div>
                         <label>
@@ -303,6 +373,17 @@
                         </label>
                         <button class="primary-btn" type="submit">Gửi yêu cầu tư vấn</button>
                     </form>
+                    {% else %}
+                    <div class="contact-auth-required detail-auth-required">
+                        <span class="eyebrow">Cần tài khoản</span>
+                        <h3>Đăng nhập để gửi yêu cầu tư vấn</h3>
+                        <p>Vui lòng đăng nhập hoặc đăng ký để ETEK lưu thông tin liên hệ và xử lý yêu cầu tư vấn chính xác hơn.</p>
+                        <div class="auth-required-actions">
+                            <a class="primary-btn" href="{% url 'store:login' %}?next={{ request.path|add:'#product-contact-section'|urlencode }}">Đăng nhập</a>
+                            <a class="ghost-btn" href="{% url 'store:register' %}?next={{ request.path|add:'#product-contact-section'|urlencode }}">Đăng ký</a>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -325,6 +406,44 @@
         const nextArrow = document.querySelector(".main-gallery-next");
         const navUp = document.querySelector(".gallery-nav-up");
         const navDown = document.querySelector(".gallery-nav-down");
+
+        document.querySelectorAll("[data-recommendation-carousel]").forEach((carousel) => {
+            const key = carousel.getAttribute("data-recommendation-carousel");
+            const track = carousel.querySelector("[data-recommendation-track]");
+            const prevButton = document.querySelector(`[data-recommendation-prev="${key}"]`);
+            const nextButton = document.querySelector(`[data-recommendation-next="${key}"]`);
+
+            if (!track || !prevButton || !nextButton) return;
+
+            const getStep = () => {
+                const firstCard = track.querySelector(".product-card");
+                if (!firstCard) return track.clientWidth;
+                const styles = window.getComputedStyle(track);
+                const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+                return firstCard.getBoundingClientRect().width + gap;
+            };
+
+            const updateButtons = () => {
+                const maxScroll = Math.max(track.scrollWidth - track.clientWidth - 2, 0);
+                prevButton.disabled = track.scrollLeft <= 2;
+                nextButton.disabled = track.scrollLeft >= maxScroll;
+                const hasOverflow = track.scrollWidth > track.clientWidth + 2;
+                prevButton.hidden = !hasOverflow;
+                nextButton.hidden = !hasOverflow;
+            };
+
+            prevButton.addEventListener("click", () => {
+                track.scrollBy({ left: -getStep(), behavior: "smooth" });
+            });
+
+            nextButton.addEventListener("click", () => {
+                track.scrollBy({ left: getStep(), behavior: "smooth" });
+            });
+
+            track.addEventListener("scroll", updateButtons, { passive: true });
+            window.addEventListener("resize", updateButtons);
+            updateButtons();
+        });
 
         if (!mainImage || thumbItems.length === 0) return;
 

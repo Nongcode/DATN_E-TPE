@@ -10,53 +10,102 @@
         <div class="contact-main">
             <div class="contact-intro">
                 <span class="eyebrow">Kết nối nhanh</span>
-                <h2>Gửi yêu cầu tư vấn</h2>
-                <p>Điền thông tin xe, nhu cầu sử dụng hoặc mã sản phẩm bạn quan tâm. ETEK sẽ phản hồi theo kênh liên hệ phù hợp nhất.</p>
+                <h2>Gửi yêu cầu đặt hàng hoặc tư vấn</h2>
+                <p>Điền thông tin xe, chọn sản phẩm và chọn loại yêu cầu. Nếu đặt hàng, hệ thống sẽ tạo đơn mới và cập nhật tồn kho; nếu tư vấn, ETEK sẽ liên hệ hỗ trợ trước khi lên đơn.</p>
             </div>
 
+            {% if request.user.is_authenticated %}
             <form class="contact-form" method="post">
                 {% csrf_token %}
                 <div class="form-grid">
                     <label>
                         <span>Họ và tên</span>
-                        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+                        <input type="text" name="name" placeholder="Nguyễn Văn A" value="{{ contact_defaults.name|default:'' }}" required>
                     </label>
                     <label>
                         <span>Số điện thoại</span>
-                        <input type="tel" name="phone" placeholder="0900 000 000" required>
+                        <input type="tel" name="phone" placeholder="0889584290" value="{{ contact_defaults.phone|default:'' }}" required>
                     </label>
                 </div>
                 <div class="form-grid">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" placeholder="email@example.com">
+                        <input type="email" name="email" placeholder="email@example.com" value="{{ contact_defaults.email|default:'' }}">
                     </label>
                     <label>
                         <span>Dòng xe</span>
-                        <input type="text" name="vehicle" placeholder="Toyota Vios 2022">
+                        <input type="text" name="vehicle" placeholder="Toyota Vios 2022" value="{{ contact_defaults.vehicle|default:'' }}">
                     </label>
                 </div>
+
+                {% if use_cart_products %}
+                <fieldset class="contact-product-field contact-product-field-attached">
+                    <input type="hidden" name="source" value="cart">
+                    <legend>Sản phẩm đã đính kèm từ giỏ hàng</legend>
+                    <p>Các sản phẩm trong giỏ hàng đã được tự động gửi kèm. Khách hàng chỉ cần chọn đặt hàng hoặc tư vấn rồi gửi yêu cầu.</p>
+                    <div class="contact-attached-list">
+                        {% for item in cart_contact_items %}
+                            <div class="contact-attached-item">
+                                <input type="hidden" name="product_ids" value="{{ item.product.pk }}">
+                                <span class="contact-product-copy">
+                                    <strong>{{ item.product.name }}</strong>
+                                    <small>SKU: {{ item.product.sku|default:"Đang cập nhật" }}{% if item.product.category %} &middot; {{ item.product.category.name }}{% endif %} &middot; Số lượng: {{ item.quantity }}</small>
+                                </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="contact-cart-edit" href="{% url 'store:cart_detail' %}">Chỉnh sửa giỏ hàng</a>
+                </fieldset>
+                {% else %}
+                <fieldset class="contact-product-field">
+                    <legend>Sản phẩm cần tư vấn</legend>
+                    <p>Khách hàng có thể chọn một hoặc nhiều sản phẩm để ETEK tư vấn chính xác hơn.</p>
+                    <div class="contact-product-list">
+                        {% for product in contact_products %}
+                            <label class="contact-product-option">
+                                <input type="checkbox" name="product_ids" value="{{ product.pk }}">
+                                <span class="contact-product-copy">
+                                    <strong>{{ product.name }}</strong>
+                                    <small>SKU: {{ product.sku|default:"Đang cập nhật" }}{% if product.category %} &middot; {{ product.category.name }}{% endif %}</small>
+                                </span>
+                            </label>
+                        {% empty %}
+                            <div class="contact-product-empty">Hiện chưa có sản phẩm đang hiển thị để chọn.</div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+                {% endif %}
+
                 <label>
-                    <span>Nhu cầu tư vấn</span>
-                    <select name="topic">
-                        <option>Tư vấn sản phẩm</option>
-                        <option>Kiểm tra tương thích</option>
-                        <option>Đặt lịch lắp đặt</option>
-                        <option>Bảo hành và hậu mãi</option>
+                    <span>Loại yêu cầu</span>
+                    <select name="request_type" required>
+                        <option value="order"{% if default_request_type == "order" %} selected{% endif %}>Đặt hàng</option>
+                        <option value="consultation"{% if default_request_type != "order" %} selected{% endif %}>Tư vấn sản phẩm</option>
                     </select>
                 </label>
                 <label>
                     <span>Nội dung</span>
-                    <textarea name="message" rows="5" placeholder="Anh/chị cần tư vấn sản phẩm nào hoặc đang gặp vấn đề gì?"></textarea>
+                    <textarea name="message" rows="5" placeholder="Anh/chị có ghi chú thêm về số lượng, thời gian nhận hàng, lắp đặt hoặc nội dung cần tư vấn không?"></textarea>
                 </label>
                 <button class="primary-btn" type="submit">Gửi yêu cầu</button>
             </form>
+            {% else %}
+            <div class="contact-auth-required">
+                <span class="eyebrow">Cần tài khoản</span>
+                <h3>Đăng nhập để gửi yêu cầu tư vấn</h3>
+                <p>Khách hàng cần đăng nhập hoặc đăng ký tài khoản trước khi gửi yêu cầu đặt hàng/tư vấn. Sau khi đăng nhập, thông tin liên hệ sẽ được tự điền.</p>
+                <div class="auth-required-actions">
+                    <a class="primary-btn" href="{% url 'store:login' %}?next={{ request.get_full_path|urlencode }}">Đăng nhập</a>
+                    <a class="ghost-btn" href="{% url 'store:register' %}?next={{ request.get_full_path|urlencode }}">Đăng ký tài khoản</a>
+                </div>
+            </div>
+            {% endif %}
         </div>
 
         <aside class="contact-side">
             <div class="contact-card contact-card-strong">
                 <span>Hotline tư vấn</span>
-                <strong>0900 000 000</strong>
+                <strong><a href="tel:0889584290">0889584290</a></strong>
                 <p>Hỗ trợ chọn sản phẩm, kiểm tra tồn kho và báo lịch lắp đặt.</p>
             </div>
             <div class="contact-card">

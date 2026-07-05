@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: etek_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: etek_demo_password
+    volumes:
+      - etek_postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: local-demo-secret-key-change-after-demo
+      DJANGO_DEBUG: "True"
+      DJANGO_ALLOWED_HOSTS: 127.0.0.1,localhost,0.0.0.0
+      POSTGRES_DB: etek_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: etek_demo_password
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+      EMAIL_HOST: smtp.gmail.com
+      EMAIL_PORT: "587"
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER:-long109204@gmail.com}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-PASTE_GMAIL_APP_PASSWORD_HERE}
+      EMAIL_USE_TLS: "True"
+      EMAIL_USE_SSL: "False"
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-ETEK Store <long109204@gmail.com>}
+      STOCK_ALERT_EMAILS: ${STOCK_ALERT_EMAILS:-long109204@gmail.com}
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: admin@example.com
+      DJANGO_SUPERUSER_PASSWORD: Admin@123456
+    volumes:
+      - etek_media:/app/media
+
+volumes:
+  etek_postgres_data:
+  etek_media:

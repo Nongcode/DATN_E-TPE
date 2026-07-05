@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/storefront.css' %}?v=20260523-banner-product-scroll">
+    <link rel="stylesheet" href="{% static 'css/storefront.css' %}?v=20260705-auth-form-modern">
 </head>
 <body>
     <div class="utility-bar">
@@ -41,12 +41,57 @@
 
                 <div class="header-top-actions">
                     <div class="action-item">
-                        <span>Hotline hỗ trợ:</span>
-                        <strong>0889584290</strong>
+                        <div class="action-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="action-details">
+                            <span>Hotline hỗ trợ:</span>
+                            <strong>0889584290</strong>
+                        </div>
                     </div>
                     <div class="action-item">
-                        <span>Giỏ hàng:</span>
-                        <a href="{% url 'store:cart_detail' %}"><strong data-cart-count>{{ cart_item_count|default:0 }} sản phẩm</strong></a>
+                        <div class="action-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                        </div>
+                        <div class="action-details">
+                            <span>Giỏ hàng:</span>
+                            <a href="{% url 'store:cart_detail' %}"><strong data-cart-count>{{ cart_item_count|default:0 }} sản phẩm</strong></a>
+                        </div>
+                    </div>
+                    <div class="action-item account-action">
+                        <div class="action-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="action-details">
+                            {% if request.user.is_authenticated %}
+                                <span class="account-label">Tài khoản</span>
+                                <div class="account-user-meta">
+                                    <strong class="user-name" title="{{ contact_defaults.name|default:request.user.username }}">{{ contact_defaults.name|default:request.user.username }}</strong>
+                                    <form method="post" action="{% url 'store:logout' %}" class="logout-form">
+                                        {% csrf_token %}
+                                        <button type="submit" class="logout-btn" title="Đăng xuất">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <span class="account-label">Tài khoản</span>
+                                <div class="account-links">
+                                    <a class="login-link" href="{% url 'store:login' %}?next={{ request.path|urlencode }}">Đăng nhập</a>
+                                    <span class="link-divider">/</span>
+                                    <a class="register-link" href="{% url 'store:register' %}?next={{ request.path|urlencode }}">Đăng ký</a>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,9 @@ app_name = "store"
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("dang-nhap/", views.login_view, name="login"),
+    path("dang-ky/", views.register_view, name="register"),
+    path("dang-xuat/", views.logout_view, name="logout"),
     path("tin-tuc/", views.news_list, name="news_list"),
     path("tin-tuc/<slug:identifier>/", views.news_detail, name="news_detail"),
     path("lien-he/", views.contact, name="contact"),

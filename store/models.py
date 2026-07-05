@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User # Kế thừa bảng User mặc định của Django
 from django.utils import timezone
 
@@ -40,6 +41,22 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name="Tên thiết bị ô tô")
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True, verbose_name="Đường dẫn thân thiện")
     sku = models.CharField(max_length=50, unique=True, null=True, blank=True, verbose_name="Mã quản lý kho (SKU)")
+    brand = models.CharField(max_length=120, null=True, blank=True, verbose_name="Thương hiệu")
+    manufacturer = models.CharField(max_length=255, null=True, blank=True, verbose_name="Hãng sản xuất")
+    compatible_car_brands = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name="Hãng xe tương thích",
+        help_text="Nhập nhiều hãng xe bằng dấu phẩy, ví dụ: Toyota, Honda, Ford.",
+    )
+    compatible_car_models = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name="Dòng xe tương thích",
+        help_text="Nhập nhiều dòng xe bằng dấu phẩy, ví dụ: Vios, City, Ranger.",
+    )
     description = models.TextField(verbose_name="Mô tả chi tiết thông số (Dùng vector hóa)")
     price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Giá bán hiện tại")
     image = models.ImageField(upload_to='products/', null=True, blank=True, verbose_name="Ảnh sản phẩm")
@@ -95,7 +112,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer_profile')
     full_name = models.CharField(max_length=255, null=True, blank=True, verbose_name="Họ và tên")
     email = models.EmailField(unique=True, null=True, blank=True, verbose_name="Email nhận thông báo")
-    phone_number = models.CharField(max_length=15, verbose_name="Số điện thoại")
+    phone_number = models.CharField(max_length=15, unique=True, verbose_name="S\u1ed1 \u0111i\u1ec7n tho\u1ea1i")
     address = models.CharField(max_length=255, verbose_name="Địa chỉ giao hàng")
     
     # TRƯỜNG QUAN TRỌNG CHO AGENT CHĂM SÓC KHÁCH HÀNG:
@@ -157,14 +174,33 @@ class Voucher(models.Model):
 class Order(models.Model):
     STATUS_CHOICES = (
         ('Pending', 'Chờ xử lý'),
+        ('Confirmed', 'Đã lên đơn'),
+        ('Shipping', 'Đang vận chuyển'),
         ('Shipped', 'Đã giao hàng'),
         ('Cancelled', 'Đã hủy'),
     )
+    CANCELLATION_LOCKED_STATUSES = ('Confirmed', 'Shipping', 'Shipped')
+
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     voucher = models.ForeignKey(Voucher, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Voucher áp dụng")
     total_amount = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Tổng tiền")
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Pending', verbose_name="Trạng thái đơn")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Ngày đặt hàng")
+
+    def clean(self):
+        super().clean()
+        if not self.pk or self.status != 'Cancelled':
+            return
+
+        previous_status = type(self).objects.filter(pk=self.pk).values_list('status', flat=True).first()
+        if previous_status in self.CANCELLATION_LOCKED_STATUSES:
+            raise ValidationError({
+                'status': 'Đơn hàng đã lên đơn nên không thể hủy.'
+            })
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Đơn hàng #{self.id} - {self.customer.user.username}"
@@ -183,7 +219,53 @@ class OrderItem(models.Model):
         return f"{self.quantity} x {self.product.name}"
 
 # ==========================================
-# 8. BẢNG BÀI VIẾT / TIN TỨC (Blogs)
+# 8. B?NG Y?U C?U T? V?N
+# ==========================================
+# 8. B?NG Y?U C?U T? V?N
+# ==========================================
+# 8. BẢNG YÊU CẦU TƯ VẤN
+# ==========================================
+class ConsultationRequest(models.Model):
+    STATUS_CHOICES = (
+        ('pending', 'Chờ tư vấn'),
+        ('contacted', 'Đã liên hệ'),
+        ('converted', 'Đã lên đơn'),
+        ('cancelled', 'Đã hủy'),
+    )
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='consultation_requests', verbose_name="Khách hàng")
+    name = models.CharField(max_length=255, verbose_name="Họ và tên")
+    phone = models.CharField(max_length=20, verbose_name="Số điện thoại")
+    email = models.EmailField(null=True, blank=True, verbose_name="Email")
+    vehicle = models.CharField(max_length=120, null=True, blank=True, verbose_name="Dòng xe")
+    message = models.TextField(null=True, blank=True, verbose_name="Nội dung tư vấn")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', verbose_name="Trạng thái")
+    products = models.ManyToManyField(Product, through='ConsultationRequestItem', related_name='consultation_requests', blank=True, verbose_name="Sản phẩm cần tư vấn")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Ngày gửi yêu cầu")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Lần cập nhật cuối")
+
+    def __str__(self):
+        return f"Yêu cầu tư vấn #{self.id} - {self.name}"
+
+    class Meta:
+        verbose_name = 'Yêu cầu tư vấn'
+        verbose_name_plural = '11. Yêu cầu tư vấn'
+        ordering = ('-created_at',)
+
+
+class ConsultationRequestItem(models.Model):
+    consultation_request = models.ForeignKey(ConsultationRequest, on_delete=models.CASCADE, related_name='items', verbose_name="Yêu cầu tư vấn")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Sản phẩm")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Số lượng quan tâm")
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"
+
+    class Meta:
+        verbose_name = 'Sản phẩm trong yêu cầu tư vấn'
+        verbose_name_plural = 'Sản phẩm trong yêu cầu tư vấn'
+        unique_together = ('consultation_request', 'product')
+
+
 # ==========================================
 class Blog(models.Model):
     title = models.CharField(max_length=255, verbose_name="Tiêu đề bài viết kỹ thuật/khuyến mãi")

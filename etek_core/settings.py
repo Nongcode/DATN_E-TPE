@@ -194,7 +194,7 @@ JAZZMIN_SETTINGS = {
 # TÙY CHỈNH GIAO DIỆN (THEME) JAZZMIN
 JAZZMIN_UI_TWEAKS = {
     "theme": "flatly", # Giao diện hiện đại, tối giản và sạch sẽ
-    "dark_mode_theme": "darkly", # Giao diện khi bật chế độ ban đêm
+    "default_theme_mode": "light",
     
     "sidebar_nav_flat_style": True,        # Bật kiểu menu phẳng (hiện đại, không có viền nổi)
     "sidebar_nav_child_indent": True,      # Bật thụt lề cho menu con dễ nhìn
@@ -218,5 +218,5 @@ EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'False').lower() == 'true'
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'ETEK Store <no-reply@etekstore.vn>')
 
 STOCK_ALERT_EMAILS = env_list('STOCK_ALERT_EMAILS')
-BIRTHDAY_VOUCHER_AMOUNT = os.getenv('BIRTHDAY_VOUCHER_AMOUNT', '100000')
+BIRTHDAY_VOUCHER_AMOUNT = os.getenv('BIRTHDAY_VOUCHER_AMOUNT', '200000')
 BIRTHDAY_VOUCHER_VALID_DAYS = int(os.getenv('BIRTHDAY_VOUCHER_VALID_DAYS', '2'))

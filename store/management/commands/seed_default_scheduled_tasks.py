@@ -1,4 +1,4 @@
-﻿from datetime import timedelta
+from datetime import timedelta
 
 from django.core.management.base import BaseCommand
 from django.utils import timezone
@@ -8,9 +8,9 @@ from store.models import ScheduledTask
 
 
 DEFAULT_TASKS = (
-    ("lock_stock", "Canh bao ton kho thap", 360),
-    ("auto_hide", "Tu dong an san pham het hang", 5),
-    ("birthday_mail", "Gui email cham soc sinh nhat", None),
+    ("lock_stock", "Cảnh báo tồn kho thấp", 360),
+    ("auto_hide", "Tự động ẩn sản phẩm hết hàng", 5),
+    ("birthday_mail", "Gửi email chăm sóc sinh nhật", None),
 )
 
 
